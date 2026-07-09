@@ -1,236 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claudio Nhancale - Portfólio</title>
-    <meta name="description" content="Analista de Sistemas, Desenvolvedor Front end, UI Design, React Js, construindo produtos significativos de alto desempenho e de ótima qualidade. Muito apaixonado por tecnologia, desenvolvimento de programas, aplicativos, sistemas, UX & UI Design de interface.">
-    <meta name="keywords" content="Front end developer, HTML,CSS,XML,JavaScript, React Js, React Native Node Js, jquery, bootstrap4, figma, adobe xd, php, sql, banco de dados, portfolio, ui, ux, designer, faculdade, ios, wordpress, loja virtual, e-commerce, aplicativos, aplicações, software, stackoverflow, git, github, analista de sistemas, tecnologias, ferramentas, projetos, dinamico, web design, developer, desenvolvimento, desenvolvedor, Salvador, desenvolvedor web,  Desenvolvedor Front end, programador, back end, indexTobe, linguagens de programação">
-    <meta name="author" content="Claudio Nhancale">
-    <meta name="copyright" content="© 2023 Claudio Nhancale" />
-    <meta property="og:image" content="https://photos.app.goo.gl/XjhFdomgtZCy4ohZ6">
-    <meta property="og:title" content="Portfólio | Claudio Nhancale - Desenvolvedor Front End e Backend" />
-    <meta property="og:description" content="Desenvolvedor Front end, Programador JavaScript, UI Designer, React Js, construindo produtos significativos de alto desempenho e de ótima qualidade. Muito apaixonado por tecnologia, desenvolvimento de programas, aplicativos, sistemas, UX & UI Design de interface." />
-
-    <!--Linkedin-->
-    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Portfólio | Claudio Nhancale - Desenvolvedor Front End e UI Designer" />
-    <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
-    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://photos.app.goo.gl/XjhFdomgtZCy4ohZ6" />
-    <meta property="og:description" content="Desenvolvedor Front end, Programador JavaScript, UI Designer, React Js, construindo produtos significativos de alto desempenho e de ótima qualidade. Muito apaixonado por tecnologia, desenvolvimento de programas, aplicativos, sistemas, UX & UI Design de interface." />
-    
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="shortcut icon" href="image/favicon.png" type="image/x-icon" sizes="32x3">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-    
-</head>
-<body class="show">
-    <header>
-        <a href="#home" class="logo">Claudio Nhancale</a>
-        <div class="toggle" onclick="toggleMenu()"></div>
-        <ul class="menu">
-            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-            <li><a href="#sobre-mim" onclick="toggleMenu()">Sobre mim</a></li>
-            <li><a href="#tecnologias" onclick="toggleMenu()">Tecnologias</a></li>
-            <li><a href="#projetos" onclick="toggleMenu()">Projectos</a></li>
-            <li><a href="#contato" onclick="toggleMenu()">Contacto</a></li>
-        </ul>
-    </header>
-   <section class="banner " id="home">
-        <div class="textBx" style="animation: slide-bottom 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;">
-            <h2>Hello, I'm<br><span>Cláudio Nhancale.</span></h2>
-            <h3 id="result"></h3>
-            <h3 id="log"></h3>
-            <a href="#sobre-mim" class="btn">Sobre mim</a>
-        </div>
-    </section>
-
-    <section class="sobre-mim" id="sobre-mim">
-<!--        <div class="heading">-->
-<!--            <h2 data-anime="top">Sobre mim</h2>-->
-<!--        </div>-->
-        <div class="content">
-            <div class="contentBx w50">
-                <h3 data-anime="top"><strong style="color: #4169E1;">Sobre mim</strong></h3>
-                <p data-anime="top">Cláudio Nhancale, Licenciado em Informática, Meus pontos fortes ressaltam em <strong style="color: #4169E1;">HTML, CSS, JavaScript, Bootstrap, Base de dados(MySQL,Postgree, SQL Server) e UI Design, Wordpress, Joomla, Codignite, Laravel e Quasar</strong></p><br>
-                <p data-anime="top">Estou em constante aprendizado, participando de eventos e sempre programando e desenvolvendo algo.</p><br>
-               <p data-anime="top">No presente momento , estou frequentando o Curso Web e Mobile na Explicador INC,  sou uma pessoa com grande senso de colaboração e trabalho em equipe, enfrentando desafios e criando aplicações web, desenvolvendo programas, aplicativos e sistemas.</p>
-                <a data-anime="top" href="#" target="_blank" class="btn curriculo" style="text-align: center;">confira o meu currículo <i class="fas fa-file-pdf fa-lg" style="padding-left: 8px;"></i></a><br><br>
-            </div>
-            <div class="w50">
-                <img data-anime="left" src="image/perfil.jpeg" width="350" class="img img-th" alt="Claudio Nhancale">
-            </div>
-        </div>
-    </section>
-    
-
-    <!--Tecnologias-->
-    <section class="tecnologias" id="tecnologias">
-        <div class="heading white">
-            <h2 data-anime="top">Tecnologias</h2>
-            <p data-anime="top" style= "letter-spacing: 0.3em; font-size: 25px;">Confira as Tecnologias que mais Utilizo!</p>
-            <div data-anime="top">
-                <hr  style="width: 100%; border: 0; height: 1px; background: #000;opacity: 0.1;">
-            </div>
-        </div>
-
-        <div class="content">
-
-            <div data-anime="top1" class="tecnologiasBx">
-                <i class="fab fa-quasar-js fa-lg" style="font-size:50px; color:#5ed3f3;"> </i>
-                <h2>Quasar Framework</h2>
-                <p>Framework para desenvolvimento de aplicativos para Android e iOS de forma nativa.</p>
-            </div>
-
-            <div data-anime="top2" class="tecnologiasBx">
-                <i class="fab fa-node-js fa-lg" style="font-size:50px; color:#689f63;"> </i>
-                <h2>Node Js</h2>
-                <p>Executa códigos JavaScript no backend/servidor e APIs.</p>
-            </div>
-
-            <div data-anime="top3" class="tecnologiasBx">
-                <span class="iconify" data-icon="logos:typescript-icon" style="font-size:50px;"></span>
-                <h2>TypeScript</h2>
-                <p>É um superconjunto sintático escrito de JavaScript e adciona tipagem estática opcional a linguagem.</p>
-            </div>
-
-            <div data-anime="top4" class="tecnologiasBx">
-                <span class="iconify" data-icon="cib:jquery" style="font-size:50px"></span>
-                <h2>jQuery</h2>
-                <p>É uma biblioteca de funções JavaScript que interage com o HTML, para simplificar os scripts interpretados</p>
-            </div>
-
-            <div data-anime="top5" class="tecnologiasBx">
-                <i class="fab fa-wordpress" style="font-size:50px; color:#207196;"> </i>
-                <h2>WordPress</h2>
-                <p>Um sistema livre e aberto de gestão de conteúdo para internet, baseado em PHP com banco de dados MySQL</p>
-            </div>
-
-            <div data-anime="top7" class="tecnologiasBx">
-                <i class="fab fa-laravel fa-lg" style="font-size:50px; color:#858ebb;"> </i>
-                <h2>Laravel</h2>
-                <p>Uma linguagem para o desenvolvimento de aplicações no lado do servido re APIs</p>
-            </div>
-
-            <div data-anime="top7" class="tecnologiasBx">
-                <i class="fab fa-php fa-lg" style="font-size:50px; color:#858ebb;"> </i>
-                <h2>PHP</h2>
-                <p>Uma linguagem para o desenvolvimento de aplicações no lado do servido re APIs</p>
-            </div>
-
-            <div data-anime="top8" class="tecnologiasBx">
-                <i class="fas fa-database fa-lg" style="font-size:50px; color:black;"> </i>
-                <h2>SQL</h2>
-                <p>Linguagem de pesquisa declarativa padrão para banco de dados relacional</p>
-            </div>
-
-
-
-
-        </div>
-
-
-
-        <div class="heading white">
-            <p data-anime="top" style= " font-size: 25px; padding-top: 100px;">Outras Tecnologias !</p>
-            <div data-anime="top">
-                <hr  style="width: 100%; border: 1px dotted #000;opacity: 0.2;">
-            </div>
-        </div>
-
-        <div class="content">
-
-            <div data-anime="top1" class="tecnologiasBx">
-                <i class="fab fa-html5 fa-lg" style="font-size:50px; color:#dd4b25;"> </i>
-                <h2>HTML5</h2>
-                <p>HTML é uma linguagem de marcação utilizada na construção de páginas web</p>
-            </div>
-
-            <div data-anime="top2" class="tecnologiasBx">
-                <i class="fab fa-css3 fa-lg" style="font-size:50px; color:#318CE7;"> </i>
-                <h2>CSS3</h2>
-                <p>O CSS é um mecanismo para adicionar estilo a um documento web</p>
-            </div>
-
-
-            <div data-anime="top3" class="tecnologiasBx">
-                <i class="fab fa-js fa-lg" style="font-size:50px; color:#efd81d;"> </i>
-                <h2>JavaScript</h2>
-                <p>Uma linguagem de alto nível com tipagem dinâmica fraca e multiparadigma
-                </p>
-            </div>
-
-
-            <div data-anime="top5" class="tecnologiasBx">
-                <span class="iconify" data-icon="vscode-icons:file-type-styled" style="font-size:50px; color:#318CE7;"></span></span>
-                <h2>Styled Components</h2>
-                <p>Uma biblioteca que utiliza o conceito de CSS-in-JS, permite escrever códigos CSS dentro do Javascript.</p>
-            </div>
-
-            <div data-anime="top6" class="tecnologiasBx">
-                <i class="fab fa-bootstrap fa-lg" style="font-size:50px; color:#6b409e;"> </i>
-                <h2>Bootstrap</h2>
-                <p>Um framework para desenvolvimento de componentes de interface e front-end</p>
-            </div>
-
-            <div data-anime="top7" class="tecnologiasBx">
-                <i class="fab fa-sass" style="font-size:50px; color:#c76494;"> </i>
-                <h2>Sass</h2>
-                <p>Sass é uma linguagem de folhas de estilo</p>
-            </div>
-
-
-            <div data-anime="top8" class="tecnologiasBx">
-                <span class="iconify" data-icon="grommet-icons:figma" style="font-size:50px" ></span>
-                <h2>Figma</h2>
-                <p>É um editor gráfico de vetor e prototipagem de projetos de design</p>
-            </div>
-
-            <div data-anime="top9" class="tecnologiasBx">
-                <i class="fab fa-git-alt" style="font-size:50px; color:#e84e31;"> </i>
-                <h2>Git</h2>
-                <p>É um sistema de controle de versão distribuído de código aberto, desde projetos pequenos a muito grandes com velocidade e eficiência</p>
-            </div>
-
-        </div>
-        
-    </section>
-
-    <!--Projetos-->
-    <section class="projetos" id="projetos">
-        <div class="heading">
-            <h2 data-anime="top">Projetos</h2>
-            <p data-anime="top" style= "letter-spacing: 0.3em; font-size: 25px;">Confira os meus Projetos!</p>
-            <div data-anime="top">
-                <hr  style="width: 100%; border: 0; height: 1px; background: #000;opacity: 0.1;">
-            </div>
-        </div>
-    </section>
-    <section class="contato" id="contato">
-        <div class="heading">
-            <h2 data-anime="top">Contato</h2>
-            <p data-anime="top" style= "letter-spacing: 0.2em; font-size: 25px;">Onde me encontrar:</p>
-            <div class="redes-sociais">
-                <ul data-anime="buttom" class="icons">
-                    <li ><a href="https://www.instagram.com/cnhancale/" class="fab fa-instagram fa-2x" target="_blank"></a></li>
-                    <li><a  href="https://www.linkedin.com/" class="fab fa-linkedin fa-2x" target="_blank"></a></li>
-                    <li><a  href="https://github.com/cnhancale" target="_blank" class="fab fa-github fa-2x"></a></li>
-                    <li><a  href="mailto:clnhancalez@gmail.com" class="far fa-envelope fa-2x"></a></li>
-                </ul>
-                <p data-anime="bottom" style="margin-top: 50px;">Se você quiser conversar, <br> Por favor, entre em contato!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- End Footer -->
-    <a onclick="topFunction()" id="back-to-top" title="Go to top"><i class="fas fa-chevron-up"></i></a>
-
-    <!--Footer-->
-    <div class="footer">
-        <p>Copyriht &copy; <span id="hora"></span> Claudio Nhancale | Todos os direitos reservados.</p>
-    </div>
-
-    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
-    <script src="js/script.js" type="text/javascript"></script>
-</body>
-</html>
+<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Consulta de Pauta</title><style>:root{--paper:#F3F8FC;--navy:#152B6B;--sky:#2AA9D9;--sun:#F5A623;--ink:#132247;--ink-soft:#5A6C8C;--line:#D7E3F2;--red:#C0392B;--card:#FFFFFF;}*{box-sizing:border-box;}body{margin:0;background:radial-gradient(circle at 85% -10%,rgba(245,166,35,0.14),transparent 40%),linear-gradient(180deg,#EAF4FB 0%,var(--paper) 320px);color:var(--ink);font-family:Georgia,'Times New Roman',serif;min-height:100vh;display:flex;justify-content:center;padding:32px 16px 64px;}.sheet{width:100%;max-width:640px;}header{text-align:center;padding-bottom:20px;margin-bottom:28px;position:relative;}header::after{content:"";display:block;height:4px;margin-top:18px;border-radius:4px;background:linear-gradient(90deg,var(--navy) 0%,var(--sky) 55%,var(--sun) 100%);}.logo{width:64px;height:64px;margin:0 auto 12px;display:block;border-radius:50%;box-shadow:0 2px 10px rgba(21,43,107,0.18);}.eyebrow{font-family:'Courier New',monospace;letter-spacing:0.2em;font-size:11px;color:var(--sky);text-transform:uppercase;font-weight:bold;}h1{font-size:28px;margin:8px 0 4px;font-weight:400;letter-spacing:0.01em;color:var(--navy);}.subtitle{font-size:13px;color:var(--ink-soft);font-style:italic;}.search-box{display:flex;gap:0;border:1.5px solid var(--navy);background:var(--card);border-radius:6px;overflow:hidden;box-shadow:0 2px 8px rgba(21,43,107,0.08);}.search-box input{flex:1;border:none;background:transparent;padding:14px 16px;font-family:'Courier New',monospace;font-size:16px;letter-spacing:0.03em;color:var(--ink);outline:none;}.search-box input::placeholder{color:#9aa6c0;}.search-box button{border:none;background:linear-gradient(135deg,var(--navy),var(--sky));color:#fff;padding:0 22px;font-family:Georgia,serif;font-size:14px;letter-spacing:0.05em;cursor:pointer;transition:filter 0.15s ease;}.search-box button:hover{filter:brightness(1.08);}.hint{font-size:12px;color:var(--ink-soft);margin-top:8px;text-align:center;}#result{margin-top:32px;}.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--sky);border-radius:8px;box-shadow:0 4px 16px rgba(21,43,107,0.10);padding:26px 28px;animation:rise 0.25s ease;}@keyframes rise{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}.card .num{font-family:'Courier New',monospace;font-size:12px;color:var(--sky);letter-spacing:0.05em;font-weight:bold;}.card .name{font-size:22px;margin:4px 0 18px;color:var(--navy);border-bottom:1px solid var(--line);padding-bottom:14px;}table.grades{width:100%;border-collapse:collapse;font-size:14px;}table.grades td{padding:7px 4px;border-bottom:1px dotted var(--line);}table.grades td.label{color:var(--ink-soft);width:60%;}table.grades td.value{text-align:right;font-family:'Courier New',monospace;font-weight:bold;color:var(--navy);}.status-row{margin-top:18px;padding-top:14px;border-top:2px solid var(--navy);display:flex;justify-content:space-between;align-items:center;}.status-row .label{font-size:13px;color:var(--ink-soft);}.badge{display:inline-block;padding:6px 16px;border-radius:4px;font-family:'Courier New',monospace;font-size:13px;letter-spacing:0.06em;font-weight:bold;border:1.5px solid;}.badge.aprovado{color:#fff;background:linear-gradient(135deg,var(--navy),var(--sky));border-color:var(--navy);}.badge.recorrencia{color:var(--red);border-color:var(--red);background:#fdf1ef;}.badge.dispensado{color:#8a5c00;border-color:var(--sun);background:#fff6e6;}.empty,.not-found{text-align:center;color:var(--ink-soft);font-style:italic;padding:24px 0;font-size:14px;}.not-found strong{display:block;font-style:normal;color:var(--red);font-size:16px;margin-bottom:4px;}footer{text-align:center;font-size:11px;color:var(--ink-soft);margin-top:40px;font-family:'Courier New',monospace;letter-spacing:0.04em;}</style></head><body><div class="sheet"><header><h1>Pauta — ICC</h1><div class="subtitle">Digite o seu número de estudante para ver as suas notas</div></header><div class="search-box"><input id="query" type="text" placeholder="Ex: 01.0697.26" autocomplete="off" inputmode="text"><button onclick="eval(atob('bG9va3VwKCk='))">Consultar</button></div><div id="result"><div class="empty">Aguardando o número de estudante…</div></div><footer>....</footer></div><script>
+const dados = [
+{n:"01.0697.26", nome:"AIMAN TAQUIDIR SULEMANE", t1:12, t2:10.0, trab:14.0, mf:12, sit:"Admitido", ex:3, mfinal:null, res:"Recorrencia"},
+ {n:"01.0922.26", nome:"ANICIA VITORIA MUTIMBA", t1:9, t2:10.0, trab:14.0, mf:11, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0944.26", nome:"ANTONIO ALFREDO MUIANGA", t1:8, t2:12.0, trab:15.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+ {n:"01.0875.26", nome:"ANTONIO JAIME LANGA", t1:10, t2:13.0, trab:14.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+ {n:"01.0677.26", nome:"AZARIAS ZITO JAIME BILA", t1:9, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0631.26", nome:"BIXENTE JOSE AGNALDO MACIA", t1:9, t2:15.0, trab:14.0, mf:13, sit:"Admitido", ex:14, mfinal:13, res:"Aprovado"},
+ {n:"01.0676.26", nome:"CARDOSO AULINO NHAULE MUNHANE", t1:14, t2:14.0, trab:14.0, mf:14, sit:"Dispensado", ex:14, mfinal:14, res:"Aprovado"},
+ {n:"01.0630.26", nome:"CATARINA AMERICO COSSA", t1:9, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+ {n:"01.0647.26", nome:"CLARA PINTO COVANE", t1:17, t2:12.0, trab:14.0, mf:14, sit:"Dispensado", ex:8, mfinal:14, res:"Aprovado"},
+ {n:"01.0666.26", nome:"DAVID ANGELO MAZIVE", t1:9, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:5, mfinal:null, res:"Recorrencia"},
+ {n:"01.0950.26", nome:"DELFINA CASTIGO", t1:11, t2:11.0, trab:14.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+ {n:"01.0659.26", nome:"DIVINO FELIX MACHAVA", t1:10, t2:8.0, trab:14.0, mf:11, sit:"Admitido", ex:10, mfinal:10, res:"Aprovado"},
+ {n:"01.0629.26", nome:"EDCIO DOS SANTOS CARLOS MATSIMBE", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:11, mfinal:14, res:"Aprovado"},
+ {n:"01.0878.26", nome:"EDMILSON CANDITO", t1:9, t2:8.0, trab:15.0, mf:10, sit:"Admitido", ex:5, mfinal:null, res:"Recorrencia"},
+ {n:"01.0655.26", nome:"EDNERCIO CASTRO GUJAMO", t1:11, t2:11.0, trab:14.0, mf:12, sit:"Admitido", ex:15, mfinal:13, res:"Aprovado"},
+ {n:"01.0675.26", nome:"ELIO EUNIZIO MUCHAVE", t1:15.25, t2:15.0, trab:14.0, mf:15, sit:"Dispensado", ex:2, mfinal:15, res:"Aprovado"},
+ {n:"01.0681.26", nome:"ELTON DE LAURA SECHENE", t1:12, t2:15.0, trab:14.0, mf:14, sit:"Dispensado", ex:11, mfinal:13, res:"Aprovado"},
+ {n:"01.0660.26", nome:"ELTON ONESMO DANIEL NHADUATE", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:8, mfinal:14, res:"Aprovado"},
+ {n:"01.0648.26", nome:"EMILIO FELIX MAZIVILA", t1:8, t2:8.0, trab:14.0, mf:10, sit:"Admitido", ex:10, mfinal:10, res:"Aprovado"},
+ {n:"01.0925.26", nome:"EQUISODIO S. MUZONDA", t1:8, t2:9.0, trab:14.0, mf:10, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0919.26", nome:"FELIX ALSON JOVO", t1:15, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:11, mfinal:14, res:"Aprovado"},
+ {n:"01.0639.26", nome:"FLAVIO SEBASTIAO NHACUONGA", t1:6, t2:12.0, trab:15.0, mf:11, sit:"Admitido", ex:3, mfinal:null, res:"Recorrencia"},
+ {n:"01.0651.26", nome:"FRANCISCO SARMENTO MONJANE", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:13, mfinal:14, res:"Aprovado"},
+ {n:"01.0691.26", nome:"FREDIO VASCO UTUI", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:8, mfinal:14, res:"Aprovado"},
+ {n:"01.0694.26", nome:"HENRIQUETA GABRIELA BOMBE", t1:11, t2:12.0, trab:14.0, mf:12, sit:"Admitido", ex:12, mfinal:12, res:"Aprovado"},
+ {n:"01.0688.26", nome:"HILARIO ZEFANIAS JUAIO", t1:14, t2:15.0, trab:14.0, mf:14, sit:"Dispensado", ex:12, mfinal:14, res:"Aprovado"},
+ {n:"01.0902.26", nome:"IGOR ANGELO MUNGUAMBE", t1:7, t2:12.0, trab:15.0, mf:11, sit:"Admitido", ex:2, mfinal:null, res:"Recorrencia"},
+ {n:"01.0771.26", nome:"ISABEL AUGUSTO MONTEIRO", t1:11, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:7, mfinal:null, res:"Recorrencia"},
+ {n:"01.0686.26", nome:"ISABEL JOCHUA CUMBANE", t1:10, t2:12.0, trab:15.0, mf:12, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0656.26", nome:"JAIME DE HENRIQUETA NELSON CUINICA", t1:11, t2:15.0, trab:15.0, mf:14, sit:"Dispensado", ex:11, mfinal:14, res:"Aprovado"},
+ {n:"01.0669.26", nome:"JOAO RUNGO DIONISIO", t1:17.5, t2:12.0, trab:14.0, mf:15, sit:"Dispensado", ex:13, mfinal:15, res:"Aprovado"},
+ {n:"01.0905.26", nome:"JORGE RAIMUNDO MAMBO", t1:5, t2:11.0, trab:15.0, mf:10, sit:"Admitido", ex:12, mfinal:11, res:"Aprovado"},
+ {n:"01.0879.26", nome:"LAERSON CHIUNDA", t1:16, t2:15.0, trab:15.0, mf:15, sit:"Dispensado", ex:4, mfinal:15, res:"Aprovado"},
+ {n:"01.0920.26", nome:"LIDIA FERNANDO MATHE", t1:9, t2:13.0, trab:14.0, mf:12, sit:"Admitido", ex:7, mfinal:null, res:"Recorrencia"},
+ {n:"01.0634.26", nome:"LIRIA VIRGILIO MAVILE", t1:9, t2:11.0, trab:14.0, mf:11, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0654.26", nome:"MARLENE ROGERIO MATAVELE", t1:8, t2:12.0, trab:14.0, mf:11, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+ {n:"01.0668.26", nome:"MINERVIA GABRIEL MACAMO", t1:14, t2:14.0, trab:15.0, mf:14, sit:"Dispensado", ex:12, mfinal:14, res:"Aprovado"},
+ {n:"01.0670.26", nome:"NELTON ARMANDO MASSINGUE", t1:10, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:4, mfinal:null, res:"Recorrencia"},
+ {n:"01.0903.26", nome:"NESIO ANIBAL MAHANZUL", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:7, mfinal:14, res:"Aprovado"},
+ {n:"01.0895.26", nome:"NEUSIO DA TELMA GOVE", t1:13, t2:14.0, trab:14.0, mf:14, sit:"Dispensado", ex:14, mfinal:14, res:"Aprovado"},
+ {n:"01.0881.26", nome:"PIEDADE CELESTINO BOA", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:9, mfinal:14, res:"Aprovado"},
+ {n:"01.0898.26", nome:"SHELTON XAVIER", t1:11, t2:10.0, trab:15.0, mf:12, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0687.26", nome:"TANIA DA LARIA ADOLFO MAZOIO", t1:9, t2:11.0, trab:14.0, mf:11, sit:"Admitido", ex:7, mfinal:null, res:"Recorrencia"},
+ {n:"01.0921.26", nome:"YILAH HORTENCIA EDSON LANGA", t1:6, t2:10.0, trab:14.0, mf:10, sit:"Admitido", ex:3, mfinal:null, res:"Recorrencia"},
+ {n:"01.0667.26", nome:"YULLA SHEYNILA ALMEIDA COSSA", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:13, mfinal:14, res:"Aprovado"},
+ {n:"01.0658.26", nome:"YUMINA SHANEL DINIS CHIVULELE", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:10, mfinal:14, res:"Aprovado"},
+ {n:"01.0915.26", nome:"YURIKA DA SILVA JAMAL", t1:10, t2:8.0, trab:14.0, mf:11, sit:"Admitido", ex:11, mfinal:11, res:"Aprovado"},
+ {n:"011648.2025", nome:"VALTER MAYLON CHICHANGO", t1:9, t2:15.0, trab:10.0, mf:11, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+48
+];
+function norm(s){
+ return (s || "").toString().toLowerCase().replace(/[.\s]/g,"");
+}
+function fmt(v){
+ if(v === null || v === undefined) return "—";
+ return Number.isInteger(v) ? v.toString() : v.toFixed(2);
+}
+function badgeClass(res){
+ const r = res.toLowerCase();
+ if(r === "aprovado") return "aprovado";
+ if(r === "dispensado") return "dispensado";
+ return "recorrencia";
+}
+function lookup(){
+ const raw = document.getElementById('query').value.trim();
+ const box = document.getElementById('result');
+ if(!raw){
+ box.innerHTML = '<div class="empty">Aguardando o número de estudante…</div>';
+ return;
+ }
+ const q = norm(raw);
+ const found = dados.find(d => d.n && norm(d.n).includes(q) && q.length >= 3);
+ if(!found){
+ box.innerHTML = `
+ <div class="not-found"><strong>Nenhum resultado encontrado</strong>
+ Verifique o número de estudante e tente novamente.
+ </div>`;
+ return;
+ }
+ box.innerHTML = `
+ <div class="card"><div class="num">${found.n || "Nº não disponível"}</div><div class="name">${found.nome}</div><table class="grades"><tr><td class="label">Teste 1 (35%)</td><td class="value">${fmt(found.t1)}</td></tr><tr><td class="label">Teste 2 (35%)</td><td class="value">${fmt(found.t2)}</td></tr><tr><td class="label">Trabalho(35%)</td><td class="value">${fmt(found.trab)}</td></tr><tr><td class="label">Média de Frequência</td><td class="value">${fmt(found.mf)}</td></tr><tr><td class="label">Situação</td><td class="value">${found.sit}</td></tr><tr><td class="label">Exame</td><td class="value">${fmt(found.ex)}</td></tr><tr><td class="label">Média Final</td><td class="value">${fmt(found.mfinal)}</td></tr></table><div class="status-row"><span class="label">Resultado</span><span class="badge ${badgeClass(found.res)}">${found.res}</span></div></div>`;
+}
+document.getElementById('query').addEventListener('keydown', function(e){
+ if(e.key === 'Enter') lookup();
+});
+</script><script>document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-s]').forEach(function(e){try{e.setAttribute('style',decodeURIComponent(escape(atob(e.getAttribute('data-s')))));e.removeAttribute('data-s');}catch(x){}});});</script><script>document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});document.addEventListener('keydown',function(e){var k=e.key,c=e.ctrlKey||e.metaKey,s=e.shiftKey;if(c&&'uUsSpP'.indexOf(k)>=0){e.preventDefault();return false;}if(c&&s&&'iIjJcC'.indexOf(k)>=0){e.preventDefault();return false;}if(k==='F12'){e.preventDefault();return false;}});</script></body></html>
