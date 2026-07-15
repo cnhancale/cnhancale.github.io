@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Trabalhos Finais — Temas e Vídeos</title><style>:root{--paper:#F3F8FC;--navy:#152B6B;--sky:#2AA9D9;--sun:#F5A623;--ink:#132247;--ink-soft:#5A6C8C;--line:#D7E3F2;--card:#FFFFFF;}*{box-sizing:border-box;}body{margin:0;background:radial-gradient(circle at 85% -10%,rgba(245,166,35,0.14),transparent 40%),linear-gradient(180deg,#EAF4FB 0%,var(--paper) 320px);color:var(--ink);font-family:Georgia,'Times New Roman',serif;min-height:100vh;display:flex;justify-content:center;padding:32px 16px 64px;}.sheet{width:100%;max-width:760px;}header{text-align:center;padding-bottom:20px;margin-bottom:26px;}header::after{content:"";display:block;height:4px;margin-top:18px;border-radius:4px;background:linear-gradient(90deg,var(--navy) 0%,var(--sky) 55%,var(--sun) 100%);}.logo{width:64px;height:64px;margin:0 auto 12px;display:block;border-radius:50%;box-shadow:0 2px 10px rgba(21,43,107,0.18);}.eyebrow{font-family:'Courier New',monospace;letter-spacing:0.2em;font-size:11px;color:var(--sky);text-transform:uppercase;font-weight:bold;}h1{font-size:26px;margin:8px 0 4px;font-weight:400;color:var(--navy);}.subtitle{font-size:13px;color:var(--ink-soft);font-style:italic;}.toolbar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center;}.search-box{flex:1;min-width:200px;display:flex;border:1.5px solid var(--navy);background:var(--card);border-radius:6px;overflow:hidden;box-shadow:0 2px 8px rgba(21,43,107,0.08);}.search-box input{flex:1;border:none;background:transparent;padding:12px 14px;font-family:'Courier New',monospace;font-size:14px;color:var(--ink);outline:none;}.search-box input::placeholder{color:#9aa6c0;}.counter{font-family:'Courier New',monospace;font-size:12px;color:var(--ink-soft);white-space:nowrap;}.list{display:flex;flex-direction:column;gap:12px;}.item{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--sky);border-radius:8px;padding:16px 18px;box-shadow:0 2px 8px rgba(21,43,107,0.06);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}.item-info{flex:1;min-width:220px;}.item-name{font-family:'Courier New',monospace;font-size:13px;font-weight:bold;color:var(--navy);letter-spacing:0.02em;}.item-tema{font-size:14.5px;color:var(--ink);margin-top:4px;line-height:1.4;}.action{flex-shrink:0;}.btn-video{display:inline-block;padding:8px 16px;border-radius:5px;background:linear-gradient(135deg,var(--navy),var(--sky));color:#fff;text-decoration:none;font-size:12.5px;font-family:'Courier New',monospace;letter-spacing:0.04em;font-weight:bold;white-space:nowrap;}.btn-video:hover{filter:brightness(1.08);}.tag-escrito{display:inline-block;padding:8px 16px;border-radius:5px;border:1.5px solid var(--sun);color:#8a5c00;background:#fff6e6;font-size:12.5px;font-family:'Courier New',monospace;letter-spacing:0.04em;font-weight:bold;white-space:nowrap;}.empty-state{text-align:center;color:var(--ink-soft);font-style:italic;padding:30px 0;display:none;}footer{text-align:center;font-size:11px;color:var(--ink-soft);margin-top:36px;font-family:'Courier New',monospace;letter-spacing:0.04em;}</style></head><body><div class="sheet"><header><h1>Temas e Vídeos Apresentados</h1></header><div class="toolbar"><div class="search-box"><input id="query" type="text" placeholder="Pesquisar por tema..." autocomplete="off" oninput="eval(atob('cmVuZGVyKCk='))"></div><div class="counter" id="counter"></div></div><div class="list" id="list"></div><div class="empty-state" id="empty">Nenhum tema encontrado.</div><footer>...</footer></div><script>
+const dados = [
+ {"nome": "Ale**** Mah****", "tema": "Ficheiros Phyton sem descrição", "link": null, "nota": "Phyton"},
+ {"nome": "Ale**** Tim****", "tema": "???", "link": "https://www.youtube.com/watch?v=FddjbfQLm7c"},
+ {"nome": "Ana**** Aní**** Uam****", "tema": "Aplicação da Programação Linear Inteira na alocação de salas de aula", "link": null, "nota": "Phyton"},
+ {"nome": "Ani**** Mac****", "tema": "Aplicativo Symbolab", "link": "https://www.youtube.com/watch?v=AGvGJZwICFw"},
+ {"nome": "Arm**** Luc**** cha****", "tema": "O impacto de symbolab no cálculo Integral", "link": "https://www.youtube.com/watch?v=5mCuAkG0w0U"},
+ {"nome": "Cle**** Con****", "tema": "???", "link": null, "nota": "???"},
+ {"nome": "Cor**** Cal**** Lan****", "tema": "Representação geométrica de um decágono através de um polígono", "link": "https://www.youtube.com/watch?v=UJp9ofPMxuI"},
+ {"nome": "Dan**** Mat****", "tema": "Aplicação da ferramenta computacional geogebra na resolução de problemas relacionados com Matemática", "link": null},
+ {"nome": "Dan**** Vaz****", "tema": "???", "link": null, "nota": "???"},
+ {"nome": "Dar**** Car****", "tema": "Como criar uma Calculadora no seu celular com o aplicativo Pydroid 3", "link": "https://www.youtube.com/watch?v=Itb3a1DRIN4"},
+ {"nome": "Dár**** Cum****", "tema": "Ficheiros Phyton sem descrição", "link": null, "nota": "Phyton"},
+ {"nome": "Dio**** Mac****", "tema": "???", "link": null, "nota": "???"},
+ {"nome": "Edn**** Jer**** Mac****", "tema": "???", "link": "https://www.youtube.com/watch?v=RYyltpLQa0E"},
+ {"nome": "Eli**** Maú****", "tema": "Guia de aplicação prática do app Orange Data Mining", "link": null},
+ {"nome": "Emí**** Arm**** Cua****", "tema": "???", "link": "https://www.youtube.com/watch?v=nch7XTzMud8"},
+ {"nome": "Fer**** Car**** Gui****", "tema": "???", "link": null, "nota": "???"},
+ {"nome": "Flá**** Com****", "tema": "Guia de Aplicação Prática com RStudio", "link": null},
+ {"nome": "Fre**** Chi****", "tema": "Microsoft Power BI", "link": null},
+ {"nome": "Ger**** And**** Maz****", "tema": "Aplicação da Programação Linear Inteira na alocação de salas de aula", "link": null, "nota": "Phyton"},
+ {"nome": "Her**** nov****", "tema": "???", "link": "https://www.youtube.com/watch?v=Azdpiifhgao"},
+ {"nome": "Isa**** Mat****", "tema": "???", "link": "https://www.youtube.com/watch?v=pM_LzslHpV0"},
+ {"nome": "Joa**** Ari****", "tema": "Apresentação do Aplicativo Desmos", "link": "https://www.youtube.com/watch?v=OgpNk-fOOcI"},
+ {"nome": "Jon**** Ago**** Man****", "tema": "Ficheiros Phyton sem descrição", "link": null, "nota": "Phyton"},
+ {"nome": "Jul**** Nuv****", "tema": "Guia de Utilização do WinPlot", "link": null},
+ {"nome": "Lér**** Sim**** Mav****", "tema": "Ficheiros Phyton sem descrição", "link": null, "nota": "Phyton"},
+ {"nome": "Loi**** Sil**** Dev****", "tema": "Aplicação da Programação Linear Inteira na alocação de salas de aula", "link": null, "nota": "Phyton"},
+ {"nome": "Luc**** ped**** Nha****", "tema": "GeoGebra", "link": "https://www.youtube.com/watch?v=HjYN0tigZgg"},
+ {"nome": "Luc**** da**** Âng****", "tema": "Guia de Aplicação Prática do Software Tableau", "link": null},
+ {"nome": "Mer**** Mat****", "tema": "Previsão de Casos de Malária", "link": null},
+ {"nome": "Mer**** Nha****", "tema": "Guia Prática do SPSS", "link": null},
+ {"nome": "Sal**** Gon**** Bal****", "tema": "Guia de Utilização do SPSS", "link": null},
+ {"nome": "She**** Mac****", "tema": "Simulação e análise de dados estatísticos", "link": "https://www.youtube.com/watch?v=I4_ekVizREk"},
+ {"nome": "Nad**** Dan****", "tema": "???", "link": null, "nota": "???"},
+ {"nome": "Wil**** Sté**** Bil****", "tema": "Resolução de funções usando GeoGebra", "link": "https://www.youtube.com/watch?v=Iuho5-x7ZuQ"}
+];
+function render(){
+ const q = document.getElementById('query').value.trim().toLowerCase();
+ const list = document.getElementById('list');
+ const empty = document.getElementById('empty');
+ const filtered = dados.filter(d =>
+ d.tema.toLowerCase().includes(q) || d.nome.toLowerCase().includes(q)
+ );
+ document.getElementById('counter').textContent = `${filtered.length} de ${dados.length} trabalhos`;
+ if(filtered.length === 0){
+ list.innerHTML = "";
+ empty.style.display = "block";
+ return;
+ }
+ empty.style.display = "none";
+ list.innerHTML = filtered.map(d => `
+ <div class="item"><div class="item-info"><div class="item-name">${d.nome}</div><div class="item-tema">${d.tema}</div></div><div class="action">
+ ${d.link
+ ? `<a class="btn-video" href="${d.link}" target="_blank" rel="noopener">▶ Ver vídeo</a>`
+ : (d.nota === "Phyton"
+ ? `<span class="tag-escrito">Phyton</span>`
+ : d.nota === "???"
+ ? `<span class="tag-escrito">???</span>`
+ : `<span class="tag-escrito">Trabalho Escrito</span>`)}
+ </div></div>
+ `).join("");
+}
+render();
+</script><script>document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-s]').forEach(function(e){try{e.setAttribute('style',decodeURIComponent(escape(atob(e.getAttribute('data-s')))));e.removeAttribute('data-s');}catch(x){}});});</script><script>document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});document.addEventListener('keydown',function(e){var k=e.key,c=e.ctrlKey||e.metaKey,s=e.shiftKey;if(c&&'uUsSpP'.indexOf(k)>=0){e.preventDefault();return false;}if(c&&s&&'iIjJcC'.indexOf(k)>=0){e.preventDefault();return false;}if(k==='F12'){e.preventDefault();return false;}});</script></body></html>
