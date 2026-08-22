@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="O nosso contador da caminhada até à casa dos sonhos — progresso da obra, versículo do dia, ritual diário e diário da família.">
+<meta name="theme-color" content="#0A1B2E">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nossa Casa — Planta do Sonho">
+<meta property="og:description" content="Guiados por Cristo, edificando uma família sólida, vivendo em liberdade e impactando vidas com propósito.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230A1B2E'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle'%3E%F0%9F%8F%A0%3C/text%3E%3C/svg%3E">
+<title>Nossa Casa — Planta do Sonho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Blueprint navy world */
+    --blue-deep:   #0A1B2E;
+    --blue:        #0F2743;
+    --blue-line:   #1C3B5E;
+    --blue-line-lt:rgba(148,206,230,0.14);
+    --blue-line-lter:rgba(148,206,230,0.07);
+
+    /* Drafting-paper world (cards) */
+    --paper:       #FBF5E7;
+    --paper-warm:  #F6EFDC;
+    --paper-line:  rgba(24,38,53,0.14);
+    --paper-line-strong:rgba(24,38,53,0.26);
+
+    --ink:         #17242F;
+    --ink-soft:    #566673;
+    --ink-faint:   #8B98A2;
+
+    --cyan:        #7FD8EC;
+    --cyan-deep:   #3FA9C7;
+    --amber:       #F0A63C;
+    --amber-deep:  #C97A1A;
+    --rust:        #C4552B;
+
+    --bg-page:     #FAF6EE;
+
+    --shadow-sm: 0 2px 10px rgba(10,27,46,0.10);
+    --shadow-md: 0 16px 34px rgba(10,27,46,0.16);
+    --shadow-lg: 0 26px 60px rgba(10,27,46,0.26);
+
+    --radius-lg: 4px;
+    --radius-md: 3px;
+    --radius-sm: 2px;
+
+    --content-w: 720px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 10% -5%, rgba(63,169,199,0.14) 0%, transparent 42%),
+      radial-gradient(circle at 100% 15%, rgba(240,166,60,0.12) 0%, transparent 38%),
+      var(--bg-page);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+
+  h1,h2,.display{ font-family:'Space Grotesk', sans-serif; letter-spacing:-0.01em; }
+  .serif{ font-family:'Fraunces', serif; }
+  .mono{ font-family:'Space Mono', monospace; }
+
+  img{max-width:100%; display:block;}
+  ::selection{background:var(--amber); color:var(--blue-deep);}
+
+  /* ================= TOP SCROLL BAR ================= */
+  .top-progress{
+    position:fixed; top:0; left:0; width:100%; height:3px; z-index:50;
+    background:rgba(148,206,230,0.12);
+  }
+  .top-progress-fill{
+    height:100%; width:0%;
+    background:linear-gradient(90deg, var(--cyan), var(--amber));
+    transition:width 0.1s linear;
+    border-radius:0 3px 3px 0;
+  }
+
+  /* ================= HERO — DRAFTING SHEET ================= */
+  .hero{
+    position:relative;
+    min-height:88svh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:radial-gradient(circle at 12% 8%, #142F4E 0%, transparent 45%), var(--blue-deep);
+    isolation:isolate;
+  }
+  .hero-img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
+    filter:grayscale(0.15) contrast(1.05);
+  }
+  .hero-fallback{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+    color:rgba(210,228,238,0.7); text-align:center; padding:32px; font-size:0.9rem; z-index:0;
+  }
+  .hero-fallback .icon{font-size:2.6rem;}
+  .hero-fallback code{
+    background:rgba(127,216,236,0.12); border:1px dashed rgba(127,216,236,0.4);
+    padding:3px 9px; border-radius:2px; font-family:'Space Mono',monospace; font-size:0.82rem;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(9,20,34,0.25) 0%, rgba(9,20,34,0.5) 45%, rgba(8,18,30,0.95) 100%);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background-image:
+      linear-gradient(var(--blue-line-lter) 1px, transparent 1px),
+      linear-gradient(90deg, var(--blue-line-lter) 1px, transparent 1px);
+    background-size:40px 40px;
+    mix-blend-mode:screen;
+    opacity:0.5;
+  }
+
+  /* corner registration marks — like a drawing sheet */
+  .sheet-corners span{
+    position:absolute; width:26px; height:26px; z-index:3; opacity:0.65;
+  }
+  .sheet-corners span::before, .sheet-corners span::after{ content:""; position:absolute; background:var(--cyan); }
+  .sheet-corners span::before{ width:100%; height:1.5px; top:0; left:0; }
+  .sheet-corners span::after{ width:1.5px; height:100%; top:0; left:0; }
+  .sheet-corners .tl{ top:18px; left:18px; }
+  .sheet-corners .tr{ top:18px; right:18px; transform:scaleX(-1); }
+  .sheet-corners .bl{ bottom:18px; left:18px; transform:scaleY(-1); }
+  .sheet-corners .br{ bottom:18px; right:18px; transform:scale(-1,-1); }
+
+  .hero-content{
+    position:relative; z-index:2;
+    width:100%; max-width:var(--content-w); margin:0 auto;
+    padding:0 max(24px, env(safe-area-inset-left)) clamp(30px,6vw,56px) max(24px, env(safe-area-inset-right));
+    color:#EAF3F7; text-align:center;
+  }
+  .hero-kicker{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem; font-weight:700; letter-spacing:0.24em; text-transform:uppercase;
+    color:var(--amber);
+    border:1px dashed rgba(240,166,60,0.5);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:20px;
+  }
+  .hero-content h1{
+    font-family:'Fraunces', serif;
+    font-size:clamp(1.85rem, 5.6vw, 2.9rem);
+    font-weight:600; font-style:italic; line-height:1.22;
+    margin:0 0 20px; text-wrap:balance; color:#fff;
+  }
+  .hero-dates{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Space Mono',monospace; font-weight:700; font-size:0.85rem; letter-spacing:0.03em;
+    color:#0F2743; background:var(--cyan);
+    padding:9px 18px; border-radius:2px;
+  }
+  .hero-dates .sep{color:var(--rust);}
+  .hero-tag{
+    margin-top:14px; font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:rgba(210,228,238,0.55);
+  }
+
+  .scroll-cue{
+    position:absolute; left:50%; bottom:20px; transform:translateX(-50%); z-index:3;
+    width:22px; height:34px; border:1.5px solid rgba(127,216,236,0.5); border-radius:2px;
+    display:flex; justify-content:center; padding-top:6px;
+  }
+  .scroll-cue::before{
+    content:""; width:3px; height:8px; background:var(--amber);
+    animation:cueMove 1.8s infinite;
+  }
+  @keyframes cueMove{
+    0%{transform:translateY(0); opacity:1;}
+    70%{transform:translateY(9px); opacity:0;}
+    100%{transform:translateY(0); opacity:0;}
+  }
+
+  /* ================= LAYOUT WRAP ================= */
+  .page{
+    max-width:var(--content-w); margin:0 auto;
+    padding:0 max(20px, env(safe-area-inset-left)) 70px max(20px, env(safe-area-inset-right));
+  }
+
+  .greeting{ text-align:center; padding:36px 10px 8px; }
+  .greeting .g-title{
+    font-family:'Fraunces', serif; font-weight:600; font-style:italic;
+    font-size:clamp(1.25rem,3.4vw,1.55rem); color:var(--blue-deep); margin-bottom:6px;
+  }
+  .greeting .g-msg{ color:var(--ink-soft); font-size:0.9rem; font-family:'Space Mono',monospace; }
+
+  /* ================= JOURNEY — TAPE MEASURE RAIL ================= */
+  .journey{ position:relative; margin-top:30px; padding-left:48px; }
+  .journey-line{
+    position:absolute; top:6px; bottom:6px; left:17px; width:2px;
+    background-image:repeating-linear-gradient(180deg, var(--blue-line) 0 3px, transparent 3px 14px);
+  }
+  .journey-fill{
+    position:absolute; top:6px; left:17px; width:2px; height:0%;
+    background:linear-gradient(180deg, var(--amber), var(--cyan));
+    box-shadow:0 0 10px rgba(240,166,60,0.55);
+    transition:height 0.15s linear;
+  }
+  .journey-marker{
+    position:absolute; left:6px; top:0; width:24px; height:24px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.92rem; transform:translateY(-50%); transition:top 0.15s linear;
+    background:var(--amber); border-radius:50%; box-shadow:0 0 0 4px rgba(240,166,60,0.22);
+  }
+
+  .step{ position:relative; margin-bottom:28px; }
+  .step-node{
+    position:absolute; left:-48px; top:0; width:34px; height:34px;
+    background:var(--blue); border:1.5px solid var(--blue-line);
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.95rem; z-index:1; transform:rotate(45deg);
+    transition:border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+  }
+  .step-node span{ display:block; transform:rotate(-45deg); }
+  .step.visible .step-node{
+    border-color:var(--amber);
+    box-shadow:0 0 0 5px rgba(240,166,60,0.14);
+    transform:rotate(45deg) scale(1.05);
+  }
+
+  /* ================= CARDS — DRAFTING SHEETS ================= */
+  .card{
+    position:relative;
+    background:var(--paper);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-sm);
+    padding:28px 26px;
+    border:1px solid var(--paper-line-strong);
+    opacity:0; transform:translateY(14px);
+    transition:opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
+  }
+  .step.visible .card{ opacity:1; transform:translateY(0); box-shadow:var(--shadow-md); }
+  @media (hover:hover) and (pointer:fine){
+    .card:hover{ box-shadow:var(--shadow-lg); transform:translateY(-3px); }
+  }
+  /* corner brackets on every card, like a drawing detail callout */
+  .card::before, .card::after{
+    content:""; position:absolute; width:12px; height:12px;
+    border-top:2px solid var(--amber-deep); border-left:2px solid var(--amber-deep);
+    top:8px; left:8px; opacity:0.55;
+  }
+  .card::after{ top:auto; left:auto; bottom:8px; right:8px; transform:rotate(180deg); }
+
+  .card-eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:0.66rem; text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--amber-deep); font-weight:700; margin-bottom:14px;
+  }
+  .card-eyebrow::before{ content:"// "; opacity:0.6; }
+  .card h2{ font-size:1.1rem; font-weight:700; margin:0 0 14px; color:var(--ink); }
+
+  /* ---- Countdown : digital site-clock ---- */
+  .countdown-card{
+    background:linear-gradient(165deg, var(--blue-deep), var(--blue) 70%);
+    color:#EAF3F7; border:1px solid var(--blue-line);
+    position:relative; overflow:hidden;
+  }
+  .countdown-card::before, .countdown-card::after{ border-color:var(--cyan); opacity:0.6; }
+  .countdown-card .card-eyebrow{ color:var(--cyan); }
+  .countdown-label{
+    position:relative; text-align:center; font-family:'Space Mono',monospace;
+    font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:rgba(234,243,247,0.55); margin-bottom:16px;
+  }
+  .countdown-grid{ position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .count-box{
+    background:rgba(127,216,236,0.06);
+    border:1px dashed rgba(127,216,236,0.3);
+    border-radius:var(--radius-sm);
+    padding:16px 4px 12px; text-align:center;
+  }
+  .count-box .num{
+    font-family:'Space Mono', monospace; font-weight:700;
+    font-size:clamp(1.5rem,6vw,2.05rem);
+    display:block; line-height:1; margin-bottom:6px;
+    font-variant-numeric:tabular-nums;
+    color:var(--amber);
+    text-shadow:0 0 18px rgba(240,166,60,0.35);
+  }
+  .count-box .unit{
+    font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:rgba(234,243,247,0.5);
+  }
+  .arrived{ text-align:center; padding:6px 0; position:relative; }
+  .arrived h2{ font-family:'Fraunces',serif; font-size:1.6rem; color:var(--amber); margin-bottom:8px; }
+  .arrived p{ font-family:'Fraunces',serif; font-style:italic; color:rgba(234,243,247,0.75); }
+
+  /* ---- Progress : tape measure ---- */
+  .progress-pct{
+    font-family:'Space Mono',monospace; font-weight:700;
+    font-size:1.2rem; color:var(--ink); margin-bottom:14px;
+  }
+  .progress-pct span{ color:var(--amber-deep); }
+  .progress-track{
+    position:relative;
+    width:100%; height:16px;
+    background:var(--paper-warm);
+    border-radius:999px; overflow:hidden;
+    border:1px solid var(--paper-line-strong);
+    background-image:repeating-linear-gradient(90deg, transparent 0 9%, var(--paper-line) 9% calc(9% + 1px));
+  }
+  .progress-fill{
+    height:100%; border-radius:999px;
+    background:linear-gradient(90deg, var(--cyan-deep) 0%, var(--amber) 100%);
+    width:0%; transition:width 1.4s cubic-bezier(.2,.8,.2,1);
+    position:relative;
+  }
+  .progress-fill::after{
+    content:"🏠"; position:absolute; right:-8px; top:50%; transform:translateY(-50%);
+    font-size:0.85rem;
+  }
+  .progress-meta{
+    display:flex; justify-content:space-between; margin-top:14px;
+    font-family:'Space Mono',monospace; font-size:0.78rem; color:var(--ink-soft);
+  }
+  .progress-meta strong{ color:var(--rust); font-weight:700; }
+
+  /* ---- Verse : pinned architect's note ---- */
+  .verse-card{ background:var(--paper-warm); }
+  .verse-text{
+    font-family:'Fraunces', serif; font-style:italic;
+    font-size:clamp(1.05rem,3.2vw,1.26rem); color:var(--ink); line-height:1.5;
+    margin-bottom:10px; padding-left:18px; border-left:3px solid var(--cyan-deep);
+  }
+  .verse-ref{
+    text-align:right; font-family:'Space Mono',monospace; font-size:0.78rem;
+    color:var(--rust); font-weight:700; margin-bottom:18px;
+  }
+  .reflection{
+    background:rgba(63,169,199,0.10);
+    border-radius:var(--radius-sm);
+    border-left:2px dashed var(--cyan-deep);
+    padding:14px 16px;
+  }
+  .reflection-label{
+    font-family:'Space Mono',monospace;
+    font-size:0.64rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--cyan-deep); font-weight:700; margin-bottom:6px;
+  }
+  .reflection-text{ font-size:0.94rem; color:var(--ink-soft); }
+
+  /* ---- Declaration : rubber stamp ---- */
+  .declaration-card{
+    background:var(--paper);
+    border:2px dashed var(--rust);
+    text-align:center; color:var(--ink);
+  }
+  .declaration-card::before, .declaration-card::after{ display:none; }
+  .declaration-card .card-eyebrow{ color:var(--rust); }
+  .declaration-flame{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:46px; height:46px; border-radius:50%;
+    border:2px solid var(--rust); color:var(--rust);
+    font-size:1.3rem; margin:0 auto 12px; transform:rotate(-8deg);
+  }
+  .declaration-text{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:clamp(1.08rem,3.6vw,1.32rem); margin:0; line-height:1.4; color:var(--ink);
+  }
+
+  /* ---- Ritual : inspection checklist ---- */
+  .ritual-list{ list-style:none; margin:0; padding:0; }
+  .ritual-item{
+    display:flex; align-items:center; gap:14px; padding:13px 2px;
+    border-bottom:1px dashed var(--paper-line-strong);
+  }
+  .ritual-item:last-child{ border-bottom:none; }
+  .ritual-item input{
+    appearance:none; -webkit-appearance:none;
+    width:24px; height:24px; min-width:24px;
+    border-radius:3px; border:2px solid var(--cyan-deep);
+    display:grid; place-content:center; cursor:pointer;
+    transition:background 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .ritual-item input:hover{ transform:scale(1.08); border-color:var(--amber-deep); }
+  .ritual-item input:checked{ background:var(--rust); border-color:var(--rust); }
+  .ritual-item input:checked::after{
+    content:"✓"; color:#fff; font-size:13px; font-weight:800;
+    animation:checkPop 0.25s ease;
+  }
+  @keyframes checkPop{ 0%{transform:scale(0); opacity:0;} 100%{transform:scale(1); opacity:1;} }
+  .ritual-item label{ font-size:0.96rem; color:var(--ink); cursor:pointer; transition:opacity 0.2s; }
+  .ritual-item input:checked ~ label{ opacity:0.48; text-decoration:line-through; }
+  .ritual-progress-wrap{ margin-top:18px; }
+  .ritual-progress-track{
+    height:8px; background:var(--paper-warm); border-radius:999px; overflow:hidden;
+    border:1px solid var(--paper-line-strong);
+  }
+  .ritual-progress-fill{
+    height:100%; background:linear-gradient(90deg, var(--cyan-deep), var(--rust)); width:0%;
+    transition:width 0.4s ease;
+  }
+  .ritual-progress-text{
+    text-align:center; margin-top:9px; font-family:'Space Mono',monospace;
+    font-size:0.76rem; color:var(--ink-soft);
+  }
+
+  /* ---- Journal : site diary ---- */
+  textarea{
+    width:100%; min-height:92px;
+    border-radius:var(--radius-sm); border:1px dashed var(--paper-line-strong);
+    background:var(--paper-warm); padding:14px;
+    font-family:'Space Mono', monospace; font-size:0.9rem; color:var(--ink);
+    resize:vertical; margin-bottom:14px;
+  }
+  textarea:focus, .ritual-item input:focus-visible, button:focus-visible{
+    outline:2px solid var(--amber); outline-offset:2px;
+  }
+  button.save-btn{
+    background:var(--blue-deep); color:#EAF3F7; border:none;
+    padding:14px 28px; border-radius:2px;
+    font-size:0.9rem; font-weight:700; letter-spacing:0.02em; cursor:pointer;
+    transition:transform 0.15s, background 0.2s, box-shadow 0.2s;
+    font-family:'Space Mono', monospace; text-transform:uppercase;
+    box-shadow:0 8px 20px rgba(10,27,46,0.28);
+    width:100%; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  }
+  button.save-btn:hover{ background:var(--blue); transform:translateY(-2px); box-shadow:0 10px 24px rgba(10,27,46,0.32); }
+  button.save-btn:active{ transform:translateY(0); }
+  button.save-btn.ghost{
+    background:transparent; color:var(--ink-soft); box-shadow:none;
+    border:1px dashed var(--paper-line-strong);
+  }
+  button.save-btn.ghost:hover{ background:var(--paper-warm); color:var(--ink); box-shadow:none; transform:none; }
+
+  .journal-entries{ margin-top:20px; display:flex; flex-direction:column; gap:10px; }
+  .journal-entry{
+    background:var(--paper-warm);
+    border-left:3px solid var(--cyan-deep);
+    border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+    padding:12px 14px; font-size:0.9rem;
+    display:flex; gap:10px; align-items:flex-start; justify-content:space-between;
+  }
+  .journal-entry .j-body{ flex:1; min-width:0; }
+  .journal-entry .j-date{
+    font-family:'Space Mono',monospace;
+    font-size:0.68rem; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--rust); font-weight:700; margin-bottom:4px; display:block;
+  }
+  .journal-entry .j-text{ word-break:break-word; white-space:pre-wrap; }
+  .j-actions{ display:flex; gap:4px; flex-shrink:0; }
+  .j-actions button{
+    border:none; background:transparent; cursor:pointer;
+    font-size:1rem; line-height:1; padding:6px; border-radius:4px;
+    color:var(--ink-faint); transition:background 0.15s, color 0.15s;
+  }
+  .j-actions button:hover{ background:rgba(23,36,47,0.08); color:var(--ink); }
+  .j-actions button.j-delete:hover{ color:var(--rust); background:rgba(196,85,43,0.12); }
+  .journal-empty{ font-size:0.87rem; color:var(--ink-faint); font-style:italic; text-align:center; padding:8px 0; }
+  .journal-edit-box textarea{ margin-bottom:10px; }
+  .journal-edit-actions{ display:flex; gap:8px; }
+  .journal-edit-actions button.save-btn{ width:auto; flex:1; padding:10px 14px; font-size:0.8rem; }
+
+  /* ---- Family vision : founding plaque ---- */
+  .vision-card{
+    background:linear-gradient(155deg, var(--blue) 0%, var(--blue-deep) 100%);
+    border:1px solid var(--blue-line); color:#EAF3F7; text-align:center;
+  }
+  .vision-card::before, .vision-card::after{ border-color:var(--cyan); opacity:0.6; }
+  .vision-card .card-eyebrow{ color:var(--cyan); }
+  .vision-cross{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border-radius:50%;
+    border:1.5px solid var(--amber); font-size:1.2rem; margin-bottom:12px;
+  }
+  .vision-text{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:400;
+    font-size:clamp(1.05rem,3.6vw,1.28rem); line-height:1.55; margin:0;
+  }
+
+  /* ---- Quote banners : ruler markers ---- */
+  .quote-banner{ text-align:center; padding:8px 14px 32px; }
+  .quote-banner p{
+    font-family:'Fraunces', serif; font-style:italic;
+    font-size:clamp(1rem,3.4vw,1.18rem); color:var(--rust); margin:0; line-height:1.5;
+  }
+  .quote-banner .rule{
+    width:1px; height:22px; background:repeating-linear-gradient(180deg, var(--amber) 0 4px, transparent 4px 8px);
+    margin:0 auto 14px;
+  }
+
+  /* ================= FOOTER — TITLE BLOCK ================= */
+  footer{
+    position:relative; margin-top:14px;
+    border:1.5px solid var(--blue-line);
+    border-radius:var(--radius-lg);
+    background:var(--blue);
+    color:#EAF3F7; overflow:hidden;
+  }
+  footer .tb-top{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    padding:34px 24px 20px; text-align:center;
+    border-bottom:1px dashed var(--blue-line);
+  }
+  footer .house{
+    width:44px; height:44px; border-radius:50%;
+    border:1.5px solid var(--amber); display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem; flex-shrink:0;
+  }
+  footer h2{
+    font-family:'Space Mono',monospace; font-size:clamp(0.9rem,3.6vw,1.05rem);
+    letter-spacing:0.1em; color:var(--amber); margin:0; font-weight:700; text-align:left;
+  }
+  footer .tb-quote{ padding:22px 26px 8px; text-align:center; }
+  footer .tb-quote p{
+    font-family:'Fraunces', serif; font-style:italic; color:rgba(234,243,247,0.85);
+    font-size:clamp(0.98rem,3.2vw,1.1rem); max-width:380px; margin:0 auto;
+  }
+  footer .tb-fields{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    font-family:'Space Mono',monospace; font-size:0.62rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:rgba(234,243,247,0.5);
+  }
+  footer .tb-fields div{ padding:14px 16px; border-top:1px dashed var(--blue-line); }
+  footer .tb-fields div + div{ border-left:1px dashed var(--blue-line); }
+  footer .tb-fields b{ display:block; color:var(--cyan); font-size:0.72rem; margin-bottom:3px; }
+
+  /* ================= RESPONSIVE ================= */
+  html, body{ overflow-x:hidden; width:100%; }
+
+  @media (min-width:720px){
+    :root{ --content-w:780px; }
+    .hero-content h1{ max-width:660px; margin-left:auto; margin-right:auto; }
+    .journey{ padding-left:60px; }
+    .journey-line, .journey-fill{ left:21px; }
+    .journey-marker{ left:10px; }
+    .step-node{ left:-60px; width:38px; height:38px; }
+    .card{ padding:34px 36px; }
+    .countdown-grid{ gap:14px; }
+    button.save-btn{ width:auto; }
+    footer .tb-top{ flex-direction:row; text-align:left; }
+    footer h2{ text-align:left; }
+  }
+
+  @media (max-width:600px){
+    .page{ padding:0 14px 50px; }
+    .card{ padding:22px 18px; }
+    .journey{ padding-left:36px; }
+    .journey-line, .journey-fill{ left:12px; }
+    .journey-marker{ left:2px; font-size:0.85rem; }
+    .step-node{ left:-36px; width:28px; height:28px; font-size:0.8rem; }
+    .step{ margin-bottom:22px; }
+    .countdown-grid{ grid-template-columns:repeat(2,1fr); gap:10px; }
+    .count-box{ padding:14px 4px 10px; }
+    .hero{ min-height:82svh; }
+    .hero-dates{ font-size:0.78rem; padding:8px 14px; flex-wrap:wrap; justify-content:center; }
+    .greeting{ padding:26px 6px 4px; }
+    .progress-meta{ flex-direction:column; gap:4px; text-align:center; }
+    .journal-entry{ flex-direction:column; }
+    .j-actions{ align-self:flex-end; margin-top:-4px; }
+    footer .tb-fields{ grid-template-columns:1fr; }
+    footer .tb-fields div + div{ border-left:none; }
+  }
+
+  @media (max-width:380px){
+    .journey{ padding-left:30px; }
+    .step-node{ left:-30px; width:24px; height:24px; font-size:0.7rem; }
+    .journey-line, .journey-fill{ left:10px; }
+    .journey-marker{ left:0px; font-size:0.72rem; }
+    .hero-content{ padding:0 16px clamp(22px,6vw,40px); }
+    .card{ padding:18px 15px; }
+    .verse-text{ padding-left:12px; }
+  }
+
+  @media (min-width:1100px){
+    :root{ --content-w:860px; }
+    .hero{ min-height:92svh; }
+    .hero-content h1{ font-size:clamp(2.2rem, 3.4vw, 3.4rem); max-width:760px; }
+    .card{ padding:40px 44px; }
+    .journey{ padding-left:72px; }
+    .step-node{ left:-72px; width:42px; height:42px; }
+    .journey-line, .journey-fill{ left:25px; }
+    .journey-marker{ left:14px; }
+  }
+
+  /* ================= BACK TO TOP ================= */
+  .to-top{
+    position:fixed; right:18px; bottom:18px; z-index:40;
+    width:44px; height:44px; border-radius:50%;
+    background:var(--blue-deep); color:var(--cyan);
+    border:1px solid var(--blue-line); box-shadow:var(--shadow-md);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; cursor:pointer;
+    opacity:0; pointer-events:none; transform:translateY(8px);
+    transition:opacity 0.25s ease, transform 0.25s ease, background 0.2s;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .to-top.show{ opacity:1; pointer-events:auto; transform:translateY(0); }
+  .to-top:hover{ background:var(--blue); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-progress"><div class="top-progress-fill" id="topProgressFill"></div></div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <img src="casa.png" alt="Fotografia da futura casa da família" class="hero-img" id="houseImg"
+       onerror="this.style.display='none'; document.getElementById('heroFallback').style.display='flex';">
+  <div class="hero-fallback" id="heroFallback" style="display:none;">
+    <span class="icon" aria-hidden="true">🏠</span>
+    <span>Coloque a foto da casa da família, com o nome <code>casa.png</code>, na mesma pasta deste ficheiro.</span>
+  </div>
+  <div class="sheet-corners" aria-hidden="true"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+  <div class="hero-content">
+    <div class="hero-kicker">Nosso Lar</div>
+    <h1>"Guiados por Cristo, edificando uma família sólida, vivendo em liberdade e impactando vidas com propósito."</h1>
+    <div class="hero-dates"><span>23.08.2026</span> <span class="sep" aria-hidden="true">→</span> <span>23.02.2027</span></div>
+    <div class="hero-tag">A nossa caminhada até casa</div>
+  </div>
+  <div class="scroll-cue"></div>
+</section>
+
+<div class="page">
+
+  <!-- GREETING -->
+  <div class="greeting">
+    <div class="g-title" id="greetingTitle"></div>
+    <div class="g-msg" id="greetingMsg"></div>
+  </div>
+
+  <!-- JOURNEY -->
+  <div class="journey" id="journey">
+    <div class="journey-line"></div>
+    <div class="journey-fill" id="journeyFill"></div>
+    <div class="journey-marker" id="journeyMarker">🚧</div>
+
+    <!-- FAMILY VISION -->
+    <div class="step" data-step>
+
+      <div class="card vision-card">
+        <div class="card-eyebrow">Visão Familiar</div>
+        <p class="vision-text">Guiados por Cristo, edificando uma família sólida, vivendo em liberdade e impactando vidas com propósito.</p>
+      </div>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="step" data-step>
+      <div class="card countdown-card">
+        <div id="countdownArea" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="step" data-step>
+      <div class="card">
+        <div class="progress-pct">Obra em <span id="progressPctNum">0%</span> de conclusão</div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-meta">
+          <span><strong id="daysElapsedNum">0</strong> dias de obra</span>
+          <span><strong id="daysRemainingNum">0</strong> dias até à entrega</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUOTE 1 -->
+    <div class="step" data-step>
+      <div class="quote-banner">
+        <div class="rule"></div>
+        <p>"O que a mente acredita, o Corpo conquista."</p>
+      </div>
+    </div>
+
+    <!-- VERSE -->
+    <div class="step" data-step>
+      <div class="card verse-card">
+        <div class="card-eyebrow">versículo do dia</div>
+        <div class="verse-text" id="verseText"></div>
+        <div class="verse-ref" id="verseRef"></div>
+        <div class="reflection">
+          <div class="reflection-label">Reflexão</div>
+          <div class="reflection-text" id="reflectionText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DECLARATION -->
+    <div class="step" data-step>
+
+      <div class="card declaration-card">
+        <span class="declaration-flame">🔥</span>
+        <div class="card-eyebrow">Carimbo de hoje</div>
+        <p class="declaration-text" id="declarationText"></p>
+      </div>
+    </div>
+
+    <!-- QUOTE 2 -->
+    <div class="step" data-step>
+      <div class="quote-banner">
+        <div class="rule"></div>
+        <p>"O sonho tem uma data."</p>
+      </div>
+    </div>
+
+    <!-- ... -->
+    <div class="step" data-step>
+      <div class="card">
+        <div class="card-eyebrow">Checklist de inspeção diária</div>
+        <ul class="ritual-list" id="ritualList"></ul>
+        <div class="ritual-progress-wrap">
+          <div class="ritual-progress-track"><div class="ritual-progress-fill" id="ritualFill"></div></div>
+          <div class="ritual-progress-text" id="ritualProgress"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOURNAL -->
+    <div class="step" data-step>
+      <div class="card">
+        <div class="card-eyebrow">Diário da </div>
+        <h2>Hoje avançámos porque...</h2>
+        <textarea id="journalInput" placeholder="Escrevam aqui o vosso progresso de hoje..."></textarea>
+        <button class="save-btn" id="saveJournal">📌 Registar avanço</button>
+        <div class="journal-entries" id="journalEntries"></div>
+      </div>
+    </div>
+
+    <!-- FOOTER / TITLE BLOCK -->
+    <div class="step" data-step>
+      <footer>
+        <div class="tb-top">
+          <div class="house">🏠</div>
+          <h2>23 FEV 2027</h2>
+        </div>
+        <div class="tb-quote">
+          <p>"Guiados por Cristo, edificando uma família sólida, vivendo em liberdade e impactando vidas com propósito."</p>
+        </div>
+      </footer>
+    </div>
+
+  </div><!-- /journey -->
+</div><!-- /page -->
+
+<button class="to-top" id="toTop" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+<script>
+(function(){
+  "use strict";
+
+  var START_DATE = new Date(2026, 7, 23, 0, 0, 0);
+  var TARGET_DATE = new Date(2027, 1, 23, 0, 0, 0);
+
+  function pad(n){ return n < 10 ? "0" + n : "" + n; }
+  function todayKey(d){
+    d = d || new Date();
+    return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
+  }
+  function dayIndex(d){
+    d = d || new Date();
+    var local = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    return Math.floor(local.getTime() / 86400000);
+  }
+
+  /* ---------------- Greeting ---------------- */
+  function renderGreeting(){
+    var h = new Date().getHours();
+    var title, msg;
+    if(h < 12){ title = "Bom dia ☀️"; msg = "Hoje é mais um dia da nossa caminhada."; }
+    else if(h < 18){ title = "Boa tarde 🌤️"; msg = "Continuemos firmes. Ainda há tempo para avançar."; }
+    else { title = "Boa noite 🌙"; msg = "Agradeçamos pelo caminho que percorremos hoje."; }
+    document.getElementById("greetingTitle").textContent = title;
+    document.getElementById("greetingMsg").textContent = msg;
+  }
+
+  /* ---------------- Countdown ---------------- */
+  function calcCountdown(now, target){
+    if(now >= target) return null;
+    var months = (target.getFullYear() - now.getFullYear()) * 12 + (target.getMonth() - now.getMonth());
+    var temp = new Date(now.getTime());
+    temp.setMonth(temp.getMonth() + months);
+    if(temp > target){
+      months--;
+      temp = new Date(now.getTime());
+      temp.setMonth(temp.getMonth() + months);
+    }
+    var diff = target - temp;
+    var days = Math.floor(diff / (1000*60*60*24));
+    var hours = Math.floor((diff / (1000*60*60)) % 24);
+    var minutes = Math.floor((diff / (1000*60)) % 60);
+    return { months: months, days: days, hours: hours, minutes: minutes };
+  }
+
+  function boxHTML(num, unit){
+    return '<div class="count-box"><span class="num">' + num + '</span><span class="unit">' + unit + '</span></div>';
+  }
+
+  function renderCountdown(){
+    var now = new Date();
+    var area = document.getElementById("countdownArea");
+    var c = calcCountdown(now, TARGET_DATE);
+    if(!c){
+      area.innerHTML = '<div class="arrived"><h2>🏠 CHEGOU O DIA!</h2><p>"A visão tornou-se realidade."</p></div>';
+      return;
+    }
+    area.innerHTML =
+      '<div class="countdown-label">Faltam</div>' +
+      '<div class="countdown-grid">' +
+        boxHTML(c.months, "meses") + boxHTML(c.days, "dias") +
+        boxHTML(c.hours, "horas") + boxHTML(c.minutes, "minutos") +
+      '</div>';
+  }
+
+  /* ---------------- Progress ---------------- */
+  function renderProgress(){
+    var now = new Date();
+    var total = TARGET_DATE - START_DATE;
+    var elapsed = now - START_DATE;
+    var pct = Math.min(100, Math.max(0, (elapsed/total)*100));
+    var daysElapsed = Math.max(0, Math.floor(elapsed / (1000*60*60*24)));
+    var daysRemaining = Math.max(0, Math.ceil((TARGET_DATE - now) / (1000*60*60*24)));
+
+    document.getElementById("progressFill").style.width = pct.toFixed(1) + "%";
+    document.getElementById("progressPctNum").textContent = pct.toFixed(0) + "%";
+    document.getElementById("daysElapsedNum").textContent = daysElapsed;
+    document.getElementById("daysRemainingNum").textContent = daysRemaining;
+  }
+
+  /* ---------------- Verses ---------------- */
+  var VERSES = [
+    { text: "Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.", ref: "Salmos 37:5",
+      reflection: "Nem tudo precisa estar pronto hoje. Continue a fazer a sua parte e confie no processo." },
+    { text: "Porque eu bem sei os pensamentos que penso a vosso respeito, diz o Senhor; pensamentos de paz, e não de mal, para vos dar o fim que esperais.", ref: "Jeremias 29:11",
+      reflection: "O que está a construir tem um propósito maior do que consegue ver agora." },
+    { text: "Tudo posso naquele que me fortalece.", ref: "Filipenses 4:13",
+      reflection: "A força para continuar não vem só de si — vem de onde também busca ajuda." },
+    { text: "O Senhor é a minha força e o meu escudo; nele confiou o meu coração, e fui socorrido.", ref: "Salmos 28:7",
+      reflection: "Hoje, descanse sabendo que não caminha sozinho." },
+    { text: "Não fostes vós que me escolhestes a mim, mas fui eu que vos escolhi a vós, e vos designei para que vades e deis fruto.", ref: "João 15:16",
+      reflection: "Cada esforço seu hoje é uma semente que dará fruto no tempo certo." },
+    { text: "Confia no Senhor de todo o teu coração, e não te estribes no teu próprio entendimento.", ref: "Provérbios 3:5",
+      reflection: "Nem sempre vai perceber todo o caminho — e está tudo bem." },
+    { text: "Os que esperam no Senhor renovarão as forças, subirão com asas como águias.", ref: "Isaías 40:31",
+      reflection: "O cansaço de hoje não é o fim da história. Espere, renove, continue." },
+    { text: "Tudo quanto te vier à mão para fazer, faze-o conforme as tuas forças.", ref: "Eclesiastes 9:10",
+      reflection: "A disciplina de hoje é o tijolo da casa de amanhã." },
+    { text: "Porque para Deus nada é impossível.", ref: "Lucas 1:37",
+      reflection: "A meta pode parecer grande, mas não é maior do que aquele que a tornou possível." },
+    { text: "O Senhor te abençoe, e te guarde.", ref: "Números 6:24",
+      reflection: "Receba hoje esta bênção sobre a sua casa, a sua família e o seu caminho." },
+    { text: "Lâmpada para os meus pés é a tua palavra, e luz para o meu caminho.", ref: "Salmos 119:105",
+      reflection: "Não precisa ver o caminho todo. Só o próximo passo." },
+    { text: "Porque onde estiver o vosso tesouro, aí estará também o vosso coração.", ref: "Mateus 6:21",
+      reflection: "A sua casa não é só um lugar — é onde vai plantar a sua família e a sua fé." },
+    { text: "Sede fortes e corajosos... porque o Senhor teu Deus é contigo, por onde quer que andares.", ref: "Josué 1:9",
+      reflection: "A coragem de hoje é alimentada pela certeza de que não está sozinho." },
+    { text: "Dá graças ao Senhor, porque ele é bom, porque a sua benignidade dura para sempre.", ref: "Salmos 107:1",
+      reflection: "Antes de pedir mais, agradeça pelo que já foi conquistado." },
+    { text: "A esperança não confunde.", ref: "Romanos 5:5",
+      reflection: "Continue a esperar. A sua espera não é em vão." },
+    { text: "Se o Senhor não edificar a casa, em vão trabalham os que a edificam.", ref: "Salmos 127:1",
+      reflection: "Convide Deus para o centro deste projeto. Ele é o verdadeiro construtor." },
+    { text: "Melhor é o pouco com justiça do que a abundância de rendimentos com injustiça.", ref: "Provérbios 16:8",
+      reflection: "O caminho honesto é mais lento, mas é o que edifica sem rachaduras." },
+    { text: "Porque eu, o Senhor teu Deus, te tomo pela tua mão direita e te digo: Não temas, eu te ajudo.", ref: "Isaías 41:13",
+      reflection: "Mesmo os dias incertos são acompanhados por uma mão que não solta a sua." },
+    { text: "Regozijai-vos na esperança, sede pacientes na tribulação, perseverai na oração.", ref: "Romanos 12:12",
+      reflection: "Três coisas para hoje: esperar, aguentar e orar. Já é o suficiente." },
+    { text: "E o meu Deus, segundo as suas riquezas, suprirá todas as vossas necessidades em glória, por Cristo Jesus.", ref: "Filipenses 4:19",
+      reflection: "O que falta hoje, não é o fim da provisão — é apenas o meio do caminho." },
+    { text: "Buscai primeiro o reino de Deus, e a sua justiça, e todas estas coisas vos serão acrescentadas.", ref: "Mateus 6:33",
+      reflection: "Coloque primeiro o que é primeiro, e o resto se organiza." },
+    { text: "Porque dele, e por meio dele, e para ele são todas as coisas.", ref: "Romanos 11:36",
+      reflection: "Esta casa também será para ele — um lugar de gratidão e propósito." },
+    { text: "Vinde a mim, todos os que estais cansados e sobrecarregados, e eu vos aliviarei.", ref: "Mateus 11:28",
+      reflection: "Está cansado? Está certo descansar. A jornada continua amanhã." },
+    { text: "Este é o dia que fez o Senhor; regozijemo-nos, e alegremo-nos nele.", ref: "Salmos 118:24",
+      reflection: "Hoje também é um dia de vitória, mesmo que pequena." },
+    { text: "Porque, onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles.", ref: "Mateus 18:20",
+      reflection: "A sua família, unida, já é um lar — mesmo antes das paredes existirem." },
+    { text: "Mas aquele que perseverar até ao fim, esse será salvo.", ref: "Mateus 24:13",
+      reflection: "Não é sobre ser perfeito. É sobre não desistir." },
+    { text: "O Senhor guiar-te-á continuamente, e fartará a tua alma em lugares secos.", ref: "Isaías 58:11",
+      reflection: "Mesmo nos dias secos, há um guia à sua frente." },
+    { text: "Tudo o que fizerdes, fazei-o de todo o coração, como ao Senhor, e não aos homens.", ref: "Colossenses 3:23",
+      reflection: "O trabalho de hoje, feito com o coração, nunca é pequeno demais." },
+    { text: "Sabemos que todas as coisas contribuem juntamente para o bem daqueles que amam a Deus.", ref: "Romanos 8:28",
+      reflection: "Até os atrasos fazem parte de um bem maior que ainda não vê." }
+  ];
+
+  function renderVerse(){
+    var idx = ((dayIndex() % VERSES.length) + VERSES.length) % VERSES.length;
+    var v = VERSES[idx];
+    document.getElementById("verseText").textContent = '"' + v.text + '"';
+    document.getElementById("verseRef").textContent = v.ref;
+    document.getElementById("reflectionText").textContent = v.reflection;
+  }
+
+  /* ---------------- Declarations ---------------- */
+  var DECLARATIONS = [
+    "Nós não estamos apenas a sonhar. Estamos a construir.",
+    "Cada pequeno avanço nos aproxima da nossa casa.",
+    "Nós permanecemos firmes e não desistimos.",
+    "Deus nos dá sabedoria para administrar os nossos recursos.",
+    "A nossa família terá um lar cheio de amor e paz.",
+    "Hoje daremos mais um passo, juntos.",
+    "Nós vemos o que ainda não existe, e trabalhamos como se já existisse.",
+    "A nossa disciplina de hoje constrói a nossa casa de amanhã.",
+    "Nós escolhemos a fé em vez do medo.",
+    "O nosso esforço de hoje não é em vão.",
+    "Nós somos gratos pelo caminho, não apenas pelo destino.",
+    "Um dia de cada vez, um passo de cada vez, nós chegamos lá."
+  ];
+
+  function renderDeclaration(){
+    var idx = (((dayIndex() * 7 + 3) % DECLARATIONS.length) + DECLARATIONS.length) % DECLARATIONS.length;
+    document.getElementById("declarationText").textContent = '"' + DECLARATIONS[idx] + '"';
+  }
+
+  /* ---------------- Ritual ---------------- */
+  var RITUAL_ITEMS = [
+    { id: "grateful", label: "🙏 Agradecemos a Deus" },
+    { id: "verse", label: "📖 Lemos o versículo do dia" },
+    { id: "visualize", label: "🏠 Visualizámos a nossa casa" },
+    { id: "declaration", label: "🔥 Lemos a declaração do dia" },
+    { id: "action", label: "🎯 Fizemos algo que nos aproxima da nossa meta" }
+  ];
+
+  function ritualStorageKey(){ return "ritual-" + todayKey(); }
+  function loadRitualState(){
+    try{ var raw = localStorage.getItem(ritualStorageKey()); return raw ? JSON.parse(raw) : {}; }
+    catch(e){ return {}; }
+  }
+  function saveRitualState(state){
+    try{ localStorage.setItem(ritualStorageKey(), JSON.stringify(state)); }catch(e){}
+  }
+  function renderRitual(){
+    var state = loadRitualState();
+    var list = document.getElementById("ritualList");
+    list.innerHTML = "";
+    RITUAL_ITEMS.forEach(function(item){
+      var li = document.createElement("li");
+      li.className = "ritual-item";
+      var checked = !!state[item.id];
+      li.innerHTML =
+        '<input type="checkbox" id="rit-' + item.id + '" ' + (checked ? "checked" : "") + '>' +
+        '<label for="rit-' + item.id + '">' + item.label + '</label>';
+      list.appendChild(li);
+      var input = li.querySelector("input");
+      input.addEventListener("change", function(){
+        var st = loadRitualState();
+        st[item.id] = input.checked;
+        saveRitualState(st);
+        updateRitualProgress();
+      });
+    });
+    updateRitualProgress();
+  }
+  function updateRitualProgress(){
+    var state = loadRitualState();
+    var done = RITUAL_ITEMS.filter(function(i){ return !!state[i.id]; }).length;
+    var pct = (done / RITUAL_ITEMS.length) * 100;
+    document.getElementById("ritualFill").style.width = pct + "%";
+    document.getElementById("ritualProgress").textContent = done + " de " + RITUAL_ITEMS.length + " concluídos hoje";
+  }
+
+  /* ---------------- Journal ---------------- */
+  var JOURNAL_KEY = "houseVisionJournal";
+  var editingEntryId = null;
+
+  function loadJournal(){
+    try{ var raw = localStorage.getItem(JOURNAL_KEY); return raw ? JSON.parse(raw) : []; }
+    catch(e){ return []; }
+  }
+  function saveJournalEntries(entries){
+    try{ localStorage.setItem(JOURNAL_KEY, JSON.stringify(entries)); }catch(e){}
+  }
+  function formatDatePretty(key){
+    var parts = key.split("-");
+    return parts[2] + "/" + parts[1] + "/" + parts[0];
+  }
+  function escapeHTML(str){
+    var div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+  function makeEntryId(){
+    return "e" + Date.now() + Math.floor(Math.random()*1000);
+  }
+
+  function renderJournal(){
+    var entries = loadJournal();
+    var container = document.getElementById("journalEntries");
+    if(entries.length === 0){
+      container.innerHTML = '<div class="journal-empty">Ainda não há registos. Escrevam aqui o primeiro avanço de hoje.</div>';
+      return;
+    }
+    var recent = entries.slice(-8).reverse();
+    container.innerHTML = "";
+
+    recent.forEach(function(e){
+      var wrap = document.createElement("div");
+
+      if(editingEntryId === e.id){
+        wrap.className = "journal-entry journal-edit-box";
+        wrap.style.flexDirection = "column";
+        wrap.innerHTML =
+          '<span class="j-date">' + formatDatePretty(e.date) + '</span>' +
+          '<textarea class="j-edit-input">' + escapeHTML(e.text) + '</textarea>' +
+          '<div class="journal-edit-actions">' +
+            '<button class="save-btn j-save-edit">Guardar edição</button>' +
+            '<button class="save-btn ghost j-cancel-edit">Cancelar</button>' +
+          '</div>';
+        container.appendChild(wrap);
+
+        wrap.querySelector(".j-save-edit").addEventListener("click", function(){
+          var newText = wrap.querySelector(".j-edit-input").value.trim();
+          if(!newText) return;
+          var all = loadJournal();
+          var idx = all.findIndex(function(it){ return it.id === e.id; });
+          if(idx !== -1){
+            all[idx].text = newText;
+            saveJournalEntries(all);
+          }
+          editingEntryId = null;
+          renderJournal();
+        });
+        wrap.querySelector(".j-cancel-edit").addEventListener("click", function(){
+          editingEntryId = null;
+          renderJournal();
+        });
+      } else {
+        wrap.className = "journal-entry";
+        wrap.innerHTML =
+          '<div class="j-body">' +
+            '<span class="j-date">' + formatDatePretty(e.date) + '</span>' +
+            '<span class="j-text">' + escapeHTML(e.text) + '</span>' +
+          '</div>' +
+          '<div class="j-actions">' +
+            '<button class="j-edit" title="Editar" aria-label="Editar registo">✏️</button>' +
+            '<button class="j-delete" title="Remover" aria-label="Remover registo">🗑️</button>' +
+          '</div>';
+        container.appendChild(wrap);
+
+        wrap.querySelector(".j-edit").addEventListener("click", function(){
+          editingEntryId = e.id;
+          renderJournal();
+        });
+        wrap.querySelector(".j-delete").addEventListener("click", function(){
+          if(!confirm("Remover este registo do diário?")) return;
+          var all = loadJournal().filter(function(it){ return it.id !== e.id; });
+          saveJournalEntries(all);
+          renderJournal();
+        });
+      }
+    });
+  }
+
+  function initJournal(){
+    // migrate old entries without an id
+    var entries = loadJournal();
+    var migrated = false;
+    entries.forEach(function(e){
+      if(!e.id){ e.id = makeEntryId(); migrated = true; }
+    });
+    if(migrated) saveJournalEntries(entries);
+
+    renderJournal();
+    document.getElementById("saveJournal").addEventListener("click", function(){
+      var input = document.getElementById("journalInput");
+      var text = input.value.trim();
+      if(!text) return;
+      var all = loadJournal();
+      all.push({ id: makeEntryId(), date: todayKey(), text: text });
+      saveJournalEntries(all);
+      input.value = "";
+      renderJournal();
+    });
+  }
+
+  /* ---------------- Journey scroll fill ---------------- */
+  function initJourneyScroll(){
+    var journey = document.getElementById("journey");
+    var fill = document.getElementById("journeyFill");
+    var marker = document.getElementById("journeyMarker");
+
+    function update(){
+      var rect = journey.getBoundingClientRect();
+      var viewportCenter = window.innerHeight * 0.5;
+      var total = rect.height;
+      var scrolled = viewportCenter - rect.top;
+      var pct = Math.min(1, Math.max(0, scrolled / total));
+      fill.style.height = (pct * 100) + "%";
+      marker.style.top = (pct * total) + "px";
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+
+  function initStepObserver(){
+    var steps = document.querySelectorAll(".step");
+    if("IntersectionObserver" in window){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.2, rootMargin: "0px 0px -10% 0px" });
+      steps.forEach(function(s){ obs.observe(s); });
+    } else {
+      steps.forEach(function(s){ s.classList.add("visible"); });
+    }
+  }
+
+  /* ---------------- Top scroll progress ---------------- */
+  function initTopProgress(){
+    var fill = document.getElementById("topProgressFill");
+    function update(){
+      var doc = document.documentElement;
+      var scrollTop = window.scrollY || doc.scrollTop;
+      var height = doc.scrollHeight - doc.clientHeight;
+      var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+      fill.style.width = pct + "%";
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+
+  /* ---------------- Back to top ---------------- */
+  function initToTop(){
+    var btn = document.getElementById("toTop");
+    function update(){
+      if(window.scrollY > window.innerHeight * 0.6){ btn.classList.add("show"); }
+      else{ btn.classList.remove("show"); }
+    }
+    btn.addEventListener("click", function(){
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+
+  /* ---------------- Init ---------------- */
+  function tick(){
+    renderCountdown();
+    renderProgress();
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    renderGreeting();
+    renderVerse();
+    renderDeclaration();
+    renderRitual();
+    initJournal();
+    initStepObserver();
+    initJourneyScroll();
+    initTopProgress();
+    initToTop();
+    tick();
+    setInterval(tick, 1000);
+    setInterval(renderGreeting, 60000);
+  });
+})();
+</script>
+</body>
+</html>
