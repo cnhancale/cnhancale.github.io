@@ -203,7 +203,7 @@ const shuf=(a,seed)=>{let r=a.map((v,i)=>i),x=seed*7+3;for(let i=r.length-1;i>0;
 
 /* ---------- Navegação e progresso ---------- */
 function prog(){let tot=0,n=0;T.forEach((t,a)=>t.it.forEach((_,b)=>{n++;tot+=best(a,b)}));
-$("#pb").style.width=(tot/n*100)+"%";const q=tot/n,rk=q<.25?"Estagiário":q<.5?"Auditor Júnior":q<.75?"Auditor Sénior":"Sócio-auditor";$("#tot").textContent="Nível: "+rk+" · "+tot.toFixed(1)+" / "+n+" pontos (guardados neste navegador)"}
+$("#pb").style.width=(tot/n*100)+"%";const q=tot/n,rk=q<.25?"Estagiário":q<.5?"Auditor Júnior":q<.75?"Auditor Sénior":"Sócio-auditor";$("#tot").textContent="Nível: "+rk+" · "+tot.toFixed(1)+" / "+n+""}
 function nav(){$("#nav").innerHTML=T.map((t,i)=>t.gl||t.pn?"":`<button class="${i==S.cur?"on":""}" data-t="${i}">${t.n}<small>${t.t}</small></button>`).join("");
  const n=$("#nav"),a=n.querySelector(".on");if(a&&n.scrollWidth>n.clientWidth&&innerWidth<960)n.scrollTo({left:a.offsetLeft-n.offsetLeft-(n.clientWidth-a.offsetWidth)/2})}
 
