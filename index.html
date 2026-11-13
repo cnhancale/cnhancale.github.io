@@ -1,88 +1,414 @@
-<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Consulta de Pauta</title><style>:root{--paper:#F3F8FC;--navy:#152B6B;--sky:#2AA9D9;--sun:#F5A623;--ink:#132247;--ink-soft:#5A6C8C;--line:#D7E3F2;--red:#C0392B;--card:#FFFFFF;}*{box-sizing:border-box;}body{margin:0;background:radial-gradient(circle at 85% -10%,rgba(245,166,35,0.14),transparent 40%),linear-gradient(180deg,#EAF4FB 0%,var(--paper) 320px);color:var(--ink);font-family:Georgia,'Times New Roman',serif;min-height:100vh;display:flex;justify-content:center;padding:32px 16px 64px;}.sheet{width:100%;max-width:640px;}header{text-align:center;padding-bottom:20px;margin-bottom:28px;position:relative;}header::after{content:"";display:block;height:4px;margin-top:18px;border-radius:4px;background:linear-gradient(90deg,var(--navy) 0%,var(--sky) 55%,var(--sun) 100%);}.logo{width:64px;height:64px;margin:0 auto 12px;display:block;border-radius:50%;box-shadow:0 2px 10px rgba(21,43,107,0.18);}.eyebrow{font-family:'Courier New',monospace;letter-spacing:0.2em;font-size:11px;color:var(--sky);text-transform:uppercase;font-weight:bold;}h1{font-size:28px;margin:8px 0 4px;font-weight:400;letter-spacing:0.01em;color:var(--navy);}.subtitle{font-size:13px;color:var(--ink-soft);font-style:italic;}.search-box{display:flex;gap:0;border:1.5px solid var(--navy);background:var(--card);border-radius:6px;overflow:hidden;box-shadow:0 2px 8px rgba(21,43,107,0.08);}.search-box input{flex:1;border:none;background:transparent;padding:14px 16px;font-family:'Courier New',monospace;font-size:16px;letter-spacing:0.03em;color:var(--ink);outline:none;}.search-box input::placeholder{color:#9aa6c0;}.search-box button{border:none;background:linear-gradient(135deg,var(--navy),var(--sky));color:#fff;padding:0 22px;font-family:Georgia,serif;font-size:14px;letter-spacing:0.05em;cursor:pointer;transition:filter 0.15s ease;}.search-box button:hover{filter:brightness(1.08);}.hint{font-size:12px;color:var(--ink-soft);margin-top:8px;text-align:center;}#result{margin-top:32px;}.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--sky);border-radius:8px;box-shadow:0 4px 16px rgba(21,43,107,0.10);padding:26px 28px;animation:rise 0.25s ease;}@keyframes rise{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}.card .num{font-family:'Courier New',monospace;font-size:12px;color:var(--sky);letter-spacing:0.05em;font-weight:bold;}.card .name{font-size:22px;margin:4px 0 18px;color:var(--navy);border-bottom:1px solid var(--line);padding-bottom:14px;}table.grades{width:100%;border-collapse:collapse;font-size:14px;}table.grades td{padding:7px 4px;border-bottom:1px dotted var(--line);}table.grades td.label{color:var(--ink-soft);width:60%;}table.grades td.value{text-align:right;font-family:'Courier New',monospace;font-weight:bold;color:var(--navy);}.status-row{margin-top:18px;padding-top:14px;border-top:2px solid var(--navy);display:flex;justify-content:space-between;align-items:center;}.status-row .label{font-size:13px;color:var(--ink-soft);}.badge{display:inline-block;padding:6px 16px;border-radius:4px;font-family:'Courier New',monospace;font-size:13px;letter-spacing:0.06em;font-weight:bold;border:1.5px solid;}.badge.aprovado{color:#fff;background:linear-gradient(135deg,var(--navy),var(--sky));border-color:var(--navy);}.badge.recorrencia{color:var(--red);border-color:var(--red);background:#fdf1ef;}.badge.dispensado{color:#8a5c00;border-color:var(--sun);background:#fff6e6;}.empty,.not-found{text-align:center;color:var(--ink-soft);font-style:italic;padding:24px 0;font-size:14px;}.not-found strong{display:block;font-style:normal;color:var(--red);font-size:16px;margin-bottom:4px;}footer{text-align:center;font-size:11px;color:var(--ink-soft);margin-top:40px;font-family:'Courier New',monospace;letter-spacing:0.04em;}</style></head><body><div class="sheet"><header><h1>Pauta — ICC</h1><div class="subtitle">Digite o seu número de estudante para ver as suas notas</div></header><div class="search-box"><input id="query" type="text" placeholder="Ex: 01.0697.26" autocomplete="off" inputmode="text"><button onclick="eval(atob('bG9va3VwKCk='))">Consultar</button></div><div id="result"><div class="empty">Aguardando o número de estudante…</div></div><footer>....</footer></div><script>
-const dados = [
-{n:"01.0697.26", nome:"AIMAN TAQUIDIR SULEMANE", t1:12, t2:10.0, trab:14.0, mf:12, sit:"Admitido", ex:3, mfinal:null, res:"Recorrencia"},
- {n:"01.0922.26", nome:"ANICIA VITORIA MUTIMBA", t1:9, t2:10.0, trab:14.0, mf:11, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
- {n:"01.0944.26", nome:"ANTONIO ALFREDO MUIANGA", t1:8, t2:12.0, trab:15.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
- {n:"01.0875.26", nome:"ANTONIO JAIME LANGA", t1:10, t2:13.0, trab:14.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
- {n:"01.0677.26", nome:"AZARIAS ZITO JAIME BILA", t1:9, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
- {n:"01.0631.26", nome:"BIXENTE JOSE AGNALDO MACIA", t1:9, t2:15.0, trab:14.0, mf:13, sit:"Admitido", ex:14, mfinal:13, res:"Aprovado"},
- {n:"01.0676.26", nome:"CARDOSO AULINO NHAULE MUNHANE", t1:14, t2:14.0, trab:14.0, mf:14, sit:"Dispensado", ex:14, mfinal:14, res:"Aprovado"},
- {n:"01.0630.26", nome:"CATARINA AMERICO COSSA", t1:9, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
- {n:"01.0647.26", nome:"CLARA PINTO COVANE", t1:17, t2:12.0, trab:14.0, mf:14, sit:"Dispensado", ex:8, mfinal:14, res:"Aprovado"},
- {n:"01.0666.26", nome:"DAVID ANGELO MAZIVE", t1:9, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:5, mfinal:null, res:"Recorrencia"},
- {n:"01.0950.26", nome:"DELFINA CASTIGO", t1:11, t2:11.0, trab:14.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
- {n:"01.0659.26", nome:"DIVINO FELIX MACHAVA", t1:10, t2:8.0, trab:14.0, mf:11, sit:"Admitido", ex:10, mfinal:10, res:"Aprovado"},
- {n:"01.0629.26", nome:"EDCIO DOS SANTOS CARLOS MATSIMBE", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:11, mfinal:14, res:"Aprovado"},
- {n:"01.0878.26", nome:"EDMILSON CANDITO", t1:9, t2:8.0, trab:15.0, mf:10, sit:"Admitido", ex:5, mfinal:null, res:"Recorrencia"},
- {n:"01.0655.26", nome:"EDNERCIO CASTRO GUJAMO", t1:11, t2:11.0, trab:14.0, mf:12, sit:"Admitido", ex:15, mfinal:13, res:"Aprovado"},
- {n:"01.0675.26", nome:"ELIO EUNIZIO MUCHAVE", t1:15.25, t2:15.0, trab:14.0, mf:15, sit:"Dispensado", ex:2, mfinal:15, res:"Aprovado"},
- {n:"01.0681.26", nome:"ELTON DE LAURA SECHENE", t1:12, t2:15.0, trab:14.0, mf:14, sit:"Dispensado", ex:11, mfinal:13, res:"Aprovado"},
- {n:"01.0660.26", nome:"ELTON ONESMO DANIEL NHADUATE", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:8, mfinal:14, res:"Aprovado"},
- {n:"01.0648.26", nome:"EMILIO FELIX MAZIVILA", t1:8, t2:8.0, trab:14.0, mf:10, sit:"Admitido", ex:10, mfinal:10, res:"Aprovado"},
- {n:"01.0925.26", nome:"EQUISODIO S. MUZONDA", t1:8, t2:9.0, trab:14.0, mf:10, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
- {n:"01.0919.26", nome:"FELIX ALSON JOVO", t1:15, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:11, mfinal:14, res:"Aprovado"},
- {n:"01.0639.26", nome:"FLAVIO SEBASTIAO NHACUONGA", t1:6, t2:12.0, trab:15.0, mf:11, sit:"Admitido", ex:3, mfinal:null, res:"Recorrencia"},
- {n:"01.0651.26", nome:"FRANCISCO SARMENTO MONJANE", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:13, mfinal:14, res:"Aprovado"},
- {n:"01.0691.26", nome:"FREDIO VASCO UTUI", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:8, mfinal:14, res:"Aprovado"},
- {n:"01.0694.26", nome:"HENRIQUETA GABRIELA BOMBE", t1:11, t2:12.0, trab:14.0, mf:12, sit:"Admitido", ex:12, mfinal:12, res:"Aprovado"},
- {n:"01.0688.26", nome:"HILARIO ZEFANIAS JUAIO", t1:14, t2:15.0, trab:14.0, mf:14, sit:"Dispensado", ex:12, mfinal:14, res:"Aprovado"},
- {n:"01.0902.26", nome:"IGOR ANGELO MUNGUAMBE", t1:7, t2:12.0, trab:15.0, mf:11, sit:"Admitido", ex:2, mfinal:null, res:"Recorrencia"},
- {n:"01.0771.26", nome:"ISABEL AUGUSTO MONTEIRO", t1:11, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:7, mfinal:null, res:"Recorrencia"},
- {n:"01.0686.26", nome:"ISABEL JOCHUA CUMBANE", t1:10, t2:12.0, trab:15.0, mf:12, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
- {n:"01.0656.26", nome:"JAIME DE HENRIQUETA NELSON CUINICA", t1:11, t2:15.0, trab:15.0, mf:14, sit:"Dispensado", ex:11, mfinal:14, res:"Aprovado"},
- {n:"01.0669.26", nome:"JOAO RUNGO DIONISIO", t1:17.5, t2:12.0, trab:14.0, mf:15, sit:"Dispensado", ex:13, mfinal:15, res:"Aprovado"},
- {n:"01.0905.26", nome:"JORGE RAIMUNDO MAMBO", t1:5, t2:11.0, trab:15.0, mf:10, sit:"Admitido", ex:12, mfinal:11, res:"Aprovado"},
- {n:"01.0879.26", nome:"LAERSON CHIUNDA", t1:16, t2:15.0, trab:15.0, mf:15, sit:"Dispensado", ex:4, mfinal:15, res:"Aprovado"},
- {n:"01.0920.26", nome:"LIDIA FERNANDO MATHE", t1:9, t2:13.0, trab:14.0, mf:12, sit:"Admitido", ex:7, mfinal:null, res:"Recorrencia"},
- {n:"01.0634.26", nome:"LIRIA VIRGILIO MAVILE", t1:9, t2:11.0, trab:14.0, mf:11, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
- {n:"01.0654.26", nome:"MARLENE ROGERIO MATAVELE", t1:8, t2:12.0, trab:14.0, mf:11, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
- {n:"01.0668.26", nome:"MINERVIA GABRIEL MACAMO", t1:14, t2:14.0, trab:15.0, mf:14, sit:"Dispensado", ex:12, mfinal:14, res:"Aprovado"},
- {n:"01.0670.26", nome:"NELTON ARMANDO MASSINGUE", t1:10, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:4, mfinal:null, res:"Recorrencia"},
- {n:"01.0903.26", nome:"NESIO ANIBAL MAHANZUL", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:7, mfinal:14, res:"Aprovado"},
- {n:"01.0895.26", nome:"NEUSIO DA TELMA GOVE", t1:13, t2:14.0, trab:14.0, mf:14, sit:"Dispensado", ex:14, mfinal:14, res:"Aprovado"},
- {n:"01.0881.26", nome:"PIEDADE CELESTINO BOA", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:9, mfinal:14, res:"Aprovado"},
- {n:"01.0898.26", nome:"SHELTON XAVIER", t1:11, t2:10.0, trab:15.0, mf:12, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
- {n:"01.0687.26", nome:"TANIA DA LARIA ADOLFO MAZOIO", t1:9, t2:11.0, trab:14.0, mf:11, sit:"Admitido", ex:7, mfinal:null, res:"Recorrencia"},
- {n:"01.0921.26", nome:"YILAH HORTENCIA EDSON LANGA", t1:6, t2:10.0, trab:14.0, mf:10, sit:"Admitido", ex:3, mfinal:null, res:"Recorrencia"},
- {n:"01.0667.26", nome:"YULLA SHEYNILA ALMEIDA COSSA", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:13, mfinal:14, res:"Aprovado"},
- {n:"01.0658.26", nome:"YUMINA SHANEL DINIS CHIVULELE", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:10, mfinal:14, res:"Aprovado"},
- {n:"01.0915.26", nome:"YURIKA DA SILVA JAMAL", t1:10, t2:8.0, trab:14.0, mf:11, sit:"Admitido", ex:11, mfinal:11, res:"Aprovado"},
- {n:"011648.2025", nome:"VALTER MAYLON CHICHANGO", t1:9, t2:15.0, trab:10.0, mf:11, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
-48
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"><meta name="theme-color" content="#0a1f7a">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AudiLab · Simulador de Auditoria Informática</title>
+<style>
+:root{--bg:#f2f6fc;--card:#fff;--ink:#0d1a3a;--mut:#56638a;--ac:#0a1f8a;--onac:#fff;--acs:#e6eefb;--sun:#f39a1e;--sky:#0a7fd0;--ok:#18794e;--okb:#e1f5ea;--no:#b42318;--nob:#fde8e6;--ln:#d3dcee;--navy:#0a1f7a;--sh:0 1px 2px rgba(10,31,122,.07),0 4px 14px rgba(10,31,122,.06)}
+@media(prefers-color-scheme:dark){:root{--bg:#081034;--card:#0f1c4a;--ink:#e9eefc;--mut:#a3b0d6;--ac:#5db7f0;--onac:#06133d;--acs:#16286a;--sun:#ffb347;--sky:#5db7f0;--ok:#5fd39b;--okb:#11382b;--no:#ff8a80;--nob:#3d1c1c;--ln:#27397a;--navy:#061046;--sh:0 1px 2px rgba(0,0,0,.4)}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3{margin:0 0 .6rem;line-height:1.25;letter-spacing:-.01em}
+h1{font-size:clamp(1.35rem,4vw,1.9rem);font-weight:750}h2{font-size:clamp(1.25rem,3vw,1.55rem)}h3{font-size:1.05rem;font-weight:650}
+header{border-bottom:4px solid var(--sun);background:linear-gradient(135deg,var(--navy),#0a5fb0);color:#fff;padding:1.2rem 1rem}
+.hw{max-width:1180px;margin:auto;display:flex;gap:1rem 2rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header h1{color:#fff;margin:0}header p{margin:.2rem 0 0;color:#c9d9e6;font-size:.95rem}
+.st{min-width:240px;flex:0 1 320px}.st .bar{background:rgba(255,255,255,.22)}.st .bar i{background:linear-gradient(90deg,#5db7f0,#ffb347)}
+.sc2{font-size:.9rem!important;color:#fff!important;font-weight:600}
+.wrap{flex:1;display:flex;flex-direction:column;max-width:1180px;width:100%;margin:auto}
+nav{position:sticky;top:0;z-index:9;background:var(--card);border-bottom:1px solid var(--ln);padding:.5rem}
+nav div{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:thin}
+nav button{flex:none;text-align:left;border:1px solid var(--ln);background:transparent;color:var(--ink);padding:.45rem .8rem;border-radius:8px;cursor:pointer;font:inherit;font-size:.88rem;font-weight:600;min-height:44px}
+nav button small{display:block;font-weight:400;color:var(--mut);font-size:.74rem;white-space:nowrap}
+nav button.on{background:var(--ac);color:var(--onac);border-color:var(--ac)}nav button.on small{color:inherit;opacity:.85}
+main{padding:1rem;min-width:0}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:1.1rem 1.2rem;margin:0 0 1rem;box-shadow:var(--sh)}
+.case{background:var(--acs);border:1px solid var(--ln);border-left:4px solid var(--ac);border-radius:10px;padding:.9rem 1.1rem;margin:0 0 1rem}
+button.b{background:var(--ac);color:var(--onac);border:1px solid var(--ac);padding:.55rem 1.05rem;border-radius:8px;font:inherit;font-weight:600;font-size:.92rem;cursor:pointer;margin:.45rem .4rem 0 0;min-height:42px;transition:filter .15s}
+button.b:hover{filter:brightness(1.08)}button.b:disabled{opacity:.5;cursor:default}
+button.b.s{background:transparent;color:var(--ac)}
+button:focus-visible,select:focus-visible,input:focus-visible,label:focus-within,.o:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.o{display:flex;gap:.6rem;align-items:flex-start;padding:.65rem .8rem;border:1px solid var(--ln);border-radius:9px;margin:.4rem 0;cursor:pointer;background:var(--card);transition:background .15s,border-color .15s}
+.o:hover{border-color:var(--ac)}.o input{margin-top:.3rem;accent-color:var(--ac)}
+.o.sel{background:var(--acs);border-color:var(--ac)}.o.r{background:var(--okb);border-color:var(--ok)}.o.w{background:var(--nob);border-color:var(--no)}
+.fb{margin-top:.8rem;padding:.75rem .9rem;border-radius:9px;background:var(--acs);font-size:.94rem;border:1px solid var(--ln)}
+.fb b.ok{color:var(--ok)}.fb b.no,.no{color:var(--no)}
+.sc{overflow-x:auto;margin:.6rem 0;border:1px solid var(--ln);border-radius:9px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{padding:.5rem .7rem;text-align:left;border-bottom:1px solid var(--ln)}th{background:var(--acs);white-space:nowrap;font-weight:650}
+tr:last-child td{border-bottom:0}tbody tr:nth-child(even) td{background:rgba(127,150,170,.06)}
+select,input{font:inherit;padding:.5rem .6rem;background:var(--card);color:var(--ink);border:1px solid var(--ln);border-radius:8px;max-width:100%;min-height:42px}
+.cl{display:flex;gap:.6rem;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px dashed var(--ln);flex-wrap:wrap}
+.cl input{flex:1 1 150px}
+.num{font-variant-numeric:tabular-nums}
+.bar{height:10px;background:var(--ln);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--sky),var(--sun));width:0;transition:width .4s}
+.tag{display:inline-block;padding:.1rem .55rem;border-radius:99px;background:var(--acs);border:1px solid var(--ln);font-size:.78rem;font-weight:600;margin:.1rem 0}
+footer{text-align:center;color:var(--mut);font-size:.8rem;padding:1.2rem}
+@media(min-width:960px){
+.wrap{flex-direction:row;align-items:flex-start;gap:1.2rem;padding:1.2rem 1rem}
+nav{position:sticky;top:1rem;flex:0 0 260px;border:1px solid var(--ln);border-radius:12px;box-shadow:var(--sh)}
+nav div{flex-direction:column;overflow:visible}nav button{width:100%}
+main{flex:1;padding:0}}
+@media(max-width:600px){main{padding:.75rem}.card{padding:.9rem}.cl>span,.cl select{flex:1 1 100%;width:100%}button.b{flex:1 1 auto}.st{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{nav,button{display:none!important}header{background:none;color:#000}}
+.how{background:var(--acs);border:1px dashed var(--ac);border-radius:10px;padding:.8rem 1rem;margin:0 0 1rem;font-size:.95rem}.ins{color:var(--mut);font-size:.9rem;margin:.1rem 0 .5rem}summary{cursor:pointer;font-weight:650;margin-bottom:.4rem}details ul,details ol,.card ul,.card ol{padding-left:1.2rem;margin:.4rem 0 .8rem}li{margin:.25rem 0}.lab{border-top:4px solid var(--ac);position:relative}
+.lab::before{content:"Laboratório prático";display:inline-block;font-size:.75rem;font-weight:700;color:var(--onac);background:var(--ac);padding:.1rem .6rem;border-radius:99px;margin-bottom:.6rem}
+.how{border-style:solid;border-width:1px 1px 1px 4px}
+.tb{display:flex;flex-wrap:wrap;gap:.8rem 1.2rem;align-items:flex-end;justify-content:space-between;margin-bottom:.9rem}
+.chips{display:flex;gap:.4rem;flex-wrap:wrap}
+.fld{display:flex;flex-direction:column;gap:.25rem;font-size:.82rem;font-weight:600;color:var(--mut);min-width:0}.fld select,.fld input{font-weight:400;color:var(--ink)}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.7rem;margin:.6rem 0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem;margin:.4rem 0 1rem}
+.tile2{background:var(--bg);border:1px solid var(--ln);border-radius:10px;padding:.6rem .8rem;display:flex;flex-direction:column}.tile2 b{font-size:1.35rem;line-height:1.2;font-variant-numeric:tabular-nums}.tile2 span{font-size:.78rem;color:var(--mut)}
+.tabs{display:flex;gap:.2rem;overflow-x:auto;border-bottom:2px solid var(--ln);margin-bottom:.8rem}
+.tab{flex:none;background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-2px;padding:.6rem .9rem;font:inherit;font-weight:600;font-size:.92rem;color:var(--mut);cursor:pointer;min-height:44px}
+.tab:hover{color:var(--ink)}.tab.on{color:var(--ac);border-bottom-color:var(--ac)}.tab:focus-visible{outline:3px solid var(--ac);outline-offset:-3px}
+.acts{display:flex;flex-wrap:wrap;gap:.2rem}
+.al{margin-top:.8rem;padding:.7rem .9rem;border-radius:9px;background:var(--acs);border:1px solid var(--ac);border-left-width:4px;font-size:.94rem}
+.sev{flex:none;font-size:.74rem;font-weight:700;padding:.1rem .55rem;border-radius:99px;margin-top:.1rem}.sev.hi{background:var(--no);color:var(--bg)}.sev.md{background:var(--sun);color:#1a1200}
+.ms{counter-reset:m;list-style:none;padding:0!important}.ms li{counter-increment:m;position:relative;padding:.6rem .8rem .6rem 3rem;border:1px solid var(--ln);border-radius:9px;margin:.4rem 0}
+.ms li::before{content:counter(m);position:absolute;left:.8rem;top:.55rem;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--ac);color:var(--onac);font-weight:700;display:grid;place-items:center;font-size:.9rem}
+.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.6rem;margin:.4rem 0 .6rem}
+button.tile{text-align:left;background:var(--card);color:var(--ink);border:1px solid var(--ln);border-radius:10px;padding:.8rem 1rem;cursor:pointer;font:inherit;min-height:64px;transition:border-color .15s,background .15s}
+button.tile:hover{border-color:var(--ac);background:var(--acs)}button.tile b{display:block}button.tile small{color:var(--mut)}
+#wg,#lab{scroll-margin-top:5rem}
+@media(min-width:720px){#wg{display:grid;grid-template-columns:1fr 1fr;gap:0 .8rem;align-items:start}#wg>h3,#wg>p,#wg>.bar,#wg>.fb,#wg>#ro,#wg>#rt,#wg>.cl,#wg>button,#wg>#go,#wg>div:not(.o){grid-column:1/-1}#wg>.o{margin:.3rem 0}}
+#rt{font-size:1.05rem}#wg .bar{height:16px!important}#pv{display:none}#pv table{border-collapse:collapse;width:100%}#pv th,#pv td{border:1px solid #888;padding:.4rem;text-align:left}@media print{body>*:not(#pv){display:none!important}#pv{display:block;color:#000;background:#fff}}.br{display:flex;align-items:center;gap:.9rem;min-width:0}.logo{height:64px;width:64px;object-fit:contain;background:#fff;border-radius:14px;padding:5px;flex:none;box-shadow:0 2px 8px rgba(0,0,0,.25)}header h1{letter-spacing:.01em}.tab.on{border-bottom-color:var(--sun);color:var(--ink)}nav button.on{box-shadow:inset 4px 0 0 var(--sun)}.lab::before{background:var(--sky)}
+header,footer,.wrap{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(safe-area-inset-right))}
+@media(max-width:600px){.logo{height:52px;width:52px}.hw{gap:.8rem}header p{font-size:.85rem}}@media(max-width:380px){h1{font-size:1.25rem}.tab{padding:.5rem .6rem}.card{padding:.8rem}.tiles{grid-template-columns:1fr 1fr}}
+@media(min-width:600px) and (max-width:959px){nav div{justify-content:flex-start}main{padding:1.2rem}}
+/* ===== Otimização mobile ===== */
+html,body{overflow-x:hidden}
+body{min-height:100vh;min-height:100dvh;-webkit-tap-highlight-color:transparent}
+img{max-width:100%}
+button,.o,.tab,select,label{touch-action:manipulation}
+.card,.case,.how,.fb,.al,.o span{overflow-wrap:anywhere}
+pre.fb{overflow-x:auto}
+.sc{-webkit-overflow-scrolling:touch}
+footer{padding-bottom:max(1.2rem,env(safe-area-inset-bottom))}
+@media(hover:none){button.b:hover{filter:none}.o:not(.sel):not(.r):not(.w):hover{border-color:var(--ln)}button.tile:hover{border-color:var(--ln);background:var(--card)}}
+@media(max-width:959px){
+ .wrap{padding-left:0;padding-right:0}
+ nav{border-radius:0;border-left:0;border-right:0;box-shadow:0 2px 6px rgba(10,31,122,.08);padding:.4rem max(.5rem,env(safe-area-inset-left)) .4rem max(.5rem,env(safe-area-inset-right))}
+ nav div{scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ nav div::-webkit-scrollbar{display:none}
+ nav button{scroll-snap-align:center;padding:.4rem .75rem}
+ main{padding:.75rem max(.75rem,env(safe-area-inset-left)) 1rem max(.75rem,env(safe-area-inset-right))}
+ #wg,#lab,.card{scroll-margin-top:4.5rem}
+}
+@media(max-width:600px){
+ body{font-size:15.5px}
+ input,select,textarea{font-size:16px}
+ header{padding-top:.8rem;padding-bottom:.8rem}
+ header h1{font-size:1.3rem}
+ h2{font-size:1.2rem}
+ h3{font-size:1rem}
+ .card,.case{border-radius:10px;margin-bottom:.8rem}
+ .o{padding:.75rem .8rem;min-height:48px;gap:.7rem}
+ .o input{width:22px;height:22px;flex:none;margin-top:.15rem}
+ .cl{gap:.4rem}
+ .cl select,.cl input{min-height:46px}
+ .card>button.b{width:100%;margin:.5rem 0 0}
+ .card>button.b.s[data-hn],.card>button.b.s[data-r]{width:calc(50% - .5rem)}
+ .card>button.b.s[data-r]{margin-left:.5rem}
+ .card>button.b[data-hn]+button.b[data-r]{margin-left:.5rem}
+ .acts .b{flex:1 1 calc(50% - .3rem);margin:.3rem 0 0}
+ .tiles{grid-template-columns:repeat(2,1fr)}
+ .tile2 b{font-size:1.2rem}
+ .tg{grid-template-columns:1fr}
+ .fg{grid-template-columns:repeat(auto-fit,minmax(135px,1fr))}
+ .fld input,.fld select{width:100%}
+ .tb{flex-direction:column;align-items:stretch}
+ .tb .fld select{width:100%}
+ .tabs{scrollbar-width:none;scroll-snap-type:x proximity}
+ .tabs::-webkit-scrollbar{display:none}
+ .tab{scroll-snap-align:start;padding:.6rem .8rem}
+ .sc table{min-width:460px}
+ th,td{padding:.55rem .6rem}
+ input[type=checkbox]{width:20px;height:20px}
+ input[type=range]{width:100%;min-height:36px}
+ .ms li{padding:.6rem .7rem .6rem 2.8rem}
+ .sev{margin-top:.2rem}
+}
+@media(max-width:480px){nav button small{display:none}nav button{min-height:44px}}
+@media(max-width:360px){.fg{grid-template-columns:1fr}.tiles{gap:.4rem}.tile2{padding:.5rem .6rem}}
+@media(max-height:500px) and (orientation:landscape){header{padding:.5rem 1rem}.logo{height:40px;width:40px}header p{display:none}}
+</style>
+</head>
+<body>
+<header><div class="hw"><div class="br"><img class="logo" alt="UNISAVE"><div><h1>AudiLab</h1></div></div><div class="st"><div class="bar" aria-hidden="true"><i id="pb"></i></div><p class="sc2" id="tot"></p></div></div></header>
+<div class="wrap"><nav aria-label="Módulos"><div id="nav"></div></nav><main id="m"></main></div>
+<div id="pv"></div><footer>AudiLab · Simulador pedagógico de Auditoria Informática · Casos fictícios</footer>
+
+<script>
+/* ---------- Conteúdo ---------- */
+const T=[
+{n:"Tema 1",t:"Sistema e percurso dos dados",
+ case:"<b>Cotab, Lda</b> (Chongoene) emite faturas em software certificado pela AT, mas recebe pagamentos por transferência, M-Pesa e numerário. O extrato M-Pesa é copiado todas as sextas-feiras pelo gerente financeiro para Excel e depois lançado na contabilidade.",
+ it:[
+ {k:"order",q:"Ordena o percurso de um pagamento M-Pesa, do cliente à demonstração financeira.",o:["Cliente paga por M-Pesa","Valor entra na conta M-Pesa da empresa","Gerente exporta o extrato (sexta-feira)","Copia para folha Excel","Lança manualmente na contabilidade","Saldo reflete-se no balanço"],w:"A pista de auditoria depende de duas etapas manuais (Excel e lançamento), onde se perdem ou alteram dados."},
+ {k:"pick",q:"Seleciona os pontos onde um erro ou fraude passaria mais facilmente despercebido.",o:["Emissão da fatura certificada","Cópia do extrato para Excel","Lançamento manual na contabilidade","Pagamento recebido na conta M-Pesa","Intervalo de uma semana entre recebimento e registo"],a:[1,2,4],w:"Excel editável, lançamento manual e desfasamento semanal: sem validação automática, quem copia também pode omitir ou alterar."},
+ {k:"single",q:"O registo semanal e manual aumenta o risco de auditoria?",o:["Não, o extrato é sempre fiável","Sim: há desfasamento, risco de omissão/erro e fraude por uma só pessoa","Só se o valor for superior a 50.000 MT","Não, porque o Excel é um sistema de controlo"],a:1,w:"Mais intervenção humana e menos rasto independente = maior risco. Um controlo simples: registo diário e reconciliação por pessoa diferente."},
+ {k:"single",q:"Num ERP integrado, uma entrada de stock com quantidade errada pode chegar à contabilidade sem que a área financeira erre?",o:["Não, a contabilidade é separada","Sim: o ERP integra stocks e contabilidade automaticamente","Só se houver fraude","Só em empresas com Excel"],a:1,w:"A integração propaga o erro de origem; por isso o auditor segue o dado desde a origem em todas as áreas."}]},
+
+{n:"Tema 2",t:"Controlo interno e segregação",
+ case:"<b>NT Comércio, Lda</b> tem 4 funcionários administrativos. Analisa a matriz de utilizadores e perfis.",
+ it:[
+ {k:"pick",q:"Seleciona os utilizadores que violam a segregação de funções.",tb:["Utilizador","Criar fornecedor","Lançar fatura","Aprovar pagamento","Configuração"],tr:[["Assistente de contabilidade","Sim","Sim","Sim (até 50.000 MT)","Não"],["Gerente financeira","Não","Não","Sim (acima de 50.000 MT)","Sim"],["Funcionário de compras","Sim","Não","Não","Não"],["Receção","Não","Não","Não","Não"]],a:[0],w:"O assistente cria o fornecedor, lança a fatura e aprova o pagamento: ciclo completo sem segunda pessoa (fornecedor fictício)."},
+ {k:"single",q:"Existe log automático, mas ninguém o revê. Isso resolve o problema?",o:["Sim, o log é prova suficiente","Não: um log sem revisão regular não deteta nada a tempo","Sim, desde que seja guardado 1 ano","Não é relevante para o controlo interno"],a:1,w:"O log só é controlo quando alguém o revê, com periodicidade e registo da revisão."},
+ {k:"single",q:"A gerente partilha a sua senha com o assistente. Efeito na trilha de auditoria?",o:["Nenhum","Perde validade: já não se sabe quem realmente fez cada ação","Só afeta a configuração","Melhora a rastreabilidade"],a:1,w:"Perde-se a imputabilidade; um incidente já não pode ser atribuído a uma pessoa."},
+ {k:"classify",q:"Classifica cada falha: controlo geral de TI (CGTI) ou controlo de aplicação (CA).",o:["Partilha de senha da gerente","Aprovação até 50.000 MT sem segunda validação","Log nunca revisto","Assistente com permissões de criar fornecedor e aprovar"],c:["CGTI","CA"],a:[0,1,0,0],w:"Senhas, logs e gestão de acessos são gerais de TI; limites de aprovação e validação no módulo são de aplicação. (A atribuição de perfis é discutível: justifica sempre.)"},
+ {k:"single",q:"Sem orçamento para mais pessoal, qual é o melhor controlo compensatório?",o:["Confiar mais no assistente","Limite de aprovação baixo + revisão mensal do log pela gerente + revisão por contabilista externo","Contratar um auditor permanente","Remover os logs para poupar espaço"],a:1,w:"Compensa-se a falta de pessoas com limites, revisão independente e supervisão (princípio dos quatro olhos)."}]},
+
+{n:"Tema 3",t:"CAATs: análise da população",lab:true,
+ case:"<b>Cotab, Lda</b> entrega-te um ficheiro de pagamentos a fornecedores. O limite de aprovação sem segunda validação é 50.000 MT. Gera os dados, corre os testes e interpreta.",
+ it:[
+ {k:"order",q:"Ordena as fases de uma análise com CAATs.",o:["Definir o objetivo","Extrair os dados","Validar integridade (totais, completude)","Aplicar os testes","Interpretar e investigar os alertas"],w:"Saltar a validação produz conclusões erradas com aspeto de rigor."},
+ {k:"single",q:"O teste aponta muitos pagamentos logo abaixo do limite. Isto prova fraude?",o:["Sim, é fatiamento","Não: é um red flag; investiga antes de concluir (pode haver preços tabelados)","Só se forem mais de 100","Sim, se o auditor confirmar com Excel"],a:1,w:"Indicador de alerta não é prova. Pede evidência adicional e comunica à gestão sem acusar."},
+ {k:"classify",q:"Para cada observação, qual é a gravidade inicial mais plausível?",o:["37 possíveis duplicados","112 pagamentos entre 49.000 e 49.999","18 números de fatura em falta","NIB de fornecedor igual ao de um funcionário"],c:["Baixa/Média","Alta"],a:[0,0,0,1],w:"O NIB coincidente com um funcionário indicia conflito de interesses/fornecedor fictício; pede contrato, prova de entrega e ficha do fornecedor."}]},
+
+{n:"Tema 4",t:"Segurança da informação",
+ case:"<b>Nhamba Comércio, Lda</b>: dados só no PC do escritório, sem cópia externa; utilizador e senha únicos para todos; avaria no disco; corte de energia de 2 dias; um funcionário deu um código SMS a um falso técnico do banco.",
+ it:[
+ {k:"classify",q:"Classifica cada falha na tríade CIA.",o:["Senha única partilhada por todos","Sem cópia de segurança externa","Código SMS entregue ao falso técnico","Dois dias sem acesso ao sistema","Qualquer um pode alterar registos sem rasto"],c:["Confidencialidade","Integridade","Disponibilidade"],a:[0,2,0,2,1],w:"Backups e energia = disponibilidade; acesso indevido = confidencialidade; alteração sem rasto = integridade."},
+ {k:"pick",q:"Seleciona medidas realistas e de baixo custo para esta semana.",o:["Cópia diária em disco externo/nuvem","Um utilizador por pessoa com senha própria","Comprar um data center","Formação rápida: nunca partilhar códigos recebidos","UPS (bateria de reserva) no computador principal"],a:[0,1,3,4],w:"Medidas baratas e imediatas resolvem a maior parte do risco."},
+ {k:"pick",q:"Log: 6 logins falhados seguidos de sucesso às 03h00. Seleciona as explicações possíveis.",o:["Ataque de força bruta","Funcionário esqueceu a senha e trabalhou à noite (fecho)","Técnico externo em manutenção","Impossível haver explicação inocente"],a:[0,1,2],w:"É um red flag, não prova. Confirma com o titular da conta, escala de trabalho e IP de origem."}]},
+
+{n:"Tema 5",t:"Fraude e red flags",
+ case:"<b>XPTO, Lda</b> (expediente 8h–17h). Três fornecedores com nomes quase iguais partilham a mesma conta bancária; um foi criado no dia do seu único pagamento, no valor exato do limite; todos os pagamentos foram processados pelo mesmo funcionário de compras entre as 18h e as 19h.",
+ it:[
+ {k:"pick",q:"Seleciona os red flags presentes no caso.",o:["Nomes quase iguais","Mesma conta bancária","Criado e pago no mesmo dia","Valor igual ao limite de aprovação","Pagamentos fora do horário, sempre pelo mesmo funcionário","A empresa distribui material elétrico"],a:[0,1,2,3,4],w:"Vários red flags combinados reforçam a suspeita de fornecedor fantasma e fatiamento, mas não são prova isolada."},
+ {k:"classify",q:"Triângulo da fraude: classifica cada elemento.",o:["Funcionário cria e processa pagamentos sozinho","Necessidade financeira pessoal","“Ninguém perde, a empresa é grande”"],c:["Pressão","Oportunidade","Racionalização"],a:[1,0,2],w:"A auditoria informática atua sobretudo na oportunidade (controlos, segregação, logs)."},
+ {k:"single",q:"Nesta fase, o que deve fazer o auditor?",o:["Confrontar logo o funcionário","Espalhar a suspeita pela empresa","Recolher mais evidência com discrição e reportar ao nível adequado, sem acusar","Ignorar por falta de certeza"],a:2,w:"Ceticismo profissional e presunção de inocência: preserva logs, cruza dados (NUIT, morada, NIB), e reporta ao responsável adequado."}]},
+
+{n:"Tema 6",t:"Do achado ao relatório",
+ case:"Reúne os achados da <b>Nhamba Comércio, Lda</b>: acesso de administrador acumulado, pagamentos fatiados, sem backups e senha partilhada, indícios de fornecedor fictício.",
+ it:[
+ {k:"order",q:"Ordena os elementos de um achado bem estruturado.",o:["Condição (o que foi encontrado)","Critério (o que deveria acontecer)","Causa","Efeito/risco","Recomendação"],w:"Esta estrutura evita que o relatório pareça uma lista de queixas."},
+ {k:"classify",q:"Qual destas recomendações é acionável (responsável + prazo) e qual é vaga?",o:["Melhorar a segurança","Gerente implementa backup diário externo até 30 dias","Reforçar o controlo interno","Retirar ao Sr. Amosse o perfil de aprovação em 7 dias (gerente)"],c:["Vaga","Acionável"],a:[0,1,0,1],w:"Uma recomendação acionável diz o quê, quem e quando."},
+ {k:"single",q:"Qual achado resolver primeiro?",o:["Backups (disponibilidade)","Acumulação de funções e fornecedor fictício (risco ativo de perda de dinheiro)","Formatação do relatório","Nenhum, esperar o follow-up"],a:1,w:"Prioriza por impacto × probabilidade e por risco ativo. Aqui a perda financeira em curso vem primeiro (os backups logo a seguir)."},
+ {k:"single",q:"Como comunicar o achado do fornecedor fictício?",o:["“O Sr. Amosse roubou a empresa”","“Existem indícios que exigem confirmação: fornecedor sem morada, pagamentos aprovados pelo mesmo utilizador”","Não comunicar","Publicar no grupo da empresa"],a:1,w:"Factos observáveis, sem juízo sobre pessoas, ao nível hierárquico certo, preservando a evidência."}]}
 ];
-function norm(s){
- return (s || "").toString().toLowerCase().replace(/[.\s]/g,"");
-}
-function fmt(v){
- if(v === null || v === undefined) return "—";
- return Number.isInteger(v) ? v.toString() : v.toFixed(2);
-}
-function badgeClass(res){
- const r = res.toLowerCase();
- if(r === "aprovado") return "aprovado";
- if(r === "dispensado") return "dispensado";
- return "recorrencia";
-}
-function lookup(){
- const raw = document.getElementById('query').value.trim();
- const box = document.getElementById('result');
- if(!raw){
- box.innerHTML = '<div class="empty">Aguardando o número de estudante…</div>';
- return;
- }
- const q = norm(raw);
- const found = dados.find(d => d.n && norm(d.n).includes(q) && q.length >= 3);
- if(!found){
- box.innerHTML = `
- <div class="not-found"><strong>Nenhum resultado encontrado</strong>
- Verifique o número de estudante e tente novamente.
- </div>`;
- return;
- }
- box.innerHTML = `
- <div class="card"><div class="num">${found.n || "Nº não disponível"}</div><div class="name">${found.nome}</div><table class="grades"><tr><td class="label">Teste 1 (35%)</td><td class="value">${fmt(found.t1)}</td></tr><tr><td class="label">Teste 2 (35%)</td><td class="value">${fmt(found.t2)}</td></tr><tr><td class="label">Trabalho(30%)</td><td class="value">${fmt(found.trab)}</td></tr><tr><td class="label">Média de Frequência</td><td class="value">${fmt(found.mf)}</td></tr><tr><td class="label">Situação</td><td class="value">${found.sit}</td></tr><tr><td class="label">Exame</td><td class="value">${fmt(found.ex)}</td></tr><tr><td class="label">Média Final</td><td class="value">${fmt(found.mfinal)}</td></tr></table><div class="status-row"><span class="label">Resultado</span><span class="badge ${badgeClass(found.res)}">${found.res}</span></div></div>`;
-}
-document.getElementById('query').addEventListener('keydown', function(e){
- if(e.key === 'Enter') lookup();
-});
-</script><script>document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-s]').forEach(function(e){try{e.setAttribute('style',decodeURIComponent(escape(atob(e.getAttribute('data-s')))));e.removeAttribute('data-s');}catch(x){}});});</script><script>document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});document.addEventListener('keydown',function(e){var k=e.key,c=e.ctrlKey||e.metaKey,s=e.shiftKey;if(c&&'uUsSpP'.indexOf(k)>=0){e.preventDefault();return false;}if(c&&s&&'iIjJcC'.indexOf(k)>=0){e.preventDefault();return false;}if(k==='F12'){e.preventDefault();return false;}});</script></body></html>
+
+/* ---------- Estado ---------- */
+const S={cur:0,res:{}};let sv={};
+try{sv=JSON.parse(localStorage.getItem("aud")||"{}")}catch(e){}
+const best=(a,b)=>sv[a+"_"+b]||0;
+const save=(a,b,v)=>{if(v>(sv[a+"_"+b]||0)){sv[a+"_"+b]=v;try{localStorage.setItem("aud",JSON.stringify(sv))}catch(e){}}};
+const $=s=>document.querySelector(s);
+const shuf=(a,seed)=>{let r=a.map((v,i)=>i),x=seed*7+3;for(let i=r.length-1;i>0;i--){x=(x*9301+49297)%233280;const j=x%(i+1);[r[i],r[j]]=[r[j],r[i]]}return r.join(",")==a.map((v,i)=>i).join(",")?r.reverse():r};
+
+/* ---------- Navegação e progresso ---------- */
+function prog(){let tot=0,n=0;T.forEach((t,a)=>t.it.forEach((_,b)=>{n++;tot+=best(a,b)}));
+$("#pb").style.width=(tot/n*100)+"%";const q=tot/n,rk=q<.25?"Estagiário":q<.5?"Auditor Júnior":q<.75?"Auditor Sénior":"Sócio-auditor";$("#tot").textContent="Nível: "+rk+" · "+tot.toFixed(1)+" / "+n+" pontos (guardados neste navegador)"}
+function nav(){$("#nav").innerHTML=T.map((t,i)=>t.gl||t.pn?"":`<button class="${i==S.cur?"on":""}" data-t="${i}">${t.n}<small>${t.t}</small></button>`).join("");
+ const n=$("#nav"),a=n.querySelector(".on");if(a&&n.scrollWidth>n.clientWidth&&innerWidth<960)n.scrollTo({left:a.offsetLeft-n.offsetLeft-(n.clientWidth-a.offsetWidth)/2})}
+
+/* ---------- Renderização ---------- */
+function render(){
+ const t=T[S.cur];nav();prog();
+ let h=`<h2>${t.n}: ${t.t}</h2><div class="case">${t.case}</div>`;if(t.d)h+=prim(t);if(t.gl){$("#m").innerHTML=h+glos();window.scrollTo(0,0);return}if(t.pn){$("#m").innerHTML=h+painel();window.scrollTo(0,0);return}if(t.erp){$("#m").innerHTML=h+'<div id="erp"></div>';ERP();ins("#erp",t.d.lab);window.scrollTo(0,0);return}
+ if(t.lab)h+=`<div class="card lab" id="lab"></div>`;
+ if(W[S.cur])h+=`<div class="card lab" id="wg"></div>`;t.it.forEach((it,b)=>h+=`<div class="card" id="q${b}">${item(it,b)}</div>`);
+ if(t.d)h+=endc(t);$("#m").innerHTML=h;if(t.lab){lab();ins("#lab",t.d.lab)}if(W[S.cur]){W[S.cur]();ins("#wg",t.d.lab)}window.scrollTo(0,0)}
+
+function st(b){const k=S.cur+"_"+b;return S.res[k]=S.res[k]||{sel:[],ord:[],cls:{},done:false}}
+function item(it,b){
+ const s=st(b);let h=`<span class="tag">Pergunta ${b+1} de ${T[S.cur].it.length}</span><h3>${it.q}</h3><p class="ins">${{single:"Escolhe uma resposta.",pick:"Seleciona todas as opções que se aplicam. Opções erradas descontam pontos.",classify:"Escolhe uma categoria para cada linha.",order:""}[it.k]}</p>`;
+ if(it.tb)h+=`<div class="sc"><table><tr>${it.tb.map(x=>`<th>${x}</th>`).join("")}</tr>${it.tr.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}</table></div><p>Seleciona o(s) utilizador(es) problemático(s):</p>`;
+ if(it.k=="single"||it.k=="pick")h+=it.o.map((o,i)=>{let c="o";if(s.sel.includes(i))c+=" sel";if(s.done){const ok=(it.k=="single"?[it.a]:it.a).includes(i);if(ok)c+=" r";else if(s.sel.includes(i))c+=" w"}
+  return `<label class="${c}"><input type="${it.k=="single"?"radio":"checkbox"}" name="n${b}" data-b="${b}" data-i="${i}" ${s.sel.includes(i)?"checked":""} ${s.done?"disabled":""}> <span>${it.k=="pick"&&it.tr?it.tr[i][0]:o}</span></label>`}).join("");
+ if(it.k=="classify")h+=it.o.map((o,i)=>`<div class="cl"><span>${o}</span><select data-b="${b}" data-i="${i}" ${s.done?"disabled":""}><option value="">Escolher...</option>${it.c.map((c,j)=>`<option value="${j}" ${s.cls[i]==j?"selected":""}>${c}</option>`).join("")}</select></div>`).join("");
+ if(it.k=="order"){if(!s.perm)s.perm=shuf(it.o,b+S.cur*5);
+  h+=`<p>Clica pela ordem correta (1.º, 2.º, ...):</p>`+s.perm.map(i=>{const p=s.ord.indexOf(i);return `<div class="o ${p>=0?"sel":""}" role="button" tabindex="0" data-b="${b}" data-i="${i}">${p>=0?"<b class='tag'>"+(p+1)+"</b>":""}<span>${it.o[i]}</span></div>`}).join("")}
+ h+=`<button class="b" data-v="${b}" ${s.done?"disabled":""}>Verificar</button>${it.h?`<button class="b s" data-hn="${b}">Dica</button>`:""}<button class="b s" data-r="${b}">Repetir</button><div id="h${b}"></div><div id="f${b}">${s.done?s.fb:""}</div>`;
+ return h}
+
+function grade(b){
+ const it=T[S.cur].it[b],s=st(b);let sc=0,ok;
+ if(it.k=="single"){ok=s.sel[0]==it.a;sc=ok?1:0}
+ else if(it.k=="pick"){const A=it.a,S2=s.sel;const hit=S2.filter(i=>A.includes(i)).length,bad=S2.filter(i=>!A.includes(i)).length;sc=Math.max(0,(hit-bad)/A.length);ok=sc==1}
+ else if(it.k=="classify"){const n=it.a.filter((a,i)=>s.cls[i]==a).length;sc=n/it.a.length;ok=sc==1}
+ else{const n=it.o.filter((_,i)=>s.ord[i]==i).length;sc=n/it.o.length;ok=sc==1}
+ s.done=true;save(S.cur,b,sc);
+ s.fb=`<div class="fb"><b class="${ok?"ok":"no"}">${ok?"Correto.":sc>0?"Parcialmente correto ("+Math.round(sc*100)+"%).":"Não está certo."}</b> ${it.w}</div>`;
+ $("#q"+b).innerHTML=item(it,b);prog()}
+
+/* ---------- Eventos ---------- */
+document.addEventListener("click",e=>{
+ const pr=e.target.closest("[data-pr]");if(pr){PR(pr.dataset.pr);return}const hn=e.target.closest("[data-hn]");if(hn){const b=hn.dataset.hn;$("#h"+b).innerHTML=`<div class="fb"><b>Dica:</b> ${T[S.cur].it[b].h}</div>`;return}const g=e.target.closest("[data-t]");if(g){S.cur=+g.dataset.t;render();return}
+ const v=e.target.closest("[data-v]");if(v){const b=+v.dataset.v,s=st(b),it=T[S.cur].it[b];
+  if(it.k=="order"&&s.ord.length<it.o.length)return alert("Ordena todos os passos primeiro.");
+  if(it.k=="classify"&&Object.keys(s.cls).length<it.o.length)return alert("Classifica todos os itens.");
+  if((it.k=="single"||it.k=="pick")&&!s.sel.length)return alert("Seleciona pelo menos uma opção.");
+  grade(b);return}
+ const r=e.target.closest("[data-r]");if(r){delete S.res[S.cur+"_"+r.dataset.r];const b=+r.dataset.r;$("#q"+b).innerHTML=item(T[S.cur].it[b],b);return}
+ const o=e.target.closest(".o[data-b]");if(o&&!st(+o.dataset.b).done){const s=st(+o.dataset.b),i=+o.dataset.i;
+  if(s.ord.includes(i))s.ord=s.ord.slice(0,s.ord.indexOf(i));else s.ord.push(i);
+  $("#q"+o.dataset.b).innerHTML=item(T[S.cur].it[+o.dataset.b],+o.dataset.b)}});
+document.addEventListener("keydown",e=>{if((e.key=="Enter"||e.key==" ")&&e.target.matches(".o[role=button]")){e.preventDefault();e.target.click()}});
+document.addEventListener("change",e=>{const t=e.target,b=+t.dataset.b;if(isNaN(b)||t.dataset.b===undefined)return;const s=st(b),i=+t.dataset.i;
+ if(t.tagName=="SELECT"){if(t.value==="")delete s.cls[i];else s.cls[i]=+t.value;return}
+ const it=T[S.cur].it[b];if(it.k=="single")s.sel=[i];else s.sel=t.checked?[...s.sel,i]:s.sel.filter(x=>x!=i);
+ document.querySelectorAll(`[name=n${b}]`).forEach(x=>x.closest("label").classList.toggle("sel",s.sel.includes(+x.dataset.i)))});
+
+/* ---------- Laboratório CAATs ---------- */
+let D=[];
+function gen(){let x=Date.now()%9999+1;const r=()=>(x=(x*9301+49297)%233280)/233280;
+ const F=["Zambeze Lda","Matola Aço","Beira Cimentos","Tete Tintas","Xai-Xai Ferragens","Inhambane Madeiras","Nampula Tubos","Chókwè Vidros"];
+ D=[];let nf=1000;
+ for(let i=0;i<300;i++){const f=F[Math.floor(r()*F.length)];D.push({id:i+1,f,v:Math.round(Math.exp(Math.log(500)+r()*Math.log(90))),d:"2025-"+String(1+Math.floor(r()*12)).padStart(2,"0")+"-"+String(1+Math.floor(r()*28)).padStart(2,"0"),nib:"0001"+F.indexOf(f)+"0099"+(f.length*7),fat:nf+=1+(r()<.06?1+Math.floor(r()*3):0)})}
+ for(let i=0;i<8;i++){const o=D[10+i*20];D.push({...o,id:301+i})}
+ for(let i=0;i<14;i++){const o=D[30+i*12];o.v=49000+Math.floor(r()*990)}
+ D.push({id:999,f:"Serviços Delta",v:42000,d:"2025-06-14",nib:"EMP-0777",fat:nf+5})}
+function lab(){gen();
+ $("#lab").innerHTML=`<h3>Laboratório CAATs: ${D.length} pagamentos do ano</h3><div class="tiles"><div class="tile2"><b>${D.length}</b><span>Pagamentos no ficheiro</span></div><div class="tile2"><b>50.000</b><span>Limite sem 2.ª validação (MT)</span></div><div class="tile2"><b>EMP-0777</b><span>NIB de um funcionário</span></div></div><p class="ins">Escolhe um teste. Cada um analisa a população inteira.</p><div class="tg"><button class="tile" data-x="dup"><b>Duplicados</b><small>Mesmo fornecedor, valor e data</small></button><button class="tile" data-x="lim"><b>Perto do limite</b><small>Entre 49.000 e 49.999 MT</small></button><button class="tile" data-x="seq"><b>Falhas na numeração</b><small>Faturas em falta na sequência</small></button><button class="tile" data-x="ben"><b>Lei de Benford</b><small>Distribuição do primeiro dígito</small></button><button class="tile" data-x="nib"><b>NIB de funcionário</b><small>Fornecedor com a conta de um colaborador</small></button></div><button class="b s" data-x="new">Gerar novos dados</button><div id="lo"><p class="ins">Os resultados aparecem aqui.</p></div>`}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-x]");if(!b)return;const k=b.dataset.x;if(k=="new")return lab();if(k=="ben"){const c=Array(10).fill(0),n=D.length;D.forEach(p=>c[+String(p.v)[0]]++);$("#lo").innerHTML=`<div class="fb"><b>Lei de Benford:</b> em dados naturais o dígito 1 abre cerca de 30% dos valores e o 9 menos de 5%. A linha vermelha é o esperado. Desvios fortes pedem análise, não acusação (ex.: valores à porta do limite inflacionam o dígito 4).</div>`+[1,2,3,4,5,6,7,8,9].map(d=>{const e=Math.log10(1+1/d)*100,o=c[d]/n*100;return `<div class="cl"><b>${d}</b><div style="flex:1;min-width:140px;position:relative;height:16px;background:var(--bg);border:1px solid var(--ln);border-radius:4px"><i style="display:block;height:100%;width:${o*3}%;background:var(--ac)"></i><b style="position:absolute;top:-2px;bottom:-2px;left:${e*3}%;width:2px;background:var(--no)"></b></div><span class="num">${o.toFixed(1)}% (esperado ${e.toFixed(1)}%)</span></div>`}).join("");return}
+ let rows=[],msg="";
+ if(k=="dup"){const m={};D.forEach(p=>{const q=p.f+p.v+p.d;(m[q]=m[q]||[]).push(p)});rows=Object.values(m).filter(a=>a.length>1).flat();msg="Mesmo fornecedor, valor e data"}
+ if(k=="lim"){rows=D.filter(p=>p.v>=49000&&p.v<50000);msg="Valores entre 49.000 e 49.999 MT (limite 50.000 MT)"}
+ if(k=="nib"){rows=D.filter(p=>p.nib.startsWith("EMP"));msg="NIB coincide com o de um funcionário"}
+ if(k=="seq"){const f=[...new Set(D.map(p=>p.fat))].sort((a,b)=>a-b),g=[];for(let i=1;i<f.length;i++)for(let n=f[i-1]+1;n<f[i];n++)g.push(n);
+  $("#lo").innerHTML=`<div class="fb"><b>${g.length} números em falta</b> (ex.: ${g.slice(0,10).join(", ")}). Pode haver anulações legítimas: confirma no software certificado.</div>`;return}
+ $("#lo").innerHTML=`<div class="fb"><b>${rows.length} alertas.</b> ${msg}. Lembra-te: um alerta pede investigação, não é prova.</div><div class="sc"><table><tr><th>ID</th><th>Fornecedor</th><th>Valor (MT)</th><th>Data</th></tr>${rows.slice(0,8).map(p=>`<tr><td>${p.id}</td><td>${p.f}</td><td class="num">${p.v.toLocaleString("pt-PT")}</td><td>${p.d}</td></tr>`).join("")}</table></div>`});
+
+/* ---------- Extras: mais perguntas ---------- */
+T[0].it.push({k:"single",q:"O número de validação da AT numa fatura serve sobretudo para...",o:["Decorar a fatura","Confirmar que o documento foi emitido por software certificado e comunicado à AT","Calcular o IVA automaticamente","Substituir a assinatura do cliente"],a:1,w:"É um controlo automático externo: permite ao auditor (e ao cliente) validar a autenticidade do documento."});
+T[1].it.push({k:"single",q:"Um funcionário mudou de cargo e manteve as permissões antigas. Que controlo deteta isto?",o:["Mais um antivírus","Revisão periódica de perfis (recertificação de acessos) comparada com a lista de RH","Aumentar o limite de aprovação","Nenhum"],a:1,w:"Risco: acumulação silenciosa de permissões. A recertificação trimestral de acessos fecha a lacuna."});
+T[2].it.push({k:"pick",q:"Tens a lista anual de pagamentos. Seleciona os testes simples que correrias.",o:["Duplicados (fornecedor + valor + data)","Pagamentos ao fim de semana/feriados","Valores redondos repetidos","Beneficiário igual a funcionário","Ordenar fornecedores por cor do logótipo"],a:[0,1,2,3],w:"Testes baratos, aplicáveis a toda a população, em Excel ou ERP."});
+T[3].it.push({k:"single",q:"A ISO/IEC 27001 serve para...",o:["Certificar a contabilidade da empresa","Estabelecer um sistema de gestão da segurança da informação","Calcular impostos","Substituir backups"],a:1,w:"Mesmo sem certificação, serve de referência para uma política básica de segurança."});
+T[4].it.push({k:"classify",q:"Liga cada situação ao tipo de esquema.",o:["Empresa inexistente recebe pagamentos","Pagamento de 120.000 MT dividido em 3 de 40.000 (limite 50.000)","Registo contabilístico sem operação real"],c:["Fornecedor fantasma","Fatiamento","Lançamento fictício"],a:[0,1,2],w:"Cada esquema deixa um rasto diferente: registo, padrão de valores, ausência de documento-fonte."});
+T[5].it.push({k:"pick",q:"Como preservar evidência digital de uma suspeita de fraude?",o:["Copiar logs para suporte protegido e registar data/hash","Trabalhar sobre cópia e manter o original intacto","Pedir ao suspeito que imprima os ficheiros","Apagar dados antigos para libertar espaço"],a:[0,1],w:"Evidência tem de ser suficiente, relevante, fiável e sem alteração (cadeia de custódia)."});
+
+/* ---------- Extras: oficinas interativas ---------- */
+const W={};
+W[1]=()=>{const ck=(i,l,c)=>`<label class="o"><input type="checkbox" id="${i}" ${c?"checked":""}> <span>${l}</span></label>`;
+$("#wg").innerHTML=`<h3>Oficina de perfis: configura o assistente</h3><p>Mexe nos controlos e vê o risco de fraude em tempo real. Meta: risco abaixo de 30, sem contratar ninguém.</p>`+ck("p1","Pode criar fornecedores",1)+ck("p2","Pode lançar faturas de compra",1)+ck("p3","Pode aprovar pagamentos",1)+ck("p4","Acede à configuração do sistema",0)+`<p><label>Limite de aprovação sozinho: <b id="lv"></b> MT <input type="range" id="lm" min="0" max="100000" step="5000" value="50000"></label></p>`+ck("c1","Segunda aprovação da gerente acima do limite",0)+ck("c2","Gerente revê e assina o log todos os meses",0)+ck("c3","Cada pessoa com utilizador e senha próprios",0)+`<div class="bar" style="height:14px"><i id="rk"></i></div><p id="rt"></p>`;
+const g=i=>$("#"+i).checked,f=()=>{const n=g("p1")+g("p2")+g("p3"),L=+$("#lm").value;$("#lv").textContent=L.toLocaleString("pt-PT");
+let r=[0,10,40,70][n]+(g("p3")?L/5000:0)+(g("p4")?10:0)+(g("c3")?0:10)-(g("c1")&&g("p3")?15:0)-(g("c2")?15:0);r=Math.max(0,Math.min(100,Math.round(r)));
+$("#rk").style.width=r+"%";$("#rk").style.background=r<=30?"var(--ok)":r<=60?"var(--sun)":"var(--no)";
+$("#rt").innerHTML=`<b>Risco: ${r}/100.</b> `+(r<=30?"Aceitável para uma PME: controlos compensatórios a funcionar.":r<=60?"Moderado: ainda há acumulação de funções ou pouca supervisão.":"Alto: o mesmo utilizador consegue fechar o ciclo da fraude sem ninguém ver.")+(n==3?" Ainda acumula criar + lançar + aprovar.":"")};
+$("#wg").oninput=f;f()};
+W[3]=()=>{const M=["Cópia de segurança diária fora do escritório","UPS (bateria de reserva) no computador principal","Utilizador e senha individuais","Formação anti-phishing (nunca partilhar códigos)"];
+const I=[["Avaria do disco",0,"Dados recuperados da cópia externa.","Perdem-se meses de registos (disponibilidade)."],["Corte de energia de 2 dias",1,"UPS evita corrupção e dá tempo para guardar; trabalha-se noutro local.","Sistema parado dois dias e ficheiros corrompidos."],["Telefonema do falso técnico do banco",3,"O funcionário recusa e alerta a gerência.","Entrega o código e a conta fica comprometida (confidencialidade)."],["Alguém apaga faturas",2,"O log identifica o utilizador.","Impossível saber quem foi (integridade)."]];
+$("#wg").innerHTML=`<h3>Simulador de incidentes na Nhamba, Lda</h3><p>Liga as medidas de baixo custo e vê que incidentes passam a ficar contidos.</p>`+M.map((m,i)=>`<label class="o"><input type="checkbox" id="m${i}"> <span>${m}</span></label>`).join("")+`<div id="ro"></div>`;
+const f=()=>{let n=0;$("#ro").innerHTML=I.map(x=>{const ok=$("#m"+x[1]).checked;n+=ok;return `<div class="o ${ok?"r":"w"}"><span><b>${ok?"Contido":"Falhou"}: ${x[0]}.</b> ${ok?x[2]:x[3]}</span></div>`}).join("")+`<p><b>${n}/4</b> incidentes contidos.</p>`};$("#wg").onchange=f;f()};
+W[4]=()=>{const E=[["3 fornecedores com a mesma conta bancária",30,"Forte: fornecedores independentes raramente partilham conta."],["Fornecedor criado no dia do seu único pagamento",20,"Típico de fornecedor criado só para desviar dinheiro."],["Pagamento no valor exato do limite de aprovação",20,"Sugere conhecimento do limite para evitar segunda validação."],["Mesmo funcionário processa tudo, entre as 18h e as 19h",20,"Concentração + fora de horas = menos supervisão."],["O sistema tem 140 fornecedores ativos",0,"Irrelevante: volume normal."],["O funcionário de compras tem 6 anos de casa",0,"Antiguidade não prova nem afasta nada."],["Fim de mês: horário alargado para fechar contas",0,"Explicação inocente possível para as 18h, mas não explica a conta partilhada."]];
+const sel=new Set(),f=()=>{const s=[...sel].reduce((a,i)=>a+E[i][1],0);
+$("#wg").innerHTML=`<h3>Quadro de provas: monta o dossier</h3><p>Clica nos elementos que levarias ao dossier. Cuidado: nem tudo o que parece estranho é relevante.</p>`+E.map((e,i)=>`<div class="o ${sel.has(i)?"sel":""}" role="button" tabindex="0" data-e="${i}"><span>${e[0]}</span></div>`).join("")+`<div class="bar" style="height:14px"><i style="width:${Math.min(100,s)}%;background:${s<40?"var(--sun)":"var(--no)"}"></i></div><p><b>Nível de suspeita: ${s}/100.</b> ${s==0?"Dossier vazio.":s<40?"Insuficiente para agir.":s<75?"Merece investigação discreta.":"Indícios fortes, mas continuam a ser indícios: pede extratos bancários, contratos e prova de entrega antes de qualquer conclusão."}</p>`+[...sel].map(i=>`<p class="fb">${E[i][2]}</p>`).join("")};
+$("#wg").onclick=e=>{const c=e.target.closest("[data-e]");if(!c)return;const i=+c.dataset.e;sel.has(i)?sel.delete(i):sel.add(i);f()};
+$("#wg").onkeydown=e=>{if(e.key=="Enter"||e.key==" "){e.preventDefault();e.target.click()}};f()};
+W[5]=()=>{const F=[["Condição",["O Sr. Amosse é desonesto e rouba a empresa","O utilizador do Sr. Amosse cria fornecedores, lança faturas e aprova pagamentos"],1],["Critério",["Tradição da empresa","Segregação de funções (ISO/IEC 27001, controlo de acessos)","Boa vontade dos funcionários"],1],["Causa",["Equipa pequena e perfis atribuídos sem revisão","A informática é difícil"],0],["Efeito/risco",["Pode haver problemas","Risco de fornecedores fictícios e pagamentos indevidos sem deteção"],1],["Recomendação",["Melhorar o controlo interno","Retirar o perfil de aprovação ao utilizador e exigir aprovação da gerente acima de 20.000 MT, em 15 dias (responsável: gerente)"],1]];
+$("#wg").innerHTML=`<h3>Gerador de achados: escreve como um auditor</h3><p>Escolhe a melhor formulação para cada campo do achado «acumulação de funções».</p>`+F.map((x,i)=>`<div class="cl"><b>${x[0]}</b><select id="s${i}"><option value="">Escolher...</option>${x[1].map((o,j)=>`<option value="${j}">${o}</option>`).join("")}</select></div>`).join("")+`<button class="b" id="gb">Gerar achado</button><div id="go"></div>`;
+$("#gb").onclick=()=>{if(F.some((x,i)=>$("#s"+i).value===""))return alert("Preenche todos os campos.");let n=0,t="ACHADO 1\n";const w=[];F.forEach((x,i)=>{const v=+$("#s"+i).value;if(v==x[2])n++;else w.push(x[0]);t+=x[0]+": "+x[1][v]+"\n"});
+$("#go").innerHTML=`<pre class="fb" style="white-space:pre-wrap;font:inherit">${t}</pre><p><b>${n}/5 campos fortes.</b> ${w.length?"Reforça: "+w.join(", ")+". Factos observáveis, referencial claro, recomendação com responsável e prazo.":"Achado objetivo, sem acusações e acionável."}</p><button class="b s" id="cp">Copiar texto</button>`;
+$("#cp").onclick=()=>{try{navigator.clipboard.writeText(t)}catch(e){}}}};
+
+/* ---------- Laboratório: mini-ERP funcional ---------- */
+T.push({n:"Laboratório",t:"Mini-ERP real",erp:true,case:"Ambiente de simulação com <b>dados que tu próprio introduzes</b>. Trabalha como Gerente, Assistente, Compras ou Receção: cria fornecedores, lança faturas e paga. O sistema aplica permissões, regista um log e depois entras em <b>Modo auditor</b> para caçar o que fizeste (ou deixaste fazer).",it:[]});
+const ER={u:"ass",tab:"f",sh:0,seg:0,lim:50000,msg:"",pm:{ger:{f:1,v:1,a:1,c:1,l:1},ass:{f:1,v:1,a:1,c:0,l:0},cmp:{f:1,v:0,a:0,c:0,l:0},rec:{f:0,v:0,a:0,c:0,l:0}},F:[],V:[],P:[],L:[]};
+const UN={ger:"Gerente financeira",ass:"Assistente de contabilidade",cmp:"Funcionário de compras",rec:"Receção"};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fm=n=>Number(n).toLocaleString("pt-PT"),gv=i=>($("#"+i)||{value:""}).value,can=k=>ER.pm[ER.u][k];
+const ator=()=>ER.sh&&ER.u=="ass"?"ger":ER.u;
+const lg=(ac,d,ok=1)=>ER.L.push({i:ER.L.length+1,a:ator(),sh:ER.sh&&ER.u=="ass"?1:0,ac,d,ok});
+const deny=ac=>{lg("NEGADO: "+ac,UN[ER.u],0);ER.msg="<b class='no'>Acesso negado.</b> O perfil «"+UN[ER.u]+"» não pode "+ac+". A tentativa ficou no log."};
+const vf=id=>ER.F.find(f=>f.id==ER.V.find(v=>v.id==id).f);
+const A={
+addF(){if(!can("f"))return deny("criar fornecedores");const n=gv("f_n").trim();if(!n){ER.msg="Indica o nome do fornecedor.";return}
+ ER.F.push({id:ER.F.length+1,n,nuit:gv("f_u").trim(),nib:gv("f_b").trim(),mor:gv("f_m").trim(),ator:ator()});lg("Criar fornecedor",n);ER.msg="Fornecedor criado."},
+addV(){if(!can("v"))return deny("lançar faturas");const f=+gv("v_f"),val=+gv("v_v");if(!f||val<=0){ER.msg="Escolhe um fornecedor e um valor positivo.";return}
+ ER.V.push({id:ER.V.length+1,f,n:gv("v_n")||"s/n",val,ator:ator()});lg("Lançar fatura",gv("v_n")+" · "+fm(val)+" MT");ER.msg="Fatura lançada."},
+addP(){if(!can("a"))return deny("aprovar/processar pagamentos");const v=+gv("p_v"),val=+gv("p_val");if(!v||val<=0){ER.msg="Escolhe a fatura e o valor.";return}
+ const need=val>=ER.lim,pend=(need&&ator()!="ger")||ER.seg;
+ ER.P.push({id:ER.P.length+1,v,val,d:gv("p_d"),h:gv("p_h"),st:pend?"pendente":"pago",ator:ator(),aprov:pend?"":ator()});
+ lg(pend?"Propor pagamento":"Pagar",fm(val)+" MT às "+gv("p_h"));ER.msg=pend?"Pagamento pendente de segunda validação"+(need?" (acima do limite: só a gerente aprova).":"."):"Pagamento efetuado sem segunda validação."},
+appr(i){const p=ER.P[i];if(!can("a"))return deny("aprovar pagamentos");const need=p.val>=ER.lim;
+ if(need&&ator()!="ger"){ER.msg="Acima do limite: só a gerente pode aprovar.";return}
+ if(ER.seg&&ator()==p.ator){ER.msg="Não podes aprovar o que tu próprio propuseste (princípio dos quatro olhos).";return}
+ p.st="pago";p.aprov=ator();lg("Aprovar pagamento","#"+p.id);ER.msg="Pagamento aprovado."},
+seed(){A.clr();const L=ER.L;ER.F=[{id:1,n:"Eletro Norte, Lda",nuit:"400200100",nib:"0001000123",mor:"Rua da Resistência 45, Maputo",ator:"ger"},{id:2,n:"Construtora Zambeze, Lda",nuit:"400300111",nib:"0001000777",mor:"",ator:"ass"},{id:3,n:"Zambeze Construções, Lda",nuit:"400300111",nib:"0001000777",mor:"",ator:"ass"}];
+ ER.V=[[1,18500,"ger"],[2,49900,"ass"],[3,49950,"ass"],[3,49900,"ass"]].map((x,i)=>({id:i+1,f:x[0],n:"FT "+(100+i),val:x[1],ator:x[2]}));
+ ER.P=[[1,18500,"2025-03-03","10:15"],[2,49900,"2025-03-10","18:20"],[3,49950,"2025-03-10","18:40"],[4,49900,"2025-03-11","18:30"]].map((x,i)=>({id:i+1,v:x[0],val:x[1],d:x[2],h:x[3],st:"pago",ator:i?"ass":"ger",aprov:i?"ass":"ger"}));
+ ER.F.forEach(f=>L.push({i:L.length+1,a:f.ator,sh:0,ac:"Criar fornecedor",d:f.n,ok:1}));ER.P.forEach(p=>L.push({i:L.length+1,a:p.ator,sh:0,ac:"Pagar",d:fm(p.val)+" MT às "+p.h,ok:1}));ER.msg="Caso carregado (inspirado em XPTO/NT). Vai ao Modo auditor."},
+clr(){ER.F=[];ER.V=[];ER.P=[];ER.L=[];ER.msg="Ambiente limpo."},
+cp(){try{navigator.clipboard.writeText($("#rp").innerText)}catch(e){}ER.msg="Relatório copiado."}};
+function AU(){const o=[],{F,V,P,lim}=ER,fp=p=>vf(p.v);
+ F.forEach(f=>{const a=f.ator;if(V.some(v=>v.f==f.id&&v.ator==a)&&P.some(p=>fp(p).id==f.id&&p.aprov==a))o.push(["Alta","Segregação de funções violada",`Segundo o log, ${UN[a]} criou «${esc(f.n)}», lançou faturas e aprovou pagamentos: ciclo completo sem segunda pessoa.`])});
+ const grp=(k,t)=>{const m={};F.forEach(f=>f[k]&&(m[f[k]]=m[f[k]]||[]).push(f.n));Object.entries(m).filter(x=>x[1].length>1).forEach(x=>o.push(["Alta",t,`${esc(x[0])} partilhado por: ${x[1].map(esc).join("; ")}.`]))};
+ grp("nib","NIB repetido em fornecedores diferentes");grp("nuit","NUIT repetido em fornecedores diferentes");
+ const sm=F.filter(f=>!f.mor);if(sm.length)o.push(["Média","Fornecedores sem morada",sm.map(f=>esc(f.n)).join("; ")+"."]);
+ const nl=P.filter(p=>p.val>=lim*.95&&p.val<lim);if(nl.length)o.push([nl.length>2?"Alta":"Média","Pagamentos logo abaixo do limite ("+fm(lim)+" MT)",nl.length+" pagamento(s) entre "+fm(lim*.95)+" e "+fm(lim-1)+" MT: possível fatiamento."]);
+ const dp={};P.forEach(p=>{const k=fp(p).id+"|"+p.val+"|"+p.d;dp[k]=(dp[k]||0)+1});const nd=Object.values(dp).filter(n=>n>1).length;if(nd)o.push(["Alta","Possíveis pagamentos duplicados",nd+" grupo(s) com mesmo fornecedor, valor e data."]);
+ const sv={};P.forEach(p=>sv[p.v]=(sv[p.v]||0)+p.val);const op=V.filter(v=>sv[v.id]>v.val);if(op.length)o.push(["Alta","Pago acima do valor da fatura",op.map(v=>esc(v.n)).join(", ")+"."]);
+ const oh=P.filter(p=>p.h&&(p.h<"08:00"||p.h>="17:00"));if(oh.length)o.push(["Média","Pagamentos fora do horário (8h–17h)",oh.length+" pagamento(s) às "+oh.map(p=>p.h).join(", ")+"."]);
+ const sh=ER.L.filter(l=>l.sh).length;if(sh)o.push(["Alta","Senha partilhada",sh+" ação(ões) registadas em nome da Gerente foram feitas por outra pessoa (revelado em entrevista). A trilha de auditoria perde validade."]);
+ if(P.length&&!ER.seg)o.push(["Média","Sem segunda validação obrigatória","O sistema paga abaixo do limite sem segunda pessoa."]);
+ return o}
+function R(){const U=ER.u,tabs=[["f","Fornecedores"],["v","Faturas"],["p","Pagamentos"],["c","Configuração"],["l","Log"],["u","Modo auditor"]];
+ const tb=(H,r)=>r.length?`<div class="sc"><table><tr>${H.map(x=>`<th>${x}</th>`).join("")}</tr>${r.map(x=>`<tr>${x.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</table></div>`:"<p>Sem registos.</p>";
+ const fo=ER.F.map(f=>`<option value="${f.id}">${esc(f.n)}</option>`).join(""),fa=ER.V.map(v=>`<option value="${v.id}">${esc(v.n)} · ${esc(vf(v.id).n)} · ${fm(v.val)} MT</option>`).join("");
+ let h=`<div class="card lab"><div class="tb"><label class="fld">Utilizador ativo<select data-u="1">${Object.keys(UN).map(k=>`<option value="${k}" ${k==U?"selected":""}>${UN[k]}</option>`).join("")}</select></label><div class="chips"><span class="tag">Limite individual: ${fm(ER.lim)} MT</span><span class="tag">2.ª validação: ${ER.seg?"ligada":"desligada"}</span>${ER.sh?'<span class="tag no">Senha partilhada ativa</span>':""}</div></div><div class="tiles">${[["Fornecedores",ER.F.length],["Faturas",ER.V.length],["Pagamentos",ER.P.length],["Registos no log",ER.L.length]].map(x=>`<div class="tile2"><b>${x[1]}</b><span>${x[0]}</span></div>`).join("")}</div><div class="tabs" role="tablist">${tabs.map(t=>`<button class="tab ${ER.tab==t[0]?"on":""}" role="tab" data-t2="${t[0]}">${t[1]}</button>`).join("")}</div><div class="acts"><button class="b s" data-a="seed">Carregar caso de teste</button><button class="b s" data-a="clr">Limpar tudo</button></div>${ER.msg?`<div class="al" role="status">${ER.msg}</div>`:""}</div><div class="card">`;
+ const t=ER.tab;
+ if(t=="f")h+=`<h3>Registo de fornecedores</h3><p class="ins">Permissão necessária: criar fornecedores. Deixa a morada vazia para ver o alerta do auditor.</p><div class="fg"><label class="fld">Nome<input id="f_n"></label><label class="fld">NUIT<input id="f_u"></label><label class="fld">NIB<input id="f_b"></label><label class="fld">Morada<input id="f_m"></label></div><button class="b" data-a="addF">Criar fornecedor</button>`+tb(["#","Nome","NUIT","NIB","Morada","Criado por"],ER.F.map(f=>[f.id,esc(f.n),esc(f.nuit),esc(f.nib),esc(f.mor)||"<i>vazio</i>",UN[f.ator]]));
+ if(t=="v")h+=`<h3>Faturas de compra</h3><p class="ins">Permissão necessária: lançar faturas. Cria primeiro um fornecedor.</p><div class="fg"><label class="fld">Fornecedor<select id="v_f"><option value="">Escolher...</option>${fo}</select></label><label class="fld">N.º da fatura<input id="v_n"></label><label class="fld">Valor (MT)<input id="v_v" type="number"></label></div><button class="b" data-a="addV">Lançar fatura</button>`+tb(["#","Nº","Fornecedor","Valor","Lançada por"],ER.V.map(v=>[v.id,esc(v.n),esc(vf(v.id).n),fm(v.val),UN[v.ator]]));
+ if(t=="p")h+=`<h3>Pagamentos</h3><p class="ins">Permissão necessária: aprovar pagamentos. Experimenta valores perto do limite e horas fora do expediente.</p><div class="fg"><label class="fld">Fatura<select id="p_v"><option value="">Escolher...</option>${fa}</select></label><label class="fld">Valor (MT)<input id="p_val" type="number"></label><label class="fld">Data<input id="p_d" type="date" value="2025-03-10"></label><label class="fld">Hora<input id="p_h" type="time" value="10:00"></label></div><button class="b" data-a="addP">Processar pagamento</button>`+tb(["#","Fornecedor","Valor","Data","Hora","Estado","Aprovado por",""],ER.P.map((p,i)=>[p.id,esc(vf(p.v).n),fm(p.val),p.d,p.h,p.st,p.aprov?UN[p.aprov]:"—",p.st=="pendente"?`<button class="b" data-a="appr" data-i="${i}">Aprovar</button>`:""]));
+ if(t=="c")h+=can("c")?`<h3>Configuração do sistema</h3><label>Limite individual de aprovação (MT): <input data-c="lim" type="number" value="${ER.lim}"></label><label class="o"><input type="checkbox" data-c="seg" ${ER.seg?"checked":""}> <span>Exigir segunda validação em todos os pagamentos</span></label><label class="o"><input type="checkbox" data-c="sh" ${ER.sh?"checked":""}> <span>Simular: a gerente partilha a senha com o assistente (as ações dele ficam em nome dela)</span></label>`+tb(["Perfil","Criar forn.","Lançar fat.","Aprovar pag.","Config.","Ver log"],Object.keys(UN).map(u=>[UN[u],...["f","v","a","c","l"].map(k=>`<input type="checkbox" data-pm="${u}.${k}" ${ER.pm[u][k]?"checked":""}>`)])):`<h3>Configuração</h3><p>O perfil «${UN[U]}» não tem acesso. Muda para Gerente.</p>`;
+ if(t=="l")h+=can("l")?`<h3>Log de auditoria</h3>`+tb(["#","Utilizador registado","Ação","Detalhe"],ER.L.map(l=>[l.i,UN[l.a],(l.ok?"":"<b class='no'>")+esc(l.ac),esc(l.d)])):`<h3>Log</h3><p>Só quem tem a permissão «ver log» pode consultá-lo.</p>`;
+ if(t=="u"){const o=AU();h+=`<h3>Modo auditor: relatório automático</h3><div id="rp">`+(o.length?o.map(x=>`<div class="o ${x[0]=="Alta"?"w":""}"><span class="sev ${x[0]=="Alta"?"hi":"md"}">${x[0]}</span><span><b>${x[1]}.</b> ${x[2]}</span></div>`).join(""):"<p>"+((ER.F.length||ER.P.length)?"Sem alertas com estes testes. Valida a completude dos dados e experimenta cenários mais arriscados.":"Ainda não há dados. Introduz operações ou carrega o caso de teste.")+"</p>")+`</div><p class="fb">Alertas são red flags, não provas: confirma com evidência externa antes de concluir. ${o.length} alerta(s).</p><button class="b" data-a="cp">Copiar relatório</button><button class="b s" data-a="prt">Imprimir / PDF</button><button class="b s" data-a="csv">Exportar pagamentos (CSV)</button>`}
+ h+=`</div><div class="card"><h3>Missões</h3><ol class="ms"><li>Como <b>Assistente</b>, cria um fornecedor, lança uma fatura e paga. Vê o auditor apanhar o ciclo completo.</li><li>Entra como <b>Gerente</b>, liga a segunda validação e repete: o sistema bloqueia a auto-aprovação.</li><li>Paga 49.900 MT três vezes às 18h30: o auditor deteta fatiamento e pagamentos fora de horas.</li><li>Liga a <b>senha partilhada</b> e vê porque a trilha perde valor.</li><li>Tenta aceder à configuração como <b>Receção</b> e consulta no log a tentativa negada.</li></ol></div>`;
+ $("#erp").innerHTML=h}
+function ERP(){const e=$("#erp");R();
+ e.onclick=x=>{const b=x.target.closest("[data-a],[data-t2]");if(!b)return;ER.msg="";if(b.dataset.t2)ER.tab=b.dataset.t2;else A[b.dataset.a](+b.dataset.i);R()};
+ e.onchange=x=>{const t=x.target,d=t.dataset;ER.msg="";
+  if(d.u)ER.u=t.value;
+  else if(d.c||d.pm){if(!can("c"))return deny("alterar a configuração"),R();
+   if(d.c=="lim")ER.lim=+t.value||0;if(d.c=="seg")ER.seg=+t.checked;if(d.c=="sh")ER.sh=+t.checked;if(d.pm){const[u,k]=d.pm.split(".");ER.pm[u][k]=+t.checked}lg("Alterar configuração",d.c||d.pm)}
+  else return;R()}}
+
+/* ---------- Componente didático ---------- */
+T[0].d={obj:["Explicar o que é um sistema de informação contabilístico (SIC) e distinguir ERP de software de faturação","Descrever o percurso de um documento: fatura, registo, razão, balanço","Distinguir controlo manual de automático e localizar os pontos mais vulneráveis"],con:[["SIC","Conjunto de pessoas, processos e tecnologia que regista, processa e comunica informação financeira."],["ERP","Sistema integrado (compras, stocks, faturação, contabilidade): o dado entra uma vez e propaga-se às outras áreas."],["Software certificado","Programa de faturação aprovado pela AT, que numera e valida os documentos."],["Controlo manual / automático","Manual depende de uma pessoa (conferir, assinar); automático está embutido no sistema (validações, bloqueios)."],["Pista de auditoria","Rasto que permite seguir um dado desde a origem até às demonstrações financeiras."]],sum:["Cada etapa manual (Excel, lançamento à mão) é um ponto fraco.","Num ERP integrado, o erro de origem propaga-se à contabilidade.","O auditor começa por mapear o percurso e só depois testa controlos."]};
+T[1].d={obj:["Definir controlo interno e distinguir controlos gerais de TI de controlos de aplicação","Explicar segregação de funções e reconhecer violações numa matriz de perfis","Propor controlos compensatórios para organizações com poucos recursos"],con:[["Controlo interno","Processos que garantem informação fiável, proteção dos ativos e cumprimento das normas."],["Controlos gerais de TI","Protegem o ambiente: acessos, senhas, backups, logs, gestão de alterações."],["Controlos de aplicação","Estão dentro do programa: validações, limites de aprovação, bloqueios."],["Segregação de funções","Quem cria, lança e aprova não pode ser a mesma pessoa."],["Princípio dos quatro olhos","Operações críticas exigem uma segunda pessoa."],["Controlo compensatório","Alternativa quando não há pessoas suficientes: limites, revisão do log, contabilista externo."]],lab:"Liga e desliga permissões e mexe no limite de aprovação. Observa a barra de risco. Desafio: chega abaixo de 30 sem contratar ninguém. O que mais reduz o risco: retirar permissões ou acrescentar supervisão?",sum:["Segregação de funções impede que uma só pessoa feche o ciclo da fraude.","Log sem revisão e senha partilhada anulam a trilha de auditoria.","Em PME, compensa-se com limites, revisão periódica e apoio externo."]};
+T[2].d={obj:["Explicar o que são CAATs e porque analisam toda a população","Seguir as fases: objetivo, extração, validação, testes, interpretação","Aplicar testes básicos e reconhecer que um alerta exige investigação"],con:[["CAATs","Técnicas que usam o computador para analisar toda a população de transações."],["Amostragem","Testar só parte dos dados; continua útil quando a verificação é manual e demorada."],["Validação de dados","Confirmar completude e exatidão do ficheiro (nº de registos, totais) antes de testar."],["Red flag","Sinal de alerta que justifica investigação, mas não prova fraude."],["Falso positivo","Alerta com explicação inocente."]],lab:"1) Clica em cada teste e lê o número de alertas. 2) Repara na tabela de exemplos. 3) Lembra-te: um alerta pede investigação, não acusação. 4) Gera novos dados e compara. Depois responde às perguntas.",sum:["Analisar 100% dos dados encontra o que a amostra deixa escapar.","Sem validação do ficheiro, as conclusões podem estar erradas.","Alerta é ponto de partida: pede prova adicional."]};
+T[3].d={obj:["Explicar a tríade CIA aplicada a dados financeiros","Identificar riscos comuns: sem backups, senhas partilhadas, engenharia social","Propor medidas de baixo custo e interpretar um log suspeito"],con:[["Tríade CIA","Confidencialidade (só quem deve vê), Integridade (não é alterado), Disponibilidade (acessível quando preciso)."],["Backup","Cópia fora do equipamento original; deve ser testada."],["Engenharia social","Enganar pessoas, não máquinas, para obter códigos ou senhas."],["ISO/IEC 27001","Norma para gerir de forma sistemática a segurança da informação."],["Log de acesso","Registo de quem entrou, quando e de onde."]],lab:"Liga uma medida de cada vez e vê qual incidente passa a ficar contido. Qual medida cobre mais riscos? Qual protege que pilar da tríade CIA?",sum:["Cada falha ameaça um pilar da tríade: identifica qual.","Medidas baratas (backup, UPS, senhas individuais, formação) resolvem muito.","A maior parte das fugas de informação vem de pessoas, não de hackers."]};
+T[4].d={obj:["Distinguir erro de fraude","Reconhecer fornecedores fantasma, fatiamento e lançamentos fictícios","Usar o triângulo da fraude e agir com ética perante indícios"],con:[["Fraude vs erro","A fraude é intencional; o erro não."],["Triângulo da fraude","Pressão, oportunidade e racionalização."],["Fornecedor fantasma","Fornecedor fictício criado para desviar pagamentos."],["Fatiamento","Dividir um valor para ficar abaixo do limite de aprovação."],["Ceticismo profissional","Não aceitar explicações sem evidência."]],lab:"Clica nos elementos que levarias ao dossier. Meta: chegar a «indícios fortes» sem incluir as pistas irrelevantes. Lê a nota de cada elemento para perceber porque pesa (ou não).",sum:["Um red flag isolado não prova nada; vários combinados reforçam a suspeita.","A auditoria informática atua sobretudo na oportunidade.","Recolhe evidência com discrição e reporta ao nível certo, sem acusar."]};
+T[5].d={obj:["Descrever as fases: planeamento, execução, relatório, follow-up","Estruturar um achado: condição, critério, causa, efeito, recomendação","Redigir recomendações acionáveis e adaptar a comunicação ao destinatário"],con:[["Achado","Facto estruturado em condição, critério, causa, efeito e recomendação."],["Recomendação acionável","Diz o quê, quem e quando."],["Evidência digital","Logs, extratos e ficheiros preservados sem alteração."],["Follow-up","Verificar depois se as recomendações foram aplicadas."],["Referenciais","COBIT, ITIL e ISO/IEC 27001 servem de critério."]],lab:"Escolhe a melhor formulação em cada campo, clica em «Gerar achado» e lê o feedback. Repete até obteres 5/5. Pensa: o gestor percebe o que tem de fazer?",sum:["Factos primeiro, opinião nunca; sem acusar pessoas.","Recomendação boa tem responsável e prazo.","Sem follow-up, o relatório não muda nada."]};
+T[6].d={obj:["Aplicar na prática segregação de funções, limites e log","Ver como um auditor lê os dados que tu próprio geraste","Perceber porque a senha partilhada invalida a trilha de auditoria"],con:[["Perfil","Conjunto de permissões atribuído a um utilizador."],["Limite de aprovação","Valor até ao qual alguém aprova sozinho."],["Segunda validação","Outra pessoa tem de aprovar."],["Log","Registo automático das ações."]],lab:"1) Escolhe o utilizador ativo. 2) Cria fornecedor, lança fatura e processa pagamento. 3) Muda de perfil e vê o acesso negado. 4) Em Configuração (só a Gerente) muda as regras. 5) Vai a Modo auditor e lê os alertas. 6) Cumpre as missões no fim."};
+T.push({n:"Glossário",t:"Conceitos e guia de estudo",gl:true,case:"Revê aqui todos os conceitos da disciplina e um método de estudo simples.",it:[]});
+const H=[["Pensa: quem fez cada passo? Onde há Excel ou introdução manual de dados?","Procura etapas manuais e intervalos sem validação.","Compara: mais intervenção humana ou mais rasto independente?","Integrado significa que stocks e contabilidade partilham dados.","O número serve para validar o documento junto da AT."],["Procura quem tem «Sim» em criar, lançar e aprovar.","Um log só é controlo se alguém o lê.","Se duas pessoas usam a mesma senha, quem fez o quê?","Senhas e logs = geral. Limites e validações no módulo = aplicação.","Pensa em limites, revisão e supervisão externa.","Compara a lista de RH com os perfis atribuídos."],["Primeiro valida, depois testa.","Um red flag pede investigação, não acusação.","Fatiamento e NIB de funcionário pesam mais que falhas de numeração.","Testes simples: duplicados, datas, valores redondos, beneficiário."],["Pensa em backup, acesso e energia.","Soluções baratas e imediatas.","Alertas têm explicações inocentes: quais?","ISO 27001 é sobre gestão sistemática."],["Há quatro sinais combinados e uma pista irrelevante.","Oportunidade = o que o sistema permite.","Discrição, evidência, nível certo.","Cada esquema deixa um rasto diferente."],["Começa pelo facto e termina na ação.","Quem? O quê? Até quando?","Risco ativo de perda de dinheiro primeiro.","Descreve factos, não pessoas.","Original intacto; trabalha sobre cópia."]];
+H.forEach((a,i)=>a.forEach((x,j)=>T[i].it[j].h=x));
+const ins=(s,x)=>$(s).insertAdjacentHTML("beforebegin",`<div class="how"><b>Como fazer:</b> ${x}</div>`);
+const prim=t=>{const g=S.cur==0?`<details class="card" open><summary>Como usar este simulador</summary><ol><li>Lê os <b>objetivos</b> e os <b>conceitos-chave</b> do módulo.</li><li>Lê o <b>caso</b> e experimenta o <b>laboratório</b>, se existir.</li><li>Responde às perguntas. Usa <b>Dica</b> se travares, depois <b>Verificar</b>.</li><li>Lê sempre a <b>explicação</b>: é aí que se aprende. Repete até acertares.</li><li>No fim, vê o <b>resumo</b>. Usa o separador <b>Glossário</b> para rever.</li></ol><p>As pontuações ficam guardadas neste navegador. O laboratório (mini-ERP) junta tudo o que aprendeste.</p></details>`:"";
+ return g+`<details class="card" open><summary>Antes de começar: objetivos e conceitos</summary><b>No fim deste módulo deves saber:</b><ul>${t.d.obj.map(x=>`<li>${x}</li>`).join("")}</ul><b>Conceitos-chave:</b><ul>${t.d.con.map(c=>`<li><b>${c[0]}:</b> ${c[1]}</li>`).join("")}</ul></details>`};
+const endc=t=>{const n=t.it.length,d=t.it.filter((_,b)=>best(S.cur,b)>0).length;return t.d.sum?`<div class="card"><h3>O que levas deste módulo</h3><ul>${t.d.sum.map(x=>`<li>${x}</li>`).join("")}</ul><p class="tag">${d} de ${n} exercícios com pontuação</p><br>${S.cur+1<T.length?`<button class="b" data-t="${S.cur+1}">Próximo módulo</button>`:""}</div>`:""};
+const glos=()=>{const a=[];T.forEach(t=>t.d&&t.d.con.forEach(c=>a.push([c[0],c[1],t.n])));a.sort((x,y)=>x[0].localeCompare(y[0],"pt"));
+ return `<div class="card"><h3>Método de estudo em 4 passos</h3><ol><li><b>Lê</b> o conceito e o caso.</li><li><b>Experimenta</b> no laboratório.</li><li><b>Responde</b> sem olhar a dica; depois confirma.</li><li><b>Explica</b> por palavras tuas a um colega.</li></ol></div><div class="card"><h3>Glossário</h3>${a.map(x=>`<p><b>${x[0]}</b> <span class="tag">${x[2]}</span><br>${x[1]}</p>`).join("")}</div>`};
+
+/* ---------- Finais: conciliação, Benford, painel, certificado, impressão ---------- */
+T[0].d.lab="Compara cada linha do extrato M-Pesa com o razão e escolhe o diagnóstico. Clica em «Verificar». Pergunta-te: o total chega para concluir que está tudo bem?";
+W[0]=()=>{const C=["Conciliado","Valor diferente","Falta no razão","Duplicado","Desfasamento de data","Sem suporte no extrato"];
+const Q=[["MP01",2500,2500,"12/03","12/03",0],["MP02",4650,4560,"12/03","12/03",1],["MP03",1200,null,"13/03","—",2],["MP04",8000,8000,"13/03","13/03",0],["MP05",3300,6600,"14/03","14/03",3],["MP06",5000,5000,"14/03","17/03",4],["MP07",null,2000,"—","15/03",5]];
+const m=x=>x==null?"—":fm(x),te=Q.reduce((a,q)=>a+(q[1]||0),0),tr=Q.reduce((a,q)=>a+(q[2]||0),0);
+$("#wg").innerHTML=`<h3>Conciliação: extrato M-Pesa vs razão</h3><p class="ins">Total do extrato: <b>${fm(te)} MT</b> · Total do razão: <b>${fm(tr)} MT</b> · Diferença: <b>${fm(tr-te)} MT</b>. Descobre de onde vem cada diferença.</p><div class="sc"><table><tr><th>Ref.</th><th>Extrato</th><th>Razão</th><th>Data extrato</th><th>Data razão</th><th>Diagnóstico</th><th></th></tr>${Q.map((q,i)=>`<tr><td>${q[0]}</td><td class="num">${m(q[1])}</td><td class="num">${m(q[2])}</td><td>${q[3]}</td><td>${q[4]}</td><td><select id="rc${i}"><option value="">Escolher...</option>${C.map((c,j)=>`<option value="${j}">${c}</option>`).join("")}</select></td><td id="rv${i}"></td></tr>`).join("")}</table></div><button class="b" id="vr">Verificar conciliação</button><div id="vo"></div>`;
+$("#vr").onclick=()=>{let n=0;Q.forEach((q,i)=>{const v=gv("rc"+i),ok=v!==""&&+v==q[5];n+=ok;$("#rv"+i).innerHTML=ok?"<b style='color:var(--ok)'>Certo</b>":"<b class='no'>"+C[q[5]]+"</b>"});save("L",0,n/Q.length);
+$("#vo").innerHTML=`<div class="fb"><b>${n}/${Q.length} diagnósticos certos.</b> Lição: o total sozinho engana, porque o duplicado (+3.300) e a omissão (−1.200) se compensam parcialmente. O auditor concilia linha a linha e pede o suporte de cada diferença.</div>`}};
+const rkOf=q=>q<.25?"Estagiário":q<.5?"Auditor Júnior":q<.75?"Auditor Sénior":"Sócio-auditor";
+const stat=()=>{let tot=0,n=0;T.forEach((t,a)=>t.it.forEach((_,b)=>{n++;tot+=best(a,b)}));return{tot,n,q:tot/n,rk:rkOf(tot/n)}};
+const sv2=()=>{try{localStorage.setItem("aud",JSON.stringify(sv))}catch(e){}};
+T.push({n:"Painel",t:"Resultados e certificado",pn:true,case:"Acompanha o teu progresso, imprime o certificado e prepara-te para a avaliação.",it:[]});
+const painel=()=>{const s=stat();return `<div class="card"><h3>O teu desempenho</h3>${T.map((t,a)=>{if(!t.it.length)return "";let x=0;t.it.forEach((_,b)=>x+=best(a,b));return `<div class="cl"><span>${t.n}: ${t.t}</span><span class="num">${x.toFixed(1)}/${t.it.length}</span><div class="bar" style="flex:1 1 100%"><i style="width:${x/t.it.length*100}%"></i></div></div>`}).join("")}<p><b>Nível: ${s.rk}</b> · ${s.tot.toFixed(1)}/${s.n} pontos · Conciliação M-Pesa: ${Math.round(best("L",0)*100)}%</p></div><div class="card"><h3>Certificado de participação</h3><p class="ins">Escreve o teu nome. O certificado é emitido a partir de 60% da pontuação (${s.q>=.6?"já atingiste":"ainda faltam "+Math.ceil(s.n*.6-s.tot)+" pontos"}). Na janela de impressão escolhe «Guardar como PDF».</p><label class="fld">Nome completo<input id="nm" value="${esc(sv.nome||"")}"></label><button class="b" data-pr="cert" ${s.q>=.6?"":"disabled"}>Imprimir certificado</button><button class="b s" data-pr="reset">Apagar progresso</button></div>`};
+const PR=k=>{if(k=="reset"){if(confirm("Apagar toda a pontuação guardada neste navegador?")){sv={};try{localStorage.removeItem("aud")}catch(e){}render()}return}
+ const nm=gv("nm").trim();if(!nm)return alert("Escreve o teu nome.");sv.nome=nm;sv2();const s=stat();
+ $("#pv").innerHTML=`<div style="border:6px double #0a1f7a;padding:2.5rem;text-align:center;font-family:Georgia,serif;color:#000;background:#fff"><h1 style="font-size:2rem">Certificado de Participação</h1><p>Certifica-se que</p><h2 style="font-size:1.8rem">${esc(nm)}</h2><p>concluiu o <b>AudiLab, Simulador de Auditoria Informática</b> (6 temas e laboratório mini-ERP), com a pontuação de <b>${s.tot.toFixed(1)} / ${s.n}</b> e o nível de <b>${s.rk}</b>.</p><p>${new Date().toLocaleDateString("pt-PT")}</p></div>`;window.print()};
+A.prt=()=>{const o=AU();$("#pv").innerHTML=`<h1>Relatório de auditoria (simulação)</h1><p>Auditor: ${esc(sv.nome||"—")} · ${new Date().toLocaleDateString("pt-PT")}</p><p>Âmbito: ${ER.F.length} fornecedores, ${ER.V.length} faturas, ${ER.P.length} pagamentos e ${ER.L.length} registos de log.</p>`+(o.length?`<table><tr><th>Gravidade</th><th>Achado</th><th>Detalhe</th></tr>${o.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td>${x[2]}</td></tr>`).join("")}</table>`:"<p>Sem alertas.</p>")+"<p><i>Alertas são indícios, não prova: confirmar com evidência independente antes de concluir.</i></p>";window.print()};
+A.csv=()=>{const r=["id;fornecedor;valor;data;hora;estado;criado_por;aprovado_por",...ER.P.map(p=>[p.id,vf(p.v).n,p.val,p.d,p.h,p.st,UN[p.ator],p.aprov?UN[p.aprov]:""].join(";"))].join("\n");
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+r],{type:"text/csv"}));a.download="pagamentos.csv";a.click()};
+
+T[1].it[0].o=T[1].it[0].tr.map(r=>r[0]);
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Consulta de Pauta</title><style>:root{--paper:#F3F8FC;--navy:#152B6B;--sky:#2AA9D9;--sun:#F5A623;--ink:#132247;--ink-soft:#5A6C8C;--line:#D7E3F2;--red:#C0392B;--card:#FFFFFF;}*{box-sizing:border-box;}body{margin:0;background:radial-gradient(circle at 85% -10%,rgba(245,166,35,0.14),transparent 40%),linear-gradient(180deg,#EAF4FB 0%,var(--paper) 320px);color:var(--ink);font-family:Georgia,'Times New Roman',serif;min-height:100vh;display:flex;justify-content:center;padding:32px 16px 64px;}.sheet{width:100%;max-width:640px;}header{text-align:center;padding-bottom:20px;margin-bottom:28px;position:relative;}header::after{content:"";display:block;height:4px;margin-top:18px;border-radius:4px;background:linear-gradient(90deg,var(--navy) 0%,var(--sky) 55%,var(--sun) 100%);}.logo{width:64px;height:64px;margin:0 auto 12px;display:block;border-radius:50%;box-shadow:0 2px 10px rgba(21,43,107,0.18);}.eyebrow{font-family:'Courier New',monospace;letter-spacing:0.2em;font-size:11px;color:var(--sky);text-transform:uppercase;font-weight:bold;}h1{font-size:28px;margin:8px 0 4px;font-weight:400;letter-spacing:0.01em;color:var(--navy);}.subtitle{font-size:13px;color:var(--ink-soft);font-style:italic;}.search-box{display:flex;gap:0;border:1.5px solid var(--navy);background:var(--card);border-radius:6px;overflow:hidden;box-shadow:0 2px 8px rgba(21,43,107,0.08);}.search-box input{flex:1;border:none;background:transparent;padding:14px 16px;font-family:'Courier New',monospace;font-size:16px;letter-spacing:0.03em;color:var(--ink);outline:none;}.search-box input::placeholder{color:#9aa6c0;}.search-box button{border:none;background:linear-gradient(135deg,var(--navy),var(--sky));color:#fff;padding:0 22px;font-family:Georgia,serif;font-size:14px;letter-spacing:0.05em;cursor:pointer;transition:filter 0.15s ease;}.search-box button:hover{filter:brightness(1.08);}.hint{font-size:12px;color:var(--ink-soft);margin-top:8px;text-align:center;}#result{margin-top:32px;}.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--sky);border-radius:8px;box-shadow:0 4px 16px rgba(21,43,107,0.10);padding:26px 28px;animation:rise 0.25s ease;}@keyframes rise{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}.card .num{font-family:'Courier New',monospace;font-size:12px;color:var(--sky);letter-spacing:0.05em;font-weight:bold;}.card .name{font-size:22px;margin:4px 0 18px;color:var(--navy);border-bottom:1px solid var(--line);padding-bottom:14px;}table.grades{width:100%;border-collapse:collapse;font-size:14px;}table.grades td{padding:7px 4px;border-bottom:1px dotted var(--line);}table.grades td.label{color:var(--ink-soft);width:60%;}table.grades td.value{text-align:right;font-family:'Courier New',monospace;font-weight:bold;color:var(--navy);}.status-row{margin-top:18px;padding-top:14px;border-top:2px solid var(--navy);display:flex;justify-content:space-between;align-items:center;}.status-row .label{font-size:13px;color:var(--ink-soft);}.badge{display:inline-block;padding:6px 16px;border-radius:4px;font-family:'Courier New',monospace;font-size:13px;letter-spacing:0.06em;font-weight:bold;border:1.5px solid;}.badge.aprovado{color:#fff;background:linear-gradient(135deg,var(--navy),var(--sky));border-color:var(--navy);}.badge.recorrencia{color:var(--red);border-color:var(--red);background:#fdf1ef;}.badge.dispensado{color:#8a5c00;border-color:var(--sun);background:#fff6e6;}.empty,.not-found{text-align:center;color:var(--ink-soft);font-style:italic;padding:24px 0;font-size:14px;}.not-found strong{display:block;font-style:normal;color:var(--red);font-size:16px;margin-bottom:4px;}footer{text-align:center;font-size:11px;color:var(--ink-soft);margin-top:40px;font-family:'Courier New',monospace;letter-spacing:0.04em;}</style></head><body><div class="sheet"><header><h1>Pauta — ICC</h1><div class="subtitle">Digite o seu número de estudante para ver as suas notas</div></header><div class="search-box"><input id="query" type="text" placeholder="Ex: 01.0697.26" autocomplete="off" inputmode="text"><button onclick="eval(atob('bG9va3VwKCk='))">Consultar</button></div><div id="result"><div class="empty">Aguardando o número de estudante…</div></div><footer>....</footer></div><script>
+const dados = [
+{n:"01.0697.26", nome:"AIMAN TAQUIDIR SULEMANE", t1:12, t2:10.0, trab:14.0, mf:12, sit:"Admitido", ex:3, mfinal:null, res:"Recorrencia"},
+ {n:"01.0922.26", nome:"ANICIA VITORIA MUTIMBA", t1:9, t2:10.0, trab:14.0, mf:11, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0944.26", nome:"ANTONIO ALFREDO MUIANGA", t1:8, t2:12.0, trab:15.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+ {n:"01.0875.26", nome:"ANTONIO JAIME LANGA", t1:10, t2:13.0, trab:14.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+ {n:"01.0677.26", nome:"AZARIAS ZITO JAIME BILA", t1:9, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0631.26", nome:"BIXENTE JOSE AGNALDO MACIA", t1:9, t2:15.0, trab:14.0, mf:13, sit:"Admitido", ex:14, mfinal:13, res:"Aprovado"},
+ {n:"01.0676.26", nome:"CARDOSO AULINO NHAULE MUNHANE", t1:14, t2:14.0, trab:14.0, mf:14, sit:"Dispensado", ex:14, mfinal:14, res:"Aprovado"},
+ {n:"01.0630.26", nome:"CATARINA AMERICO COSSA", t1:9, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+ {n:"01.0647.26", nome:"CLARA PINTO COVANE", t1:17, t2:12.0, trab:14.0, mf:14, sit:"Dispensado", ex:8, mfinal:14, res:"Aprovado"},
+ {n:"01.0666.26", nome:"DAVID ANGELO MAZIVE", t1:9, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:5, mfinal:null, res:"Recorrencia"},
+ {n:"01.0950.26", nome:"DELFINA CASTIGO", t1:11, t2:11.0, trab:14.0, mf:12, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+ {n:"01.0659.26", nome:"DIVINO FELIX MACHAVA", t1:10, t2:8.0, trab:14.0, mf:11, sit:"Admitido", ex:10, mfinal:10, res:"Aprovado"},
+ {n:"01.0629.26", nome:"EDCIO DOS SANTOS CARLOS MATSIMBE", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:11, mfinal:14, res:"Aprovado"},
+ {n:"01.0878.26", nome:"EDMILSON CANDITO", t1:9, t2:8.0, trab:15.0, mf:10, sit:"Admitido", ex:5, mfinal:null, res:"Recorrencia"},
+ {n:"01.0655.26", nome:"EDNERCIO CASTRO GUJAMO", t1:11, t2:11.0, trab:14.0, mf:12, sit:"Admitido", ex:15, mfinal:13, res:"Aprovado"},
+ {n:"01.0675.26", nome:"ELIO EUNIZIO MUCHAVE", t1:15.25, t2:15.0, trab:14.0, mf:15, sit:"Dispensado", ex:2, mfinal:15, res:"Aprovado"},
+ {n:"01.0681.26", nome:"ELTON DE LAURA SECHENE", t1:12, t2:15.0, trab:14.0, mf:14, sit:"Dispensado", ex:11, mfinal:13, res:"Aprovado"},
+ {n:"01.0660.26", nome:"ELTON ONESMO DANIEL NHADUATE", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:8, mfinal:14, res:"Aprovado"},
+ {n:"01.0648.26", nome:"EMILIO FELIX MAZIVILA", t1:8, t2:8.0, trab:14.0, mf:10, sit:"Admitido", ex:10, mfinal:10, res:"Aprovado"},
+ {n:"01.0925.26", nome:"EQUISODIO S. MUZONDA", t1:8, t2:9.0, trab:14.0, mf:10, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0919.26", nome:"FELIX ALSON JOVO", t1:15, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:11, mfinal:14, res:"Aprovado"},
+ {n:"01.0639.26", nome:"FLAVIO SEBASTIAO NHACUONGA", t1:6, t2:12.0, trab:15.0, mf:11, sit:"Admitido", ex:3, mfinal:null, res:"Recorrencia"},
+ {n:"01.0651.26", nome:"FRANCISCO SARMENTO MONJANE", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:13, mfinal:14, res:"Aprovado"},
+ {n:"01.0691.26", nome:"FREDIO VASCO UTUI", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:8, mfinal:14, res:"Aprovado"},
+ {n:"01.0694.26", nome:"HENRIQUETA GABRIELA BOMBE", t1:11, t2:12.0, trab:14.0, mf:12, sit:"Admitido", ex:12, mfinal:12, res:"Aprovado"},
+ {n:"01.0688.26", nome:"HILARIO ZEFANIAS JUAIO", t1:14, t2:15.0, trab:14.0, mf:14, sit:"Dispensado", ex:12, mfinal:14, res:"Aprovado"},
+ {n:"01.0902.26", nome:"IGOR ANGELO MUNGUAMBE", t1:7, t2:12.0, trab:15.0, mf:11, sit:"Admitido", ex:2, mfinal:null, res:"Recorrencia"},
+ {n:"01.0771.26", nome:"ISABEL AUGUSTO MONTEIRO", t1:11, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:7, mfinal:null, res:"Recorrencia"},
+ {n:"01.0686.26", nome:"ISABEL JOCHUA CUMBANE", t1:10, t2:12.0, trab:15.0, mf:12, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0656.26", nome:"JAIME DE HENRIQUETA NELSON CUINICA", t1:11, t2:15.0, trab:15.0, mf:14, sit:"Dispensado", ex:11, mfinal:14, res:"Aprovado"},
+ {n:"01.0669.26", nome:"JOAO RUNGO DIONISIO", t1:17.5, t2:12.0, trab:14.0, mf:15, sit:"Dispensado", ex:13, mfinal:15, res:"Aprovado"},
+ {n:"01.0905.26", nome:"JORGE RAIMUNDO MAMBO", t1:5, t2:11.0, trab:15.0, mf:10, sit:"Admitido", ex:12, mfinal:11, res:"Aprovado"},
+ {n:"01.0879.26", nome:"LAERSON CHIUNDA", t1:16, t2:15.0, trab:15.0, mf:15, sit:"Dispensado", ex:4, mfinal:15, res:"Aprovado"},
+ {n:"01.0920.26", nome:"LIDIA FERNANDO MATHE", t1:9, t2:13.0, trab:14.0, mf:12, sit:"Admitido", ex:7, mfinal:null, res:"Recorrencia"},
+ {n:"01.0634.26", nome:"LIRIA VIRGILIO MAVILE", t1:9, t2:11.0, trab:14.0, mf:11, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0654.26", nome:"MARLENE ROGERIO MATAVELE", t1:8, t2:12.0, trab:14.0, mf:11, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+ {n:"01.0668.26", nome:"MINERVIA GABRIEL MACAMO", t1:14, t2:14.0, trab:15.0, mf:14, sit:"Dispensado", ex:12, mfinal:14, res:"Aprovado"},
+ {n:"01.0670.26", nome:"NELTON ARMANDO MASSINGUE", t1:10, t2:11.0, trab:15.0, mf:12, sit:"Admitido", ex:4, mfinal:null, res:"Recorrencia"},
+ {n:"01.0903.26", nome:"NESIO ANIBAL MAHANZUL", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:7, mfinal:14, res:"Aprovado"},
+ {n:"01.0895.26", nome:"NEUSIO DA TELMA GOVE", t1:13, t2:14.0, trab:14.0, mf:14, sit:"Dispensado", ex:14, mfinal:14, res:"Aprovado"},
+ {n:"01.0881.26", nome:"PIEDADE CELESTINO BOA", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:9, mfinal:14, res:"Aprovado"},
+ {n:"01.0898.26", nome:"SHELTON XAVIER", t1:11, t2:10.0, trab:15.0, mf:12, sit:"Admitido", ex:6, mfinal:null, res:"Recorrencia"},
+ {n:"01.0687.26", nome:"TANIA DA LARIA ADOLFO MAZOIO", t1:9, t2:11.0, trab:14.0, mf:11, sit:"Admitido", ex:7, mfinal:null, res:"Recorrencia"},
+ {n:"01.0921.26", nome:"YILAH HORTENCIA EDSON LANGA", t1:6, t2:10.0, trab:14.0, mf:10, sit:"Admitido", ex:3, mfinal:null, res:"Recorrencia"},
+ {n:"01.0667.26", nome:"YULLA SHEYNILA ALMEIDA COSSA", t1:13, t2:13.0, trab:15.0, mf:14, sit:"Dispensado", ex:13, mfinal:14, res:"Aprovado"},
+ {n:"01.0658.26", nome:"YUMINA SHANEL DINIS CHIVULELE", t1:14, t2:13.0, trab:14.0, mf:14, sit:"Dispensado", ex:10, mfinal:14, res:"Aprovado"},
+ {n:"01.0915.26", nome:"YURIKA DA SILVA JAMAL", t1:10, t2:8.0, trab:14.0, mf:11, sit:"Admitido", ex:11, mfinal:11, res:"Aprovado"},
+ {n:"011648.2025", nome:"VALTER MAYLON CHICHANGO", t1:9, t2:15.0, trab:10.0, mf:11, sit:"Admitido", ex:10, mfinal:11, res:"Aprovado"},
+48
+];
+function norm(s){
+ return (s || "").toString().toLowerCase().replace(/[.\s]/g,"");
+}
+function fmt(v){
+ if(v === null || v === undefined) return "—";
+ return Number.isInteger(v) ? v.toString() : v.toFixed(2);
+}
+function badgeClass(res){
+ const r = res.toLowerCase();
+ if(r === "aprovado") return "aprovado";
+ if(r === "dispensado") return "dispensado";
+ return "recorrencia";
+}
+function lookup(){
+ const raw = document.getElementById('query').value.trim();
+ const box = document.getElementById('result');
+ if(!raw){
+ box.innerHTML = '<div class="empty">Aguardando o número de estudante…</div>';
+ return;
+ }
+ const q = norm(raw);
+ const found = dados.find(d => d.n && norm(d.n).includes(q) && q.length >= 3);
+ if(!found){
+ box.innerHTML = `
+ <div class="not-found"><strong>Nenhum resultado encontrado</strong>
+ Verifique o número de estudante e tente novamente.
+ </div>`;
+ return;
+ }
+ box.innerHTML = `
+ <div class="card"><div class="num">${found.n || "Nº não disponível"}</div><div class="name">${found.nome}</div><table class="grades"><tr><td class="label">Teste 1 (35%)</td><td class="value">${fmt(found.t1)}</td></tr><tr><td class="label">Teste 2 (35%)</td><td class="value">${fmt(found.t2)}</td></tr><tr><td class="label">Trabalho(30%)</td><td class="value">${fmt(found.trab)}</td></tr><tr><td class="label">Média de Frequência</td><td class="value">${fmt(found.mf)}</td></tr><tr><td class="label">Situação</td><td class="value">${found.sit}</td></tr><tr><td class="label">Exame</td><td class="value">${fmt(found.ex)}</td></tr><tr><td class="label">Média Final</td><td class="value">${fmt(found.mfinal)}</td></tr></table><div class="status-row"><span class="label">Resultado</span><span class="badge ${badgeClass(found.res)}">${found.res}</span></div></div>`;
+}
+document.getElementById('query').addEventListener('keydown', function(e){
+ if(e.key === 'Enter') lookup();
+});
+</script><script>document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('[data-s]').forEach(function(e){try{e.setAttribute('style',decodeURIComponent(escape(atob(e.getAttribute('data-s')))));e.removeAttribute('data-s');}catch(x){}});});</script><script>document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});document.addEventListener('keydown',function(e){var k=e.key,c=e.ctrlKey||e.metaKey,s=e.shiftKey;if(c&&'uUsSpP'.indexOf(k)>=0){e.preventDefault();return false;}if(c&&s&&'iIjJcC'.indexOf(k)>=0){e.preventDefault();return false;}if(k==='F12'){e.preventDefault();return false;}});</script></body></html>
